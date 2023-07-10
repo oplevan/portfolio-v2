@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  z-index: 11;
+  width: 100%;
+  height: var(--nav-height);
+  backdrop-filter: saturate(180%) blur(20px);
+  transition: var(--transition);
+  filter: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  font-family: theme('fontFamily.mono');
+  @apply px-5;
+  @apply lg:px-10;
+  @apply bg-header-bg;
+  @apply box-border;
+}
