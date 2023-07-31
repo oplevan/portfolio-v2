@@ -33,7 +33,11 @@
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
   }
 
-  &.default {
+  &.primary {
+    @apply transition ease-in-out duration-200 text-slate-500 border-solid border border-slate-500 hover:border-blue-600 hover:text-blue-600 dark:hover:text-dark-primary dark:hover:border-dark-primary hover:shadow-primary-light dark:hover:shadow-primary-dark;
+  }
+
+  &.secondary {
     background-color: theme('colors.dark-grey');
     color: theme('colors.grey');
     border-width: 1px 1px 2px 1px;
@@ -97,7 +101,7 @@
 
     &:hover,
     &.active {
-      color: theme('colors.green');
+      @apply text-blue-600 dark:text-dark-primary;
     }
 
     &.active {
@@ -106,11 +110,7 @@
   }
 
   &.neon {
-    text-transform: uppercase;
-    position: relative;
-    color: theme('colors.green');
-    overflow: hidden;
-    transition: 0.2s;
+    @apply uppercase relative overflow-hidden duration-200 text-blue-600 dark:text-dark-primary;
 
     i {
       margin-left: 10px;
@@ -118,10 +118,7 @@
     }
 
     &:hover {
-      color: theme('colors.dark-navy');
-      background-color: theme('colors.green');
-      box-shadow: 0 0 10px theme('colors.green'), 0 0 40px theme('colors.green'), 0 0 80px theme('colors.green');
-      transition-delay: 0.75s;
+      @apply delay-1000 text-white dark:text-dark-navy bg-blue-600 dark:bg-dark-primary shadow-neon-light dark:shadow-neon-dark;
 
       span {
         &:nth-child(1) {
@@ -145,6 +142,7 @@
         }
       }
     }
+
     span {
       position: absolute;
       display: block;
@@ -154,28 +152,28 @@
         left: -100%;
         width: 100%;
         height: 2px;
-        background: linear-gradient(90deg, transparent, theme('colors.green'));
+        background: linear-gradient(90deg, transparent, theme('colors.light.primary'));
       }
       &:nth-child(2) {
         top: -100%;
         right: 0;
         width: 2px;
         height: 100%;
-        background: linear-gradient(180deg, transparent, theme('colors.green'));
+        background: linear-gradient(180deg, transparent, theme('colors.light.primary'));
       }
       &:nth-child(3) {
         bottom: 0;
         right: -100%;
         width: 100%;
         height: 2px;
-        background: linear-gradient(270deg, transparent, theme('colors.green'));
+        background: linear-gradient(270deg, transparent, theme('colors.light.primary'));
       }
       &:nth-child(4) {
         bottom: -100%;
         left: 0;
         width: 2px;
         height: 100%;
-        background: linear-gradient(360deg, transparent, theme('colors.green'));
+        background: linear-gradient(360deg, transparent, theme('colors.light.primary'));
       }
     }
   }
@@ -196,11 +194,10 @@
       display: block;
       width: 8px;
       height: 8px;
-      background-color: theme('colors.dark-slate');
       position: absolute;
       top: calc(50% - 4px);
       left: calc(50% - 4px);
-      @apply ease-in-out duration-300;
+      @apply ease-in-out duration-300 bg-slate-700;
 
       &:nth-child(1) {
         -moz-transform: translateY(-11px) translateX(-11px);
@@ -277,7 +274,7 @@
       transition: opacity 0.1s ease 0.125s, transform 0.3s cubic-bezier(0, 0, 0, 1) 0.125s;
     }
     &:hover i {
-      background-color: theme('colors.green');
+      background-color: theme('colors.light.primary');
       &:nth-child(1) {
         -moz-transform: translateY(-14px) translateX(-14px);
         -ms-transform: translateY(-14px) translateX(-14px);
@@ -335,13 +332,7 @@
   }
 
   &.icon {
-    padding: 0;
-    color: theme('colors.dark-slate');
-    @apply ease-in-out duration-300;
-
-    &:hover {
-      color: theme('colors.green');
-    }
+    @apply ease-in-out duration-300 text-slate-700 p-0 hover:text-blue-600;
 
     &.sm {
       font-size: 20px;
@@ -356,5 +347,20 @@
       width: 100%;
       height: auto;
     }
+  }
+}
+
+.dark .button.neon span {
+  &:nth-child(1) {
+    background: linear-gradient(90deg, transparent, theme('colors.dark.primary'));
+  }
+  &:nth-child(2) {
+    background: linear-gradient(180deg, transparent, theme('colors.dark.primary'));
+  }
+  &:nth-child(3) {
+    background: linear-gradient(270deg, transparent, theme('colors.dark.primary'));
+  }
+  &:nth-child(4) {
+    background: linear-gradient(360deg, transparent, theme('colors.dark.primary'));
   }
 }

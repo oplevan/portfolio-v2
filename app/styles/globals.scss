@@ -6,12 +6,8 @@
 :root {
   --fz-heading: 32px;
   --border-radius: 4px;
-  --nav-height: 100px;
-  --nav-scroll-height: 70px;
   --tab-height: 42px;
   --tab-width: 120px;
-  --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   --hamburger-width: 30px;
   --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
   --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
@@ -22,14 +18,79 @@
 * {
   outline: 0;
 }
-
 body {
-  margin: 0px;
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  background-color: theme('colors.navy');
-  color: theme('colors.slate');
-  font-family: theme('fontFamily.sans');
+  @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-global-bg dark:bg-dark-global-bg;
+}
+/*
+=======================
+        Fancy
+=======================
+*/
+.fancy {
+  display: inline-block;
+  position: relative;
+  overflow-x: hidden;
+  margin-bottom: -6px;
+  padding: 0 2px;
+  font-weight: 700;
+
+  &:before,
+  &:after {
+    content: ' ';
+    position: absolute;
+    height: 12px;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    @apply bg-slate-200 dark:bg-slate-700;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+    transform: translateX(-101%);
+  }
+  &:after {
+    bottom: 0;
+    right: 0;
+    transform: translateX(101%);
+  }
+  span {
+    display: block;
+    position: relative;
+    z-index: 2;
+    color: inherit;
+    -moz-transition: color 0.25s ease-out 0.1s;
+    -o-transition: color 0.25s ease-out 0.1s;
+    -webkit-transition: color 0.25s ease-out;
+    transition: color 0.25s ease-out 0.1s;
+  }
+  &:hover:before,
+  &:hover:after {
+    transform: translateX(0%);
+  }
+}
+/*
+=======================
+      Fancy End
+=======================
+*/
+main {
+  & > section {
+    @apply container mx-auto xl:max-w-7xl lg:px-8;
+
+    &#about {
+      @apply flex flex-col items-start justify-center h-screen lg:pt-20 ring-1;
+    }
+  }
+}
+
+.custom-h1 {
+  @apply font-bold text-5xl mb-4 text-slate-600 dark:text-white;
+}
+:is(.dark .dark\:border-neutral-600) {
+  border-color: #64748b !important;
+}
+.group[data-te-input-focused] .group-data-\[te-input-focused\]\:border-t-transparent {
+  border-top-color: transparent !important;
 }
