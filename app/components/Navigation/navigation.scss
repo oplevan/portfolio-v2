@@ -1,17 +1,21 @@
 header {
   height: theme('nav-height.default');
-  backdrop-filter: saturate(180%) blur(5px);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  @apply font-mono fixed z-10 top-0 w-full ease-in-out duration-300 delay-100 -translate-y-full shadow-xl;
+  @apply font-mono fixed z-10 top-0 w-full ease-in-out duration-300 delay-100;
 
-  &.revealed {
-    transform: translateY(0);
+  &.hidden {
+    @apply -translate-y-full block;
   }
 
   &.minimised {
     height: theme('nav-height.minimised');
+    @apply shadow-xl dark:shadow-header;
+
+    nav {
+      backdrop-filter: saturate(180%) blur(10px);
+    }
   }
 
   @media (max-width: 767px) {

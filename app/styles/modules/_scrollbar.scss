@@ -21,7 +21,7 @@ html {
   &.dark {
     /* Track */
     ::-webkit-scrollbar-track {
-      @apply bg-dark-global-bg;
+      @apply bg-dark-secondary-1;
     }
 
     /* Handle */

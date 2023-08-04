@@ -28,7 +28,7 @@ export default function SelectThemeColor() {
           leaveFrom='transform opacity-100 scale-100'
           leaveTo='transform opacity-0 scale-95'
         >
-          <Listbox.Options className='absolute z-50 left-0 lg:left-1/2 lg:-translate-x-1/2 top-full bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-md text-slate-700 dark:bg-dark-lightest-navy dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-1'>
+          <Listbox.Options className='absolute z-50 left-0 lg:left-1/2 lg:-translate-x-1/2 top-full bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-md text-slate-700 dark:bg-dark-secondary-2 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-1'>
             {colorThemes.map((theme, themeIdx) => (
               <Listbox.Option
                 key={themeIdx}
@@ -37,7 +37,7 @@ export default function SelectThemeColor() {
                 onClick={() => setIsDark(theme.name === 'Dark' ? true : false)}
               >
                 {({ selected }) => (
-                  <div className={`flex items-center gap-2 ${selected ? 'text-light-primary dark:text-dark-primary' : ''}`}>
+                  <div className={`flex items-center gap-2 font-medium capitalize ${selected ? 'text-light-primary dark:text-dark-primary' : ''}`}>
                     {theme.icon}
                     {theme.name}
                   </div>

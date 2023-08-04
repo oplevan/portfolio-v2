@@ -17,18 +17,26 @@ module.exports = {
         dark: {
           primary: '#E5FF45',
           'primary-shadow': 'rgba(230,255,69,0.3)',
-          'header-bg': 'rgba(10, 25, 47, 0.8)',
-          'global-bg': '#0a192f',
-          navy: '#0a192f',
-          'light-navy': '#112240',
-          'lightest-navy': '#233554',
-          'navy-shadow': 'rgba(2,12,27,0.7)',
+          secondary: {
+            1: '#0a192f', // navy color, used for the global background
+            2: '#112240', // light navy color
+            3: '#233554', // lightest navy color
+            4: 'rgba(2,12,27,0.7)', // shadow color
+            5: 'rgba(10, 25, 47, 0.85)', // header background
+          },
         },
         light: {
           primary: '#3b71ca',
           'primary-shadow': 'rgba(59,113,202,0.6)',
-          'header-bg': '#f3f8ffd6',
-          'global-bg': '#f3f8ff',
+					secondary: {
+						1: '#f1f7fd',
+						2: '#e0edf9',
+						3: '#c9dff4',
+						4: '#a3cbed',
+						5: '#78aee2',
+						6: '#5891d9',
+						7: '#3b71ca'
+					}
         },
       },
       fontFamily: {
@@ -48,6 +56,7 @@ module.exports = {
         'primary-light': '0 0 15px 3px theme("colors.light.primary-shadow")',
         'neon-dark': '0 0 10px theme("colors.dark.primary"), 0 0 40px theme("colors.dark.primary"), 0 0 80px theme("colors.dark.primary")',
         'neon-light': '0 0 10px theme("colors.light.primary"), 0 0 40px theme("colors.light.primary"), 0 0 80px theme("colors.light.primary")',
+        header: '0 10px 30px -10px theme("colors.dark.secondary-4")',
       },
     },
   },

@@ -5,14 +5,19 @@
   cursor: pointer;
   @apply flex font-bold items-center;
 
-  .icon {
-    font-size: 1.3em;
-  }
-
   &.sm {
     padding: 0 10px;
     height: 30px;
     font-size: 10px;
+
+    &.icon-button {
+      padding: 11px;
+      margin: -11px;
+
+      .icon {
+        font-size: 1.2em;
+      }
+    }
   }
 
   &.md {
@@ -20,6 +25,15 @@
     padding: 0 15px;
     height: 40px;
     font-size: 12px;
+
+    &.icon-button {
+      padding: 11px;
+      margin: -11px;
+
+      .icon {
+        font-size: 1.4em;
+      }
+    }
   }
 
   &.lg {
@@ -27,6 +41,33 @@
     font-size: 14px;
     padding: 0 30px;
     height: 50px;
+
+    &.icon-button {
+      padding: 11px;
+      margin: -11px;
+
+      .icon {
+        font-size: 1.6em;
+      }
+    }
+  }
+
+  &.icon-button.sm,
+  &.icon-button.md,
+  &.icon-button.lg {
+    @apply h-auto;
+
+    .icon {
+      @apply ease-in-out duration-200;
+    }
+
+    &:hover {
+      @apply text-primary dark:text-dark-primary;
+
+      .icon {
+        @apply -translate-y-1;
+      }
+    }
   }
 
   &.reflect {
@@ -118,7 +159,7 @@
     }
 
     &:hover {
-      @apply delay-1000 text-white dark:text-dark-navy bg-blue-600 dark:bg-dark-primary shadow-neon-light dark:shadow-neon-dark;
+      @apply delay-1000 text-white dark:text-dark-secondary-1 bg-blue-600 dark:bg-dark-primary shadow-neon-light dark:shadow-neon-dark;
 
       span {
         &:nth-child(1) {

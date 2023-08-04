@@ -1,12 +1,13 @@
 'use client';
 
-import { Fragment, useState, useEffect, useRef } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { Disclosure, Popover, Transition } from '@headlessui/react';
-import { ArrowPathIcon, ChartPieIcon, CursorArrowRaysIcon, FingerPrintIcon, SquaresPlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, ChartPieIcon, CursorArrowRaysIcon, FingerPrintIcon, SquaresPlusIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import { BiLinkExternal } from 'react-icons/bi';
 import { addClassNames } from '@/app/utils/helpers';
 import Button from '../Button/Button';
+import Logo from '../Logo/Logo';
 import SelectThemeColor from '../SelectThemeColor/SelectThemeColor';
 import Link from 'next/link';
 import './navigation.scss';
@@ -43,8 +44,8 @@ export default function Navigation() {
   function handleScroll() {
     const currentScrollPos = window.scrollY;
     currentScrollPos > prevScrollPos ? setVisible(false) : setVisible(true);
-    currentScrollPos > 0 ? setIsMinimised(true) : setIsMinimised(false);
-    prevScrollPos === 0 && setVisible(true); // allows nav to stay visible when click on close menu button
+    currentScrollPos < prevScrollPos ? setIsMinimised(true) : setIsMinimised(false);
+    currentScrollPos === 0 && setIsMinimised(false); // allows nav to stay visible when click on close menu button
     setPrevScrollPos(currentScrollPos);
   }
 
@@ -60,15 +61,9 @@ export default function Navigation() {
   }
 
   return (
-    <header className={addClassNames(visible ? 'revealed' : '', isMinimised ? 'minimised' : '')}>
-      <nav className='flex w-full h-full items-center justify-between bg-light-header-bg dark:bg-dark-header-bg px-6 lg:!px-16' aria-label='Global'>
-        <div className='flex lg:flex-1 relative z-20'>
-          <a href='#' className='-m-1.5 p-1.5'>
-            <span className='sr-only'>Your Company</span>
-            <img className='h-8 w-auto' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600' alt='' />
-          </a>
-        </div>
-
+    <header className={addClassNames(!visible ? 'hidden' : '', isMinimised ? 'minimised' : '')}>
+      <nav className='flex w-full h-full items-center justify-between bg-light-header-bg dark:bg-dark-secondary-5 px-6 lg:!px-16' aria-label='Global'>
+        <Logo isMinimised={isMinimised} />
         {/* hamburger */}
         <button type='button' className={addClassNames('hamburger lg:hidden relative z-20', mobileMenuOpen ? 'open' : '')} onClick={toggleMenu} />
         <Popover.Group className='hidden lg:flex lg:gap-x-6'>
@@ -166,23 +161,23 @@ export default function Navigation() {
           className='lg:hidden fixed top-0 right-0 w-9/12 h-screen z-10'
           show={mobileMenuOpen}
         >
-          <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-light-global-bg dark:bg-dark-global-bg flex flex-col justify-center items-center gap-3'>
+          <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-light-secondary-1 dark:bg-dark-secondary-2 flex flex-col justify-center items-center gap-3 font-semibold'>
             <div className='absolute top-5 left-5'>
               <SelectThemeColor />
             </div>
-            {navItems?.map((item) =>
+            {navItems?.map((item, i) =>
               item?.subItems ? (
                 <Disclosure key={item.name} as={Fragment}>
                   {({ open }) => (
-                    <div
-                      className={addClassNames(
-                        'max-h-11 ease-in-out duration-300 w-full bg-transparent',
-                        open ? '!max-h-screen !bg-dark-primary-tint pb-2' : ''
-                      )}
-                    >
-                      <Disclosure.Button className='flex w-full items-center justify-center rounded-lg py-2 text-base font-semibold leading-7 text-light-navy dark:text-light-slate uppercase'>
+                    <div className={addClassNames('max-h-11 ease-in-out duration-300 w-full bg-transparent', open ? '!max-h-screen pb-2' : '')}>
+                      <Disclosure.Button
+                        className={addClassNames(
+                          'flex w-full items-center justify-center rounded-lg py-2 text-base',
+                          open ? 'text-primary dark:text-primary uppercase' : ''
+                        )}
+                      >
                         {item.name}
-                        <ChevronDownIcon className={addClassNames(open ? 'rotate-180' : '', 'relative -mr-5 h-5 w-5 flex-none')} aria-hidden='true' />
+                        <ChevronDownIcon className={addClassNames(open ? 'rotate-180' : '', 'relative -mr-2 h-5 w-5 flex-none')} aria-hidden='true' />
                       </Disclosure.Button>
                       <Transition
                         as={Fragment}
@@ -195,12 +190,7 @@ export default function Navigation() {
                       >
                         <Disclosure.Panel className='space-y-2'>
                           {[...item.subItems, ...callsToAction].map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as='a'
-                              href={item.href}
-                              className='block rounded-lg text-sm text-center font-semibold leading-7 text-lightest-navy dark:text-light-slate'
-                            >
+                            <Disclosure.Button key={item.name} as='a' href={item.href} className='block rounded-lg text-sm text-center leading-7'>
                               {item.name}
                             </Disclosure.Button>
                           ))}
@@ -210,22 +200,21 @@ export default function Navigation() {
                   )}
                 </Disclosure>
               ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className='block rounded-lg py-2 text-base font-semibold leading-7 text-lightest-navy dark:text-light-slate uppercase'
-                >
-                  {item.name}
-                </Link>
+                <>
+                  {i !== 0 && <hr className='w-[35px] border-slate-600' />}
+                  <Link key={item.name} href={item.href} className='block rounded-lg py-2 leading-7'>
+                    {item.name}
+                  </Link>
+                </>
               )
             )}
             <Button
               as='link'
               variation='primary'
-              size='md'
+              size='lg'
               href='https://drive.google.com/file/d/1eTjj7ljjFtpmJBPain_UXaQWQQKUfMO5/view?pli=1'
-              className='!text-navy !border-navy dark:!text-slate dark:!border-slate'
               icon={<BiLinkExternal />}
+              className='mt-14'
               externalLink
             >
               Resume

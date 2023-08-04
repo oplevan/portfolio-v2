@@ -9,7 +9,7 @@ interface CommonProps {
   className?: string;
   reflect?: Boolean;
   size?: string;
-  icon?: JSX.Element;
+  icon?: JSX.Element | React.ReactElement;
   iconPosition?: 'left' | 'right';
   children?: React.ReactNode;
 }
@@ -88,7 +88,7 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
     const { href } = props;
     return (
       <Link href={href} className={classNames} {...(props.externalLink && { target: '_blank' })}>
-        {variation === 'icon-button' ? <>{props.icon}</> : buttonInnerMarkup()}
+        {variation === 'icon-button' ? <div className='icon'>{props.icon}</div> : buttonInnerMarkup()}
       </Link>
     );
   }
