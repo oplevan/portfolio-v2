@@ -1,5 +1,5 @@
 .side-element {
-  @apply fixed hidden md:block bottom-0;
+  @apply fixed hidden md:block bottom-0 z-40;
 
   &:after {
     content: '';

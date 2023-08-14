@@ -18,7 +18,7 @@ module.exports = {
           primary: '#E5FF45',
           'primary-shadow': 'rgba(230,255,69,0.3)',
           secondary: {
-            1: '#0a192f', // navy color, used for the global background
+            1: '#0a192f', // navy color, used for the global background #030413
             2: '#112240', // light navy color
             3: '#233554', // lightest navy color
             4: 'rgba(2,12,27,0.7)', // shadow color
@@ -28,15 +28,15 @@ module.exports = {
         light: {
           primary: '#3b71ca',
           'primary-shadow': 'rgba(59,113,202,0.6)',
-					secondary: {
-						1: '#f1f7fd',
-						2: '#e0edf9',
-						3: '#c9dff4',
-						4: '#a3cbed',
-						5: '#78aee2',
-						6: '#5891d9',
-						7: '#3b71ca'
-					}
+          secondary: {
+            1: '#f1f7fd',
+            2: '#e0edf9',
+            3: '#c9dff4',
+            4: '#a3cbed',
+            5: '#78aee2',
+            6: '#5891d9',
+            7: '#3b71ca',
+          },
         },
       },
       fontFamily: {

@@ -22,7 +22,7 @@
 
 body {
   -webkit-font-smoothing: antialiased;
-  @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-secondary-1 dark:bg-dark-secondary-1;
+  @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-secondary-1 dark:bg-dark-secondary-1 dark:bg-gradient-to-b from-[#040217] to-[#08072e];
 }
 /*
 =======================
@@ -49,11 +49,11 @@ p a {
 =======================
 */
 main {
-  & > section {
-    @apply container mx-auto xl:max-w-6xl lg:px-8;
+  .content {
+    @apply container mx-auto xl:max-w-6xl lg:pt-20 lg:px-16 z-30 relative;
 
-    &#intro {
-      @apply flex flex-col items-start justify-center h-screen lg:pt-20 relative;
+    &.intro-content {
+      @apply flex flex-col items-start justify-center h-screen;
     }
   }
 }
