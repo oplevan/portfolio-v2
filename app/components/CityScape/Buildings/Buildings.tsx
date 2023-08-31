@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import FlyingCars from './FlyingCars/FlyingCars';
 import './Buildings.scss';
 import Image from 'next/image';
 import TallBuildingLeft from '@/public/assets/buildings/tall_left_building.png';
 import TallBuildingRight from '@/public/assets/buildings/tall_right_building.png';
-
 import BuildingWithLogo from '@/public/assets/buildings/building_with_logo.png';
 import JapanBuilding from '@/public/assets/buildings/japan_building.png';
 import TripleBuilding from '@/public/assets/buildings/triple_building.png';
@@ -26,8 +25,11 @@ type Props = {
 export default function Buildings({ id, children }: Props) {
   return (
     <section id={id} className='buildings-parent'>
+      {children}
       <Image className='tall-building-left' src={TallBuildingLeft} alt='1' />
-      <Image className='tall-building-right' src={TallBuildingRight} alt='2' />
+      <div className='flex justify-end'>
+        <Image className='tall-building-right' src={TallBuildingRight} alt='2' />
+      </div>
       <Image className='building-with-logo' src={BuildingWithLogo} alt='3' />
       <Image className='japan-building' src={JapanBuilding} alt='4' />
       <Image className='triple-building' src={TripleBuilding} alt='5' />
@@ -39,16 +41,18 @@ export default function Buildings({ id, children }: Props) {
       <Image className='light-sculpture-2' src={LightSculptureBuilding2} alt='11' />
       <Image className='art-building' src={ArtBuilding} alt='12' />
       <Image className='triangle-building' src={TriangleBuilding} alt='13' />
-      <div className='cityscape-traffic traffic-1'>
+      <div className='hidden md:block cityscape-traffic traffic-1'>
         <FlyingCars cars={10} canvasHeight={100} />
       </div>
-      <div className='cityscape-traffic traffic-2'>
+      <div className='hidden md:block cityscape-traffic traffic-2'>
         <FlyingCars cars={7} canvasHeight={100} />
       </div>
-      <div className='cityscape-traffic traffic-3'>
+      <div className='hidden md:block cityscape-traffic traffic-3'>
         <FlyingCars cars={12} canvasHeight={150} />
       </div>
-      {children}
+      <div className='hidden md:block cityscape-traffic traffic-4'>
+        <FlyingCars cars={4} canvasHeight={100} />
+      </div>
       <div className='bridge'>
         <Image className='car-bridge' src={Car} alt='Hover vehicle' />
       </div>

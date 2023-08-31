@@ -22,7 +22,7 @@
 
 body {
   -webkit-font-smoothing: antialiased;
-  @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-secondary-1 dark:bg-dark-secondary-1 dark:bg-gradient-to-b from-[#040217] to-[#08072e];
+  @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-secondary-1 dark:bg-dark-secondary-1;
 }
 /*
 =======================
@@ -49,11 +49,30 @@ p a {
 =======================
 */
 main {
-  .content {
-    @apply container mx-auto xl:max-w-6xl lg:pt-20 lg:px-16 z-30 relative;
+  & > section {
+    @apply container mx-auto xl:max-w-6xl py-5 px-0 lg:py-24 md:px-16 z-30 relative;
 
-    &.intro-content {
-      @apply flex flex-col items-start justify-center h-screen;
+    &#intro {
+      @apply flex flex-col items-start justify-center min-h-screen;
+    }
+
+    &#about {
+      ul.skills-list {
+        @apply p-0 my-3 list-none grid gap-2 grid-cols-2 md:grid-cols-3;
+
+        li {
+          @apply relative pl-5 font-mono text-[14px];
+
+          &:before {
+            content: '▹';
+            @apply absolute left-0 text-primary dark:text-dark-primary text-sm;
+          }
+        }
+      }
+    }
+
+    &#contact {
+      @apply text-center;
     }
   }
 }

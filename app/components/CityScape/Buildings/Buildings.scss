@@ -1,8 +1,7 @@
 .buildings-parent {
-  @apply relative;
-  height: 2000px;
+  @apply relative min-h-screen overflow-hidden;
 
-  img {
+  & > img {
     max-height: 100%;
     max-width: 100%;
     vertical-align: middle;
@@ -17,6 +16,7 @@
     max-width: 13%;
   }
   .tall-building-right {
+    position: relative;
     right: 0px;
     z-index: 15;
     max-width: 21.5%;
@@ -44,7 +44,7 @@
   .curve-building {
     left: 6%;
     width: 100%;
-    max-width: 15%;
+    max-width: 14%;
   }
   .mid-building {
     right: 37%;
@@ -81,31 +81,29 @@
     overflow: hidden;
 
     &.traffic-1 {
-      width: 38%;
+      width: 35%;
       left: 0px;
-      right: 0px;
-      bottom: 50vw;
+      bottom: 45vw;
       z-index: 12;
     }
 
     &.traffic-2 {
-      left: 42%;
-      right: 20%;
+      left: 36%;
+      right: 19%;
       bottom: 45vw;
       z-index: 14;
     }
     &.traffic-3 {
       right: 0px;
-      bottom: 25vw;
+      bottom: 22vw;
       z-index: 15;
       width: 38%;
     }
     &.traffic-4 {
-      right: 0px;
-      bottom: 37vw;
+      left: 0px;
+      width: 45%;
+      bottom: 22vw;
       z-index: 15;
-      display: block;
-      width: 100%;
     }
   }
 
