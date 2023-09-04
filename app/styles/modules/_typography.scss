@@ -1,6 +1,6 @@
 .section-title {
   font-size: clamp(24px, 5vw, 32px);
-  @apply font-semibold flex items-end w-full mt-2 mb-10 relative leading-none text-slate-700 dark:text-slate-300 max-w-xl;
+  @apply font-semibold flex items-end w-full mt-2 mb-14 relative leading-none text-slate-700 dark:text-slate-300 max-w-xl;
 
   span {
     font-size: clamp(14px, 3vw, 20px);

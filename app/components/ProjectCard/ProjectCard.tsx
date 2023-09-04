@@ -34,7 +34,7 @@ export default function ProjectCard({ title, links, thumbnail, shortDescription,
           </div>
         </div>
         <div className='thumbnail'>
-          <Image src={thumbnail} width={335} height={165} alt='Project preview image' />
+          <Image src={thumbnail} width={360} height={180} alt='Project preview image' />
         </div>
         <div className='title'>{title}</div>
         <div className='short-description'>{shortDescription}</div>

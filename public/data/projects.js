@@ -1,4 +1,25 @@
-export const projects = [
+const projects = [
+  {
+    id: 'bruckenbauverein-frankfurt',
+    title: 'Bruckenbauverein Frankfurt',
+    description: {
+      short: 'A WordPress website built for the historical town hall, Der Lange Franz, in Frankfurt, Germany, as part of the frontend development team.',
+      full: 'The challenge for me was to make it responsive since most pages contain large images so I needed to make sure the whole website looks good on any device.',
+    },
+    thumbnail: '/assets/projects/bruckenbauverein/preview.png',
+    thumbnailHover: '',
+    carouselImages: [],
+    techList: ['CSS', 'HTML', 'JavaScript', 'jQuery', 'WordPress'],
+    category: ['all', 'frontend', 'wordpress'],
+    animation: {
+      type: 'fade-up',
+      delay: 0,
+    },
+    links: {
+      web: 'https://brueckenbauverein-frankfurt.de/',
+      gitHub: '',
+    },
+  },
   {
     id: 'netflix',
     title: 'Netflix Clone',
@@ -32,7 +53,7 @@ export const projects = [
     id: 'my-portfolio',
     title: 'Personal Website V1',
     description: {
-      short: 'This is my personal Portfolio website built with React JS, Material UI and hosted on Netlify.',
+      short: 'First iteration of my personal Portfolio website built with React JS, Material UI and hosted on Netlify.',
       full: "The idea behind this project was to create a showcase of my technical and design skills. I tried to keep the UI as simple as possible yet to make it attractive and stylish. For this project I've used ReactJs, Material UI components and React Router for navigation.",
     },
     thumbnail: '/assets/projects/portfolio-v1/preview.png',
@@ -74,7 +95,7 @@ export const projects = [
       '/images/my-portfolio/5.jpg',
       '/images/my-portfolio/6.jpg',
     ],
-    techList: ['React', 'AWS', 'SFMC API', 'CI/CD'],
+    techList: ['React', 'AWS', 'API', 'CI/CD'],
     category: ['all', 'frontend', 'react'],
     animation: {
       type: 'fade-up',
@@ -86,3 +107,4 @@ export const projects = [
     },
   },
 ];
+export default projects;

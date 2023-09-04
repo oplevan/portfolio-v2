@@ -16,7 +16,7 @@ export default function ContactForm({}: Props) {
     console.log('submit the form');
   }
   return (
-    <div className='block max-w-md rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)] dark:bg-dark-secondary-2 mx-auto mt-10'>
+    <div className='block w-full max-w-md rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)] dark:bg-dark-secondary-2 mx-auto mt-10'>
       <form onSubmit={handleSubmit}>
         <div className='relative mb-6' data-te-input-wrapper-init>
           <input

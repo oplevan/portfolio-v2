@@ -19,7 +19,9 @@
   outline: 0;
   scroll-behavior: smooth !important;
 }
-
+*:focus {
+  outline: 0 !important;
+}
 body {
   -webkit-font-smoothing: antialiased;
   @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-secondary-1 dark:bg-dark-secondary-1;
@@ -52,6 +54,10 @@ main {
   & > section {
     @apply container mx-auto xl:max-w-6xl py-5 px-0 lg:py-24 md:px-16 z-30 relative;
 
+    @media (min-width: 390px) and (max-width: 639px) {
+      max-width: 350px;
+    }
+
     &#intro {
       @apply flex flex-col items-start justify-center min-h-screen;
     }
@@ -72,7 +78,7 @@ main {
     }
 
     &#contact {
-      @apply text-center;
+      @apply text-center min-h-[80vh] flex flex-col justify-center;
     }
   }
 }

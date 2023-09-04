@@ -1,0 +1,65 @@
+const jobs = [
+  {
+    id: 4,
+    title: 'Software Engineer',
+    company: { name: 'PRECISIONEffect', website: 'https://precisioneffect.com' },
+    location: 'London, UK',
+    type: 'Full-time',
+    startDate: 'Feb, 2021',
+    endDate: 'Present',
+    description: ['Did this', 'Did that', 'And also that'],
+    achievements: '',
+  },
+  {
+    id: 3,
+    title: 'Front End Developer',
+    company: { name: 'Freelance', website: null },
+    location: 'London, UK',
+    type: 'Contract',
+    startDate: 'Nov, 2018',
+    endDate: 'Jan, 2021',
+    description: [
+      'Worked with various clients, developing websites that include booking, portfolio, blog and multilingual functionalities',
+      'Handled various projects on different stages of development',
+      'Built custom websites using Bootstrap and WordPress',
+    ],
+    achievements:
+      'Increased user experience satisfaction by 59% from a website redesign. Learned new technologies such as React, Redux, Webpack. Improved English speaking and writing skills from beginner to advanced.',
+  },
+  {
+    id: 2,
+    title: 'Front End Developer',
+    company: { name: 'GBC', website: 'https://gbc.net.ua' },
+    location: 'Chernivtsi, Ukraine',
+    type: 'Full-time',
+    startDate: 'May, 2016',
+    endDate: 'Sep, 2018',
+    description: [
+      'Developed, maintained, and shipped production code for client websites primarily using HTML, CSS, JavaScript, and jQuery',
+      'Maintained templates and content management systems',
+      'Assisted in testing and deploying Web applications',
+      "Collaborated with designers and other developers to ensure thoughtful and consistent user experiences across various GBC's client's web apps",
+    ],
+    achievements:
+      'Took the ownership of the entire process of development, content management and launch of a project, which led to a significant increase in managerial and communication skills.',
+  },
+  {
+    id: 1,
+    title: 'SEO Specialist',
+    company: { name: 'GBC', website: 'https://gbc.net.ua' },
+    location: 'Chernivtsi, Ukraine',
+    type: 'Full-time',
+    startDate: 'Jul, 2014',
+    endDate: 'Apr, 2016',
+    description: [
+      'Tracked, reported, and analysed website analytics and PPC initiatives and campaigns',
+      'Managed campaign expenses, staying on budget, estimating monthly costs and reconciling discrepancies',
+      'Researched and implemented search engine optimization recommendations',
+      'Researched and analysed competitor advertising links',
+      'Developed and implemented link building strategy',
+      'Collaborated with development team to drive SEO in content creation and content programming',
+    ],
+    achievements: '',
+  },
+];
+export default jobs;

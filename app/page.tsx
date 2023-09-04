@@ -6,8 +6,9 @@ import Button from './components/Button/Button';
 import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
 // import { Sky, Buildings } from './components/CityScape';
 import ProjectCard from './components/ProjectCard/ProjectCard';
-import { projects } from '@/public/data/projects';
+import projects from '@/public/data/projects';
 import HeadShot from '@/public/assets/head-shot.jpeg';
+import Experience from './components/Experience/Experience';
 
 export default function Home() {
   return (
@@ -96,15 +97,11 @@ export default function Home() {
         </div>
         <div className='mt-10 flex justify-center'>
           <Button as='link' href='/projects' variation='primary' size='lg'>
-            Show more
+            Load more
           </Button>
         </div>
       </section>
-      <section id='experience'>
-        <div className='section-title'>
-          <span>03.</span> Experience
-        </div>
-      </section>
+      <Experience />
       <section id='contact'>
         <div className='heading-3'>Get In Touch</div>
         <p>
