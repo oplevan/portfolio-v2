@@ -13,21 +13,21 @@ import Link from 'next/link';
 import './navigation.scss';
 
 const navItems = [
-  { name: 'About', href: '#about' },
-  { name: 'Work', href: '#work' },
-  { name: 'Experience', href: '#experience' },
-  {
-    name: 'Products',
-    href: '',
-    subItems: [
-      { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-      { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-      { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-      { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-      { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-    ],
-  },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About', href: '/#about' },
+  { name: 'Work', href: '/#work' },
+  { name: 'Experience', href: '/#experience' },
+  // {
+  //   name: 'Products',
+  //   href: '',
+  //   subItems: [
+  //     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+  //     { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+  //     { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+  //     { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+  //     { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  //   ],
+  // },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 const callsToAction = [
@@ -67,7 +67,7 @@ export default function Navigation() {
         {/* hamburger */}
         <button type='button' className={addClassNames('hamburger lg:hidden relative z-20', mobileMenuOpen ? 'open' : '')} onClick={toggleMenu} />
         <Popover.Group className='hidden lg:flex lg:gap-x-6'>
-          {navItems?.map((item) =>
+          {navItems?.map((item, index) =>
             item?.subItems ? (
               <Popover key={item.name} className={'relative'}>
                 {({ open }) => (
@@ -129,22 +129,16 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className='p-4 text-sm font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-dark-primary'
+                className='p-4 text-md font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-dark-primary'
               >
+                <span className='mr-1 text-sm font-mono text-primary dark:text-dark-primary'>0{index + 1}.</span>
                 {item.name}
               </Link>
             )
           )}
         </Popover.Group>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-5'>
-          <Button
-            as='link'
-            variation='neon'
-            size='md'
-            href='https://drive.google.com/file/d/1eTjj7ljjFtpmJBPain_UXaQWQQKUfMO5/view?pli=1'
-            icon={<BiLinkExternal />}
-            externalLink
-          >
+          <Button as='link' variation='neon' size='md' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>
           <SelectThemeColor />

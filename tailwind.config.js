@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors');
+// const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -40,8 +41,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: "'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif",
-        mono: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace",
+        sans: ['Calibre', 'Inter', 'San Francisco', 'SF Pro Text', '-apple-system', 'system-ui', 'sans-serif'],
+        mono: ['SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'monospace'],
       },
       transitionTimingFunction: {
         'ease-in-out': 'cubic-bezier(0.645, 0.045, 0.355, 1)',

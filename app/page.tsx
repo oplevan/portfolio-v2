@@ -7,12 +7,12 @@ import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
 // import { Sky, Buildings } from './components/CityScape';
 import ProjectCard from './components/ProjectCard/ProjectCard';
 import projects from '@/public/data/projects';
-import HeadShot from '@/public/assets/head-shot.jpeg';
+import HeadShot from '@/public/assets/images/head-shot.jpeg';
 import Experience from './components/Experience/Experience';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <SideElement side='left'>
         <Button as='link' href='https://github.com/oplevan' variation='icon-button' size='lg' icon={<FiGithub />} externalLink />
         <Button as='link' href='https://www.linkedin.com/in/oleg-plevan-626076134' variation='icon-button' size='lg' icon={<FiLinkedin />} externalLink />
@@ -26,7 +26,6 @@ export default function Home() {
           oleg.plevan@gmail.com
         </a>
       </SideElement>
-
       <section id='intro'>
         <div className='text-primary dark:text-dark-primary mb-6'>Hi, my name is</div>
         <div className='heading-1'>Oleg Plevan.</div>
@@ -39,7 +38,6 @@ export default function Home() {
         </p>
         <AnimatedScrollDownArrow />
       </section>
-
       <section id='about'>
         <div className='section-title'>
           <span>01.</span> About me
@@ -84,7 +82,7 @@ export default function Home() {
           <span>02.</span>My work
         </div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
-          {projects.map((project) => (
+          {projects.slice(0, 6).map((project) => (
             <ProjectCard
               key={project.id}
               title={project.title}
@@ -115,6 +113,6 @@ export default function Home() {
         </p>
         <ContactForm />
       </section>
-    </main>
+    </>
   );
 }

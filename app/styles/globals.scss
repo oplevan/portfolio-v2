@@ -19,9 +19,6 @@
   outline: 0;
   scroll-behavior: smooth !important;
 }
-*:focus {
-  outline: 0 !important;
-}
 body {
   -webkit-font-smoothing: antialiased;
   @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-slate-800 dark:text-slate-400 bg-light-secondary-1 dark:bg-dark-secondary-1;
