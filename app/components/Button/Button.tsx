@@ -16,7 +16,7 @@ interface CommonProps {
 
 interface AsButtonProps extends CommonProps {
   as: 'button';
-  clickHandler?: Function;
+  clickHandler: any;
 }
 
 interface AsLinkProps extends CommonProps {
@@ -78,7 +78,7 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
   if (props.as === 'button') {
     const { clickHandler } = props;
     return (
-      <button {...(clickHandler && { onClick: () => clickHandler })} className={classNames} data-te-ripple-init data-te-ripple-color='#64ffda'>
+      <button onClick={clickHandler} className={classNames}>
         {variation === 'icon-button' ? <>{props.icon}</> : buttonInnerMarkup()}
       </button>
     );

@@ -1,4 +1,4 @@
-const projects = [
+const allProjects = [
   {
     id: 'tyrvaya',
     title: 'Tyrvaya® - promo website',
@@ -107,4 +107,4 @@ const projects = [
     },
   },
 ];
-export default projects;
+export default allProjects;

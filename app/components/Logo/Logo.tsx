@@ -8,7 +8,7 @@ type LogoProps = Props;
 
 export default function Logo({ isMinimised }: LogoProps) {
   return (
-    <div className='flex lg:flex-1 z-20' style={{ filter: 'drop-shadow(2px 2px 3px rgba(2, 12, 27, 0.5))' }}>
+    <div className='flex lg:flex-1 z-20' style={{ filter: 'drop-shadow(2px 2px 3px rgba(2, 12, 27, 0.5))' }} data-aos='fade-down' data-aos-delay='100'>
       <a href='/' className='relative -m-1.5 p-1.5 text-primary dark:text-dark-primary'>
         <BsShield className={`ease-in-out duration-300 ${isMinimised ? 'h-[35px] w-[35px]' : 'h-[45px] w-[45px]'}`} />
         <span

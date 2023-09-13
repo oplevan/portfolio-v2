@@ -3,17 +3,18 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { MdLocationPin } from 'react-icons/md';
 import { TbExternalLink } from 'react-icons/tb';
-import { SiFreelancer } from 'react-icons/si';
+import { IoIosCalendar } from 'react-icons/io';
+import { HiBriefcase } from 'react-icons/hi';
 import jobs from '@/public/data/jobs';
 
 export default function Example() {
   return (
     <section id='experience' className='lg:max-w-4xl'>
-      <div className='section-title'>
+      <div className='section-title' data-aos='fade-left'>
         <span>03.</span> Experience
       </div>
-      <div className='w-full flex flex-col gap-3'>
-        {jobs.map(({ id, title, company, location, type, startDate, endDate, description }) => (
+      <div className='w-full flex flex-col gap-3' data-aos='fade-up'>
+        {jobs.map(({ id, title, company, location, type, startDate, endDate, description }, index) => (
           <Disclosure key={id}>
             {({ open }) => (
               <div className={`transition-all ease-linear !duration-300 ${open ? 'max-h-96' : 'max-h-20'}`}>
@@ -25,9 +26,10 @@ export default function Example() {
                   <div>
                     <span>{title}</span> @ <span>{company.name}</span>
                   </div>
-                  <span className='font-medium text-xs italic text-slate-400 mt-0.5'>
+                  <div className='font-medium text-xs italic text-slate-400 mt-0.5 flex items-end'>
+                    <IoIosCalendar className='h-5 w-5 mr-2 text-slate-500/80' />
                     {startDate} - {endDate}
-                  </span>
+                  </div>
                   <ChevronUpIcon
                     className={`${
                       open ? 'rotate-180 transform' : ''
@@ -44,31 +46,26 @@ export default function Example() {
                   className='overflow-hidden'
                 >
                   <Disclosure.Panel className='m-2.5 py-4 px-4 text-sm dark:text-slate-200 bg-white shadow-md dark:bg-dark-secondary-3'>
-                    <div className='flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-8 mb-5 dark:text-slate-400'>
-                      <div className='flex items-center'>
-                        <MdLocationPin className='h-5 w-5 lg:-ml-2 mr-2 text-primary dark:text-dark-primary' />
-                        <span>
-                          {type} ({location})
-                        </span>
-                      </div>
-                      <div className='flex items-center'>
-                        {company.website ? (
-                          <>
-                            <TbExternalLink className='h-5 w-5 mr-2 text-primary dark:text-dark-primary' />
-                            <a
-                              href={company.website}
-                              target='_blank'
-                              rel='noreferrer noopener'
-                              className='transition ease-linear hover:text-primary hover:dark:text-dark-primary hover:underline'
-                            >
-                              {company.website.slice(8)}
-                            </a>
-                          </>
-                        ) : (
-                          <>
-                            <SiFreelancer className='h-5 w-5 mr-2 text-primary dark:text-dark-primary' />
-                            <span>{company.name}</span>
-                          </>
+                    <div className='flex flex-col lg:flex-row lg:items-center mb-5 dark:text-slate-400'>
+                      <div className='flex items-center gap-4'>
+                        <div className='flex leading-tight items-end'>
+                          <HiBriefcase className='h-5 w-5 mr-1 text-slate-500/80' />
+                          {type}
+                        </div>
+                        <div className='flex leading-tight items-end'>
+                          <MdLocationPin className='h-5 w-5 mr-1 text-slate-500/80' />
+                          {location}
+                        </div>
+                        {company.website && (
+                          <a
+                            href={company.website}
+                            target='_blank'
+                            rel='noreferrer noopener'
+                            className='flex leading-tight items-end transition ease-linear hover:text-primary hover:dark:text-dark-primary hover:underline'
+                          >
+                            <TbExternalLink className='h-5 w-5 mr-1 text-slate-500' />
+                            {company.website.slice(8)}
+                          </a>
                         )}
                       </div>
                     </div>

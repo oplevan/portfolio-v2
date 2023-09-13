@@ -49,7 +49,7 @@ p a {
 */
 main {
   & > section {
-    @apply container mx-auto xl:max-w-6xl py-5 px-0 lg:py-24 md:px-16 z-30 relative;
+    @apply container mx-auto xl:max-w-6xl py-5 px-0 lg:py-16 md:px-16 z-30 relative;
 
     @media (min-width: 390px) and (max-width: 639px) {
       max-width: 350px;

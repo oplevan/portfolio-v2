@@ -10,10 +10,8 @@ $anim-timing: 3s;
   height: $circle-w;
   position: absolute;
   bottom: 5%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  filter: url('#goo') drop-shadow(0 0 3px rgba(2,12,27,0.5));
-
+  left: calc(50% - $circle-w / 2);
+  filter: url('#goo') drop-shadow(0 0 3px rgba(2, 12, 27, 0.5));
 
   .circle {
     border-radius: 50%;
@@ -25,7 +23,7 @@ $anim-timing: 3s;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     transform-origin: 0%;
-		@apply bg-light-secondary-6 dark:bg-dark-secondary-3;
+    @apply bg-light-secondary-6 dark:bg-dark-secondary-3;
 
     &.circle-top {
       height: $circle-w / 3;
@@ -48,7 +46,7 @@ $anim-timing: 3s;
     perspective: 9000px;
     transform: translateZ(0);
     transform-origin: bottom;
-		@apply fill-light-secondary-1 dark:fill-slate-400;
+    @apply fill-light-secondary-1 dark:fill-slate-400;
   }
 }
 

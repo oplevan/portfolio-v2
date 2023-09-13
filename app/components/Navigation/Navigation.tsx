@@ -14,7 +14,7 @@ import './navigation.scss';
 
 const navItems = [
   { name: 'About', href: '/#about' },
-  { name: 'Work', href: '/#work' },
+  { name: 'Projects', href: '/#projects' },
   { name: 'Experience', href: '/#experience' },
   // {
   //   name: 'Products',
@@ -129,7 +129,9 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className='p-4 text-md font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-dark-primary'
+                className='p-4 text-md leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-dark-primary'
+                data-aos='fade-down'
+                data-aos-delay={(index + 1) * 100}
               >
                 <span className='mr-1 text-sm font-mono text-primary dark:text-dark-primary'>0{index + 1}.</span>
                 {item.name}
@@ -137,7 +139,7 @@ export default function Navigation() {
             )
           )}
         </Popover.Group>
-        <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-5'>
+        <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-5' data-aos='fade-down' data-aos-delay='600'>
           <Button as='link' variation='neon' size='md' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>

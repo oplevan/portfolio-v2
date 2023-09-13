@@ -1,4 +1,4 @@
-import './ProjectCard.scss';
+import './Card.scss';
 import { LiaProjectDiagramSolid } from 'react-icons/lia';
 import { TbExternalLink } from 'react-icons/tb';
 import { FiGithub } from 'react-icons/fi';
@@ -10,11 +10,12 @@ type Props = {
   thumbnail: string;
   shortDescription?: string | React.ReactNode;
   techList: string[];
+  animationDelay?: number;
 };
 
-export default function ProjectCard({ title, links, thumbnail, shortDescription, techList }: Props) {
+export default function Card({ title, links, thumbnail, shortDescription, techList, animationDelay = 0 }: Props) {
   return (
-    <a href={links?.web} className='project-card' target='_blank' rel='noopener noreferrer'>
+    <a href={links?.web} className='project-card' target='_blank' rel='noopener noreferrer' data-aos='fade-up' data-aos-delay={animationDelay}>
       <div>
         <div className='card-top'>
           <div className='project-icon'>

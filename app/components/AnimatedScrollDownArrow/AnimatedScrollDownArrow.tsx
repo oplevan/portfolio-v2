@@ -5,7 +5,7 @@ type Props = {};
 
 export default function AnimatedScrollDownArrow({}: Props) {
   return (
-    <div className='ico animated'>
+    <div className='ico animated' data-aos='fade-up' data-aos-delay='1500'>
       <div className='circle circle-top'></div>
       <div className='circle circle-main'></div>
       <div className='circle circle-bottom'></div>

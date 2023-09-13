@@ -1,48 +1,36 @@
 import Image from 'next/image';
 import ContactForm from './components/ContactForm/ContactForm';
 import AnimatedScrollDownArrow from './components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
-import SideElement from './components/SideElement/SideElement';
 import Button from './components/Button/Button';
-import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
-// import { Sky, Buildings } from './components/CityScape';
-import ProjectCard from './components/ProjectCard/ProjectCard';
-import projects from '@/public/data/projects';
+import Card from './components/Project/Card/Card';
+import allProjects from '@/public/data/projects';
 import HeadShot from '@/public/assets/images/head-shot.jpeg';
 import Experience from './components/Experience/Experience';
 
 export default function Home() {
   return (
     <>
-      <SideElement side='left'>
-        <Button as='link' href='https://github.com/oplevan' variation='icon-button' size='lg' icon={<FiGithub />} externalLink />
-        <Button as='link' href='https://www.linkedin.com/in/oleg-plevan-626076134' variation='icon-button' size='lg' icon={<FiLinkedin />} externalLink />
-        <Button as='link' href='https://www.instagram.com/o_plevan/' variation='icon-button' size='lg' icon={<FiInstagram />} externalLink />
-      </SideElement>
-      <SideElement side='right'>
-        <a
-          href='mailto:oleg.plevan@gmail.com'
-          className='easy-in-out duration-300 [writing-mode:vertical-rl] font-mono leading-none hover:-translate-y-1 p-3 -m-3 block hover:text-primary hover:dark:text-dark-primary'
-        >
-          oleg.plevan@gmail.com
-        </a>
-      </SideElement>
       <section id='intro'>
-        <div className='text-primary dark:text-dark-primary mb-6'>Hi, my name is</div>
-        <div className='heading-1'>Oleg Plevan.</div>
-        <div className='heading-2 leading-thin mb-6'>
+        <div className='text-primary dark:text-dark-primary mb-4' data-aos='fade-up' data-aos-delay='900'>
+          Hi, my name is
+        </div>
+        <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>
+          Oleg Plevan.
+        </div>
+        <div className='heading-2 leading-thin mb-4' data-aos='fade-up' data-aos-delay='1100'>
           Transforming ideas into seamless <br className='hidden lg:block' /> Web and App Solutions.
         </div>
-        <p className='lg:max-w-xl'>
+        <p className='lg:max-w-xl' data-aos='fade-up' data-aos-delay='1200'>
           I&apos;m a software engineer with a passion for creating seamless digital experiences that leave a lasting impact. From elegant web applications
           to&nbsp;intuitive mobile apps, I thrive on transforming ideas into reality with cutting&#8209;edge solutions.
         </p>
         <AnimatedScrollDownArrow />
       </section>
-      <section id='about'>
-        <div className='section-title'>
+      <section id='about' data-aos='fade-left'>
+        <div className='section-title' data-aos='fade-left'>
           <span>01.</span> About me
         </div>
-        <div className='flex gap-10 items-start flex-col-reverse lg:flex-row lg:items-start'>
+        <div className='flex gap-10 items-start flex-col-reverse lg:flex-row lg:items-start' data-aos='fade-up' data-aos-delay='400'>
           <div className='flex flex-col gap-3 flex-1'>
             <p>
               Hey there, I&apos;m Oleg, a dedicated software developer with a strong skill set honed through years of hands-on experience. My journey as a
@@ -77,30 +65,31 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id='work'>
-        <div className='section-title'>
-          <span>02.</span>My work
+      <section id='projects'>
+        <div className='section-title' data-aos='fade-left'>
+          <span>02.</span>Projects
         </div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
-          {projects.slice(0, 6).map((project) => (
-            <ProjectCard
+          {allProjects.slice(0, 3).map((project, index) => (
+            <Card
               key={project.id}
               title={project.title}
               links={project.links}
               shortDescription={project.description.short}
               thumbnail={project.thumbnail}
               techList={project.techList}
+              animationDelay={index % 3 === 0 ? 100 : index % 3 === 1 ? 200 : 300}
             />
           ))}
         </div>
         <div className='mt-10 flex justify-center'>
-          <Button as='link' href='/projects' variation='primary' size='lg'>
-            Load more
+          <Button as='link' href='/projects' variation='primary' size='md'>
+            View all projects
           </Button>
         </div>
       </section>
       <Experience />
-      <section id='contact'>
+      <section id='contact' data-aos='fade-up'>
         <div className='heading-3'>Get In Touch</div>
         <p>
           Want to get in touch or talk about a project? <br /> Feel free to contact me via email at{' '}
