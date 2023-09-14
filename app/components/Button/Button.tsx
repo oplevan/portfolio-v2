@@ -59,7 +59,7 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
           <i></i>
           <i></i>
           <i></i>
-          <span>Back</span>
+          <span>Back to projects</span>
         </>
       );
     } else if (variation === 'neon') {

@@ -73,6 +73,7 @@ export default function Home() {
           {allProjects.slice(0, 3).map((project, index) => (
             <Card
               key={project.id}
+              slug={project.slug}
               title={project.title}
               links={project.links}
               shortDescription={project.description.short}

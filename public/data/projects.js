@@ -1,6 +1,7 @@
 const allProjects = [
   {
     id: 'tyrvaya',
+    slug: 'tyrvaya',
     title: 'Tyrvaya® - promo website',
     description: {
       short:
@@ -19,10 +20,6 @@ const allProjects = [
     ],
     techList: ['React', 'AWS', 'API', 'CI/CD'],
     category: ['all', 'frontend', 'react'],
-    animation: {
-      type: 'fade-up',
-      delay: 0,
-    },
     links: {
       web: 'https://oplevan.com',
       gitHub: 'https://github.com/oplevan/my-portfolio',
@@ -30,6 +27,7 @@ const allProjects = [
   },
   {
     id: 'netflix',
+    slug: 'netflix-clone',
     title: 'Netflix Clone',
     description: {
       short: 'Built a Netflix replica using React, Firebase and hosted on Netlify.',
@@ -48,17 +46,14 @@ const allProjects = [
     ],
     techList: ['React', 'Firebase'],
     category: ['all', 'frontend', 'react'],
-    animation: {
-      type: 'fade-up',
-      delay: 0,
-    },
     links: {
       web: 'https://netflix-oleg.netlify.app/',
       gitHub: 'https://github.com/oplevan/netflix-clone',
     },
   },
   {
-    id: 'my-portfolio',
+    id: 'portfolio-v1',
+    slug: 'portfolio-v1',
     title: 'Personal Website V1',
     description: {
       short: 'First iteration of my personal Portfolio website built with React JS, Material UI and hosted on Netlify.',
@@ -76,10 +71,6 @@ const allProjects = [
     ],
     techList: ['React', 'Firebase', 'Material UI'],
     category: ['all', 'frontend', 'react'],
-    animation: {
-      type: 'fade-up',
-      delay: 0,
-    },
     links: {
       web: 'https://oplevan.com',
       gitHub: 'https://github.com/oplevan/my-portfolio',
@@ -87,6 +78,7 @@ const allProjects = [
   },
   {
     id: 'bruckenbauverein-frankfurt',
+    slug: 'bruckenbauverein-frankfurt',
     title: 'Bruckenbauverein Frankfurt',
     description: {
       short: 'A WordPress website built for the historical town hall, Der Lange Franz, in Frankfurt, Germany, as part of the frontend development team.',
@@ -97,10 +89,6 @@ const allProjects = [
     carouselImages: [],
     techList: ['JavaScript', 'jQuery', 'WordPress'],
     category: ['all', 'frontend', 'wordpress'],
-    animation: {
-      type: 'fade-up',
-      delay: 0,
-    },
     links: {
       web: 'https://brueckenbauverein-frankfurt.de/',
       gitHub: '',

@@ -220,10 +220,7 @@
   }
 
   &.back-to-list {
-    width: 45px;
-    height: 45px;
-    display: block;
-    @apply ease-in-out duration-300;
+    @apply ease-in-out duration-300 block w-11 h-11 overflow-visible;
 
     &.sm,
     &.md,
@@ -232,13 +229,9 @@
     }
 
     i {
-      display: block;
-      width: 8px;
-      height: 8px;
-      position: absolute;
       top: calc(50% - 4px);
       left: calc(50% - 4px);
-      @apply ease-in-out duration-300 bg-slate-700;
+      @apply ease-in-out duration-300 bg-slate-600 w-2 h-2 absolute block shadow-lg;
 
       &:nth-child(1) {
         -moz-transform: translateY(-11px) translateX(-11px);
@@ -297,25 +290,19 @@
       }
     }
     span {
-      display: inline-block;
-      color: #8a8a8a;
-      position: absolute;
-      white-space: nowrap;
-      top: calc(50% - 15.5px);
-      height: 30px;
-      line-height: 30px;
-      padding: 0 10px;
-      opacity: 0;
-      text-transform: lowercase;
-      font-size: 1.15em;
-      line-height: 1.7em;
-      -moz-transition: opacity 0.1s ease 0.125s, -moz-transform 0.3s cubic-bezier(0, 0, 0, 1) 0.125s;
-      -o-transition: opacity 0.1s ease 0.125s, -o-transform 0.3s cubic-bezier(0, 0, 0, 1) 0.125s;
-      -webkit-transition: opacity 0.1s ease, -webkit-transform 0.3s cubic-bezier(0, 0, 0, 1);
-      transition: opacity 0.1s ease 0.125s, transform 0.3s cubic-bezier(0, 0, 0, 1) 0.125s;
+      @apply h-[20px] absolute bg-white dark:bg-dark-secondary-3 top-1/2 right-0 translate-x-[125%] -translate-y-1/2 py-1 pl-2 pr-3 rounded-sm whitespace-nowrap block text-[12px] normal-case leading-none ease-in-out transition-all duration-500 opacity-0 tracking-normal shadow-md;
+
+      &:before {
+        content: '';
+        @apply border-[10px] border-r-white dark:border-r-dark-secondary-3 border-t-transparent border-b-transparent border-l-transparent h-0 w-0 top-[0] left-[1px] absolute -translate-x-full;
+      }
+    }
+    &:hover span {
+      @apply opacity-100 translate-x-[115%];
     }
     &:hover i {
-      background-color: theme('colors.light.primary');
+      @apply bg-primary dark:bg-dark-primary;
+
       &:nth-child(1) {
         -moz-transform: translateY(-14px) translateX(-14px);
         -ms-transform: translateY(-14px) translateX(-14px);

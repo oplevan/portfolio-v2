@@ -3,8 +3,10 @@ import { LiaProjectDiagramSolid } from 'react-icons/lia';
 import { TbExternalLink } from 'react-icons/tb';
 import { FiGithub } from 'react-icons/fi';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {
+  slug: string;
   title: string | React.ReactNode;
   links?: { web?: string; gitHub?: string };
   thumbnail: string;
@@ -13,9 +15,9 @@ type Props = {
   animationDelay?: number;
 };
 
-export default function Card({ title, links, thumbnail, shortDescription, techList, animationDelay = 0 }: Props) {
+export default function Card({ title, slug, links, thumbnail, shortDescription, techList, animationDelay = 0 }: Props) {
   return (
-    <a href={links?.web} className='project-card' target='_blank' rel='noopener noreferrer' data-aos='fade-up' data-aos-delay={animationDelay}>
+    <Link href={`/projects/${slug}`} className='project-card' data-aos='fade-up' data-aos-delay={animationDelay}>
       <div>
         <div className='card-top'>
           <div className='project-icon'>
@@ -47,6 +49,6 @@ export default function Card({ title, links, thumbnail, shortDescription, techLi
           </div>
         ))}
       </div>
-    </a>
+    </Link>
   );
 }
