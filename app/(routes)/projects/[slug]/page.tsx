@@ -22,7 +22,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <Button as='link' href='/projects' variation='back-to-list' className='!fixed !hidden md:!block left-6 top-32 lg:top-36 lg:left-16 shadow-md z-20' />
+      <Button as='link' href='/projects' variant='back-to-list' className='!fixed !hidden md:!block left-6 top-32 lg:top-36 lg:left-16 shadow-md z-20' />
       <h1 className='heading-3'>{project.title}</h1>
     </>
   );

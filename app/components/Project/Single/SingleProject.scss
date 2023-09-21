@@ -37,7 +37,7 @@
 
   .title {
     font-size: clamp(20px, 5vw, 24px);
-    @apply md:mb-3 font-bold dark:text-white;
+    @apply md:mb-3 font-bold dark:text-white hover:text-primary dark:hover:text-primary;
   }
 
   .project-content {
@@ -53,16 +53,16 @@
       div {
         @apply flex items-center;
         span {
-          @apply text-primary dark:text-dark-primary mr-1;
+          @apply text-primary dark:text-primary mr-1;
         }
       }
     }
 
     .project-links {
-      @apply flex justify-end -mr-2 text-[20px] mt-3;
+      @apply flex items-center justify-between -mr-2 text-[20px] mt-3;
 
       a {
-        @apply p-2 hover:text-primary dark:hover:text-dark-primary transition ease-in-out duration-200;
+        @apply p-2 hover:text-primary dark:hover:text-primary transition ease-in-out duration-200;
       }
     }
   }
@@ -83,7 +83,7 @@
       }
 
       .project-links {
-        @apply mr-0 -ml-2 md:justify-start;
+        @apply mr-0 -ml-2 flex-row-reverse;
       }
     }
   }

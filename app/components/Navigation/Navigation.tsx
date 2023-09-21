@@ -62,7 +62,7 @@ export default function Navigation() {
 
   return (
     <header className={addClassNames(!visible ? 'hidden' : '', isMinimised ? 'minimised' : '')}>
-      <nav className='flex w-full h-full items-center justify-between bg-light-header-bg dark:bg-dark-secondary-5 px-6 lg:!px-16' aria-label='Global'>
+      <nav className='flex w-full h-full items-center justify-between px-6 lg:!px-16' aria-label='Global'>
         <Logo isMinimised={isMinimised} />
         {/* hamburger */}
         <button type='button' className={addClassNames('hamburger lg:hidden relative z-20', mobileMenuOpen ? 'open' : '')} onClick={toggleMenu} />
@@ -74,8 +74,8 @@ export default function Navigation() {
                   <>
                     <Popover.Button
                       className={addClassNames(
-                        'p-4 flex items-center gap-x-1 text-sm font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-dark-primary',
-                        open ? '!text-light-primary dark:!text-dark-primary' : ''
+                        'p-4 flex items-center gap-x-1 text-sm font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-primary',
+                        open ? '!text-light-primary dark:!text-primary' : ''
                       )}
                     >
                       {item.name}
@@ -129,18 +129,17 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className='p-4 text-md leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-dark-primary'
+                className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:!text-primary uppercase'
                 data-aos='fade-down'
                 data-aos-delay={(index + 1) * 100}
               >
-                <span className='mr-1 text-sm font-mono text-primary dark:text-dark-primary'>0{index + 1}.</span>
                 {item.name}
               </Link>
             )
           )}
         </Popover.Group>
-        <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-5' data-aos='fade-down' data-aos-delay='600'>
-          <Button as='link' variation='neon' size='md' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
+        <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-10' data-aos='fade-down' data-aos-delay='600'>
+          <Button as='link' variant='primary' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>
           <SelectThemeColor />
@@ -154,10 +153,10 @@ export default function Navigation() {
           leave='transition ease-out duration-800'
           leaveFrom='opacity-100 translate-x-0'
           leaveTo='opacity-0 translate-x-1/2'
-          className='lg:hidden fixed top-0 right-0 w-9/12 h-screen z-10'
+          className='lg:hidden fixed top-0 right-0 w-9/12 h-screen z-10 dark:shadow-mobile-nav'
           show={mobileMenuOpen}
         >
-          <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-light-secondary-1 dark:bg-dark-secondary-2 flex flex-col justify-center items-center gap-3 font-semibold'>
+          <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-body-light dark:bg-body-dark flex flex-col justify-center items-center gap-3 font-semibold'>
             <div className='absolute top-5 left-5'>
               <SelectThemeColor />
             </div>
@@ -206,7 +205,7 @@ export default function Navigation() {
             )}
             <Button
               as='link'
-              variation='primary'
+              variant='primary'
               size='lg'
               href='https://drive.google.com/file/d/1eTjj7ljjFtpmJBPain_UXaQWQQKUfMO5/view?pli=1'
               icon={<BiLinkExternal />}

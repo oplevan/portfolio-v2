@@ -18,7 +18,7 @@ type Props = {
 export default function Card({ title, slug, links, thumbnail, shortDescription, techList, animationDelay = 0 }: Props) {
   return (
     <Link href={`/projects/${slug}`} className='project-card' data-aos='fade-up' data-aos-delay={animationDelay}>
-      <div>
+      <div className='z-10'>
         <div className='card-top'>
           <div className='project-icon'>
             <LiaProjectDiagramSolid />

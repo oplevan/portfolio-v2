@@ -1,17 +1,17 @@
 import Image from 'next/image';
-import ContactForm from './components/ContactForm/ContactForm';
-import AnimatedScrollDownArrow from './components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
-import Button from './components/Button/Button';
-import Card from './components/Project/Card/Card';
+import ContactForm from '../components/ContactForm/ContactForm';
+import AnimatedScrollDownArrow from '../components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
+import Button from '../components/Button/Button';
+import Card from '../components/Project/Card/Card';
 import allProjects from '@/public/data/projects';
 import HeadShot from '@/public/assets/images/head-shot.jpeg';
-import Experience from './components/Experience/Experience';
+import Experience from '../components/Experience/Experience';
 
 export default function Home() {
   return (
     <>
       <section id='intro'>
-        <div className='text-primary dark:text-dark-primary mb-4' data-aos='fade-up' data-aos-delay='900'>
+        <div className='text-primary mb-4' data-aos='fade-up' data-aos-delay='900'>
           Hi, my name is
         </div>
         <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>
@@ -26,10 +26,8 @@ export default function Home() {
         </p>
         <AnimatedScrollDownArrow />
       </section>
-      <section id='about' data-aos='fade-left'>
-        <div className='section-title' data-aos='fade-left'>
-          <span>01.</span> About me
-        </div>
+      <section id='about' data-aos='fade-up'>
+        <div className='section-title'>About me</div>
         <div className='flex gap-10 items-start flex-col-reverse lg:flex-row lg:items-start' data-aos='fade-up' data-aos-delay='400'>
           <div className='flex flex-col gap-3 flex-1'>
             <p>
@@ -66,10 +64,10 @@ export default function Home() {
         </div>
       </section>
       <section id='projects'>
-        <div className='section-title' data-aos='fade-left'>
-          <span>02.</span>Projects
+        <div className='section-title' data-aos='fade-up'>
+          Projects
         </div>
-        <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {allProjects.slice(0, 3).map((project, index) => (
             <Card
               key={project.id}
@@ -84,7 +82,7 @@ export default function Home() {
           ))}
         </div>
         <div className='mt-10 flex justify-center'>
-          <Button as='link' href='/projects' variation='primary' size='md'>
+          <Button as='link' href='/projects' variant='primary' size='md'>
             View all projects
           </Button>
         </div>

@@ -10,17 +10,21 @@ import jobs from '@/public/data/jobs';
 export default function Example() {
   return (
     <section id='experience' className='lg:max-w-4xl'>
-      <div className='section-title' data-aos='fade-left'>
-        <span>03.</span> Experience
+      <div className='section-title' data-aos='fade-up'>
+        Experience
       </div>
-      <div className='w-full flex flex-col gap-3' data-aos='fade-up'>
+      <div className='w-full flex flex-col gap-5' data-aos='fade-up'>
         {jobs.map(({ id, title, company, location, type, startDate, endDate, description }, index) => (
           <Disclosure key={id}>
             {({ open }) => (
-              <div className={`transition-all ease-linear !duration-300 ${open ? 'max-h-96' : 'max-h-20'}`}>
+              <div
+                className={`transition-all ease-linear !duration-300 shadow-shadow-white-3 dark:shadow-shadow-1 bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md ${
+                  open ? 'max-h-96' : 'max-h-20'
+                }`}
+              >
                 <Disclosure.Button
-                  className={`transition-all ease-linear relative z-10 flex flex-col lg:flex-row w-full justify-between pl-4 pr-12 py-2 text-left text-sm font-bold shadow-md ${
-                    open ? 'dark:!bg-[#152849] dark:!text-dark-primary !bg-light-secondary-3 !text-primary' : 'bg-white dark:bg-dark-secondary-2'
+                  className={`transition-all ease-linear relative z-10 flex flex-col lg:flex-row w-full justify-between pl-4 pr-12 py-2 text-left text-sm font-bold ${
+                    open ? 'text-primary border-b-[1px] border-lt-separator dark:border-dt-separator' : ''
                   }`}
                 >
                   <div>
@@ -33,7 +37,7 @@ export default function Example() {
                   <ChevronUpIcon
                     className={`${
                       open ? 'rotate-180 transform' : ''
-                    } transition-all ease-linear h-6 w-6 text-primary dark:text-dark-primary absolute top-1/2 right-3 -translate-y-1/2`}
+                    } transition-all ease-linear h-6 w-6 text-primary dark:text-primary absolute top-1/2 right-3 -translate-y-1/2`}
                   />
                 </Disclosure.Button>
                 <Transition
@@ -45,7 +49,7 @@ export default function Example() {
                   leaveTo='max-h-0'
                   className='overflow-hidden'
                 >
-                  <Disclosure.Panel className='m-2.5 py-4 px-4 text-sm dark:text-slate-200 bg-white shadow-md dark:bg-dark-secondary-3'>
+                  <Disclosure.Panel className='py-4 px-4 text-sm dark:text-slate-200 '>
                     <div className='flex flex-col lg:flex-row lg:items-center mb-5 dark:text-slate-400'>
                       <div className='flex items-center gap-4'>
                         <div className='flex leading-tight items-end'>
@@ -61,7 +65,7 @@ export default function Example() {
                             href={company.website}
                             target='_blank'
                             rel='noreferrer noopener'
-                            className='flex leading-tight items-end transition ease-linear hover:text-primary hover:dark:text-dark-primary hover:underline'
+                            className='flex leading-tight items-end transition ease-linear hover:text-primary hover:dark:text-primary hover:underline'
                           >
                             <TbExternalLink className='h-5 w-5 mr-1 text-slate-500' />
                             {company.website.slice(8)}
@@ -73,7 +77,7 @@ export default function Example() {
                       {description.map((item, i) => (
                         <li
                           key={i}
-                          className='pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-primary dark:before:text-dark-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px]'
+                          className='pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-primary dark:before:text-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px]'
                         >
                           {item}
                         </li>

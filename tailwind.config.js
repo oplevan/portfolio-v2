@@ -13,8 +13,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        grey: '#999',
-        'dark-grey': '#313131',
+        primary: '#ff014f',
+
+        // dark theme colors
+        'body-dark': '#212428',
+        'text-dark': '#c4cfde',
+        'header-dark': '#212428de',
+        'd-primary-gradient-from': '#181a1d',
+        'd-primary-gradient-to': '#292f35',
+        'd-secondary-gradient-from': '#2b3035',
+        'd-secondary-gradient-to': '#0c0d0f',
+        'dt-separator': '#121415',
+
+        // light theme colors
+        'body-light': '#ECF0F3',
+        'text-light': '#3c3e41',
+        'l-primary-gradient-from': '#6a67ce',
+        'l-primary-gradient-to': '#fc636b',
+        'l-secondary-gradient-from': '#e2e8ec',
+        'l-secondary-gradient-to': '#ffffff',
+        'lt-separator': '#dce1e4',
+        'gradient-box-w': 'linear-gradient(145deg, #e2e8ec, #ffffff)',
+        'gradient-red-hover': 'linear-gradient(145deg, theme("colors.primary-gradient-from"), theme("colors.primary-gradient-to"))',
+
         dark: {
           primary: '#E5FF45',
           'primary-shadow': 'rgba(230,255,69,0.3)',
@@ -53,11 +74,16 @@ module.exports = {
         mobile: '70px',
       },
       boxShadow: {
-        'primary-dark': '0 0 15px 3px theme("colors.dark.primary-shadow")',
-        'primary-light': '0 0 15px 3px theme("colors.light.primary-shadow")',
+        'shadow-1': '10px 10px 19px #111214, -10px -10px 19px #262a2e',
+        'shadow-2': 'inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225',
+        'mobile-nav': '-10px 0px 19px #111214',
+        'inner-shadow': '1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset',
+        'inner-shadow-white': '1px 4px 2px -3px #D1D9E6 inset, -1px -3px 3px -2px #ffffff inset',
+        'shadow-white-3': '5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff',
+        'button-primary': '0 0 15px 3px theme("colors.primary")',
+
         'neon-dark': '0 0 10px theme("colors.dark.primary"), 0 0 40px theme("colors.dark.primary"), 0 0 80px theme("colors.dark.primary")',
         'neon-light': '0 0 10px theme("colors.light.primary"), 0 0 40px theme("colors.light.primary"), 0 0 80px theme("colors.light.primary")',
-        header: '0 10px 30px -10px theme("colors.dark.secondary-4")',
       },
     },
   },

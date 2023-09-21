@@ -11,42 +11,14 @@ $anim-timing: 3s;
   position: absolute;
   bottom: 5%;
   left: calc(50% - $circle-w / 2);
-  filter: url('#goo') drop-shadow(0 0 3px rgba(2, 12, 27, 0.5));
+  @apply rounded-full bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to shadow-shadow-white-3 dark:shadow-shadow-1 flex items-center justify-center overflow-hidden;
 
-  .circle {
-    border-radius: 50%;
-    display: inline-block;
-    height: $circle-w;
-    width: $circle-w;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    transform-origin: 0%;
-    @apply bg-light-secondary-6 dark:bg-dark-secondary-3;
-
-    &.circle-top {
-      height: $circle-w / 3;
-      width: $circle-w / 2.4;
-      animation: blob-1-anim $anim-timing $bezier infinite;
-      z-index: 9;
-      top: 0;
-    }
-    &.circle-bottom {
-      height: $circle-w / 3;
-      width: $circle-w / 2.4;
-      animation: blob-2-anim $anim-timing $bezier infinite;
-      z-index: 9;
-      bottom: 0px;
-    }
-  }
-
-  .st-arrow {
+  svg {
     animation: scrolly $anim-timing $bezier forwards infinite;
     perspective: 9000px;
     transform: translateZ(0);
     transform-origin: bottom;
-    @apply fill-light-secondary-1 dark:fill-slate-400;
+    @apply w-5 h-5 fill-primary;
   }
 }
 
@@ -55,47 +27,9 @@ $anim-timing: 3s;
   position: relative;
 }
 
-@keyframes blob-1-anim {
-  0% {
-    transform: translateX(-50%) translateY(0);
-  }
-  14% {
-    transform: translateX(-50%) translateY(-3px);
-  }
-  24% {
-    transform: translateX(-50%) translateY(0);
-  }
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-@keyframes blob-2-anim {
-  0% {
-    //transform: scale(1) translate(-50%,-150%);
-    transform: scale(1) translate(-50%, 4px);
-  }
-  30% {
-    //transform: scale(1) translate(-50%,-50%);
-    transform: scale(1) translate(-50%, 4px);
-  }
-  70% {
-    //transform: scale(1) translate(-50%,-50%);
-    transform: scale(1) translate(-50%, 4px);
-  }
-  95% {
-    //transform: scale(1) translate(-50%,-50%);
-    transform: scale(1) translate(-50%, 11px);
-  }
-  100% {
-    //transform: scaleX(1.5) translate(-50%,140%);
-    transform: scale(1) translate(-50%, 4px);
-  }
-}
-
 @keyframes scrolly {
   0% {
-    transform: translate3d(0, -150%, 0) rotateX(90deg) scale(0.5) skewX(3deg);
+    transform: translate3d(0, -150%, 0) rotateX(90deg) scale(0.6) skewX(3deg);
   }
   30% {
     transform: translate3d(0, 0, 0) rotateX(0deg) scale(1) skewX(0deg);
@@ -104,9 +38,9 @@ $anim-timing: 3s;
     transform: translate3d(0, 0, 0) rotateX(0deg) scale(1) skewX(0deg);
   }
   95% {
-    transform: translate3d(0, 50%, 0) rotateX(-90deg) scale(0.5) skewX(-3deg);
+    transform: translate3d(0, 50%, 0) rotateX(-90deg) scale(0.6) skewX(-3deg);
   }
   100% {
-    transform: translate3d(0, 50%, 0) rotateX(-90deg) scale(0.5) skewX(-3deg);
+    transform: translate3d(0, 50%, 0) rotateX(-90deg) scale(0.6) skewX(-3deg);
   }
 }

@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Button from '../components/Button/Button';
-import SingleProject from '../components/Project/Single/Single';
+import Button from '../../components/Button/Button';
+import SingleProject from '../../components/Project/Single/Single';
 import allProjects from '@/public/data/projects';
 import { IoArrowBackSharp } from 'react-icons/io5';
 
@@ -34,6 +34,7 @@ export default function ProjectList() {
             <SingleProject
               key={project.id}
               title={project.title}
+              slug={project.slug}
               links={project.links}
               shortDescription={project.description.short}
               thumbnail={project.thumbnail}
@@ -47,7 +48,7 @@ export default function ProjectList() {
       </div>
       <div className='mt-10 flex justify-center'>
         {!allProjectsDisplayed && (
-          <Button as='button' variation='primary' size='lg' clickHandler={loadMore}>
+          <Button as='button' variant='primary' size='lg' clickHandler={loadMore}>
             Load more
           </Button>
         )}

@@ -5,7 +5,7 @@ import './button.scss';
 import { Ripple, initTE } from 'tw-elements';
 
 interface CommonProps {
-  variation?: 'primary' | 'secondary' | 'neon' | 'back-to-list' | 'icon-button';
+  variant?: 'primary' | 'secondary' | 'neon' | 'back-to-list' | 'icon' | 'icon-round';
   className?: string;
   reflect?: Boolean;
   size?: string;
@@ -27,8 +27,8 @@ interface AsLinkProps extends CommonProps {
 
 type ButtonProps = AsButtonProps | AsLinkProps;
 
-export default function Button({ size = 'md', variation = 'primary', iconPosition = 'right', ...props }: ButtonProps) {
-  const classNames = ['button', variation, size, props.reflect ? 'reflect' : '', props.className].filter((n) => n).join(' ');
+export default function Button({ size = 'md', variant = 'primary', iconPosition = 'right', ...props }: ButtonProps) {
+  const classNames = ['button', variant, size, props.reflect ? 'reflect' : '', props.className].filter((n) => n).join(' ');
 
   function classes(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
@@ -41,13 +41,13 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
   const buttonInnerMarkup = () => {
     const inner = (
       <div className={classes(iconPosition === 'left' ? 'flex-row-reverse' : '', 'flex gap-1 items-center justify-center')}>
-        {props.children && <div>{props.children}</div>}
-        {props.icon && <div className='icon-button'>{props.icon}</div>}
+        {props.children && props.children}
+        {props.icon && props.icon}
       </div>
     );
-    if (variation === 'primary') {
+    if (variant === 'primary') {
       return inner;
-    } else if (variation === 'back-to-list') {
+    } else if (variant === 'back-to-list') {
       return (
         <>
           <i></i>
@@ -62,7 +62,7 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
           <span>Back to projects</span>
         </>
       );
-    } else if (variation === 'neon') {
+    } else if (variant === 'neon') {
       return (
         <>
           <span></span>
@@ -79,7 +79,7 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
     const { clickHandler } = props;
     return (
       <button onClick={clickHandler} className={classNames}>
-        {variation === 'icon-button' ? <>{props.icon}</> : buttonInnerMarkup()}
+        {variant === 'icon' || variant === 'icon-round' ? props.icon : buttonInnerMarkup()}
       </button>
     );
   }
@@ -88,7 +88,7 @@ export default function Button({ size = 'md', variation = 'primary', iconPositio
     const { href } = props;
     return (
       <Link href={href} className={classNames} {...(props.externalLink && { target: '_blank' })}>
-        {variation === 'icon-button' ? <div className='icon'>{props.icon}</div> : buttonInnerMarkup()}
+        {variant === 'icon' || variant === 'icon-round' ? props.icon : buttonInnerMarkup()}
       </Link>
     );
   }

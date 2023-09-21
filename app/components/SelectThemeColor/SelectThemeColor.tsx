@@ -4,6 +4,7 @@ import { Transition, Listbox } from '@headlessui/react';
 import { LuMoonStar } from 'react-icons/lu';
 import { PiSunBold } from 'react-icons/pi';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import Button from '@/app/components/Button/Button';
 
 const colorThemes = [
   { name: 'Light', icon: <PiSunBold /> },
@@ -15,8 +16,10 @@ export default function SelectThemeColor() {
   const [selected, setSelected] = useState(isDark ? colorThemes[1] : colorThemes[0]);
   return (
     <div className='relative'>
-      <Listbox value={selected} onChange={setSelected}>
-        <Listbox.Button className='p-2 text-light-primary dark:text-dark-primary cursor-pointer focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 text-lg sm:text-sm'>
+      <Button as='button' variant='icon-round' clickHandler={() => setIsDark(!isDark)} icon={isDark ? <PiSunBold /> : <LuMoonStar />} />
+
+      {/* <Listbox value={selected} onChange={setSelected}>
+        <Listbox.Button className='p-2 text-light-primary dark:text-primary cursor-pointer focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 text-lg sm:text-sm'>
           {selected.icon}
         </Listbox.Button>
         <Transition
@@ -37,7 +40,7 @@ export default function SelectThemeColor() {
                 onClick={() => setIsDark(theme.name === 'Dark' ? true : false)}
               >
                 {({ selected }) => (
-                  <div className={`flex items-center gap-2 font-medium capitalize ${selected ? 'text-light-primary dark:text-dark-primary' : ''}`}>
+                  <div className={`flex items-center gap-2 font-medium capitalize ${selected ? 'text-light-primary dark:text-primary' : ''}`}>
                     {theme.icon}
                     {theme.name}
                   </div>
@@ -46,7 +49,7 @@ export default function SelectThemeColor() {
             ))}
           </Listbox.Options>
         </Transition>
-      </Listbox>
+      </Listbox> */}
     </div>
   );
 }
