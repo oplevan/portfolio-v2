@@ -16,7 +16,7 @@ export default function ContactForm({}: Props) {
     console.log('submit the form');
   }
   return (
-    <div className='w-full max-w-md p-6 mx-auto mt-10 shadow-shadow-white-3 dark:shadow-shadow-1 bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md'>
+    <div className='w-full max-w-md p-6 mx-auto mt-10 shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md'>
       <form onSubmit={handleSubmit}>
         <div className='relative mb-6' data-te-input-wrapper-init>
           <input

@@ -37,7 +37,7 @@ export default function SingleProject({ title, links, thumbnail, shortDescriptio
         <Link href={`/projects/${slug}`} className='title hidden md:block'>
           {title}
         </Link>
-        <div className='description'>{shortDescription}</div>
+        <div className='description box-gradient'>{shortDescription}</div>
         <div className='tech-list'>
           {techList.map((item, i) => (
             <div key={i}>
@@ -49,17 +49,9 @@ export default function SingleProject({ title, links, thumbnail, shortDescriptio
           <Button as='link' href={`/projects/${slug}`} variant='primary' size='sm'>
             Learn more
           </Button>
-          <div className='flex'>
-            {links?.web && (
-              <a href={links.web} target='_blank' rel='noopener noreferrer'>
-                <TbExternalLink />
-              </a>
-            )}
-            {links?.gitHub && (
-              <a href={links.web} target='_blank' rel='noopener noreferrer'>
-                <FiGithub />
-              </a>
-            )}
+          <div className='flex gap-4'>
+            {links?.web && <Button as='link' size='lg' variant='icon' icon={<TbExternalLink />} href={links.web} className='!p-2 !-m-2' externalLink />}
+            {links?.gitHub && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.gitHub} className='!p-2 !-m-2' externalLink />}
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ $anim-timing: 3s;
   position: absolute;
   bottom: 5%;
   left: calc(50% - $circle-w / 2);
-  @apply rounded-full bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to shadow-shadow-white-3 dark:shadow-shadow-1 flex items-center justify-center overflow-hidden;
+  @apply rounded-full bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to shadow-primary-wt dark:shadow-primary-dt flex items-center justify-center overflow-hidden;
 
   svg {
     animation: scrolly $anim-timing $bezier forwards infinite;

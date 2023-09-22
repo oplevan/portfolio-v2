@@ -12,7 +12,7 @@ header {
   &.minimised {
     height: theme('nav-height.minimised');
     backdrop-filter: blur(15px);
-    @apply shadow-lg bg-body-light dark:shadow-shadow-1 dark:bg-header-dark;
+    @apply shadow-lg bg-body-light dark:shadow-primary-dt dark:bg-header-dark;
   }
 
   @media (max-width: 767px) {
@@ -29,7 +29,7 @@ header {
     transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s;
     transform: rotate(0deg);
     position: relative;
-    @apply bg-light-primary dark:bg-primary;
+    @apply bg-primary;
 
     &:before,
     &:after {
@@ -41,7 +41,7 @@ header {
       width: 44px;
       height: 2px;
       border-radius: 4px;
-      @apply bg-light-primary dark:bg-primary;
+      @apply bg-primary;
     }
 
     &:before {

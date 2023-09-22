@@ -1,5 +1,7 @@
-import React from 'react';
 import { BsShield } from 'react-icons/bs';
+import Link from 'next/link';
+import Image from 'next/image';
+import HeadShot from '@/public/assets/images/head-shot-logo.png';
 
 interface Props {
   isMinimised: boolean;
@@ -8,17 +10,16 @@ type LogoProps = Props;
 
 export default function Logo({ isMinimised }: LogoProps) {
   return (
-    <div className='flex lg:flex-1 z-20' style={{ filter: 'drop-shadow(2px 2px 3px rgba(2, 12, 27, 0.5))' }} data-aos='fade-down' data-aos-delay='100'>
-      <a href='/' className='relative -m-1.5 p-1.5 text-primary'>
-        <BsShield className={`ease-in-out duration-300 ${isMinimised ? 'h-[35px] w-[35px]' : 'h-[45px] w-[45px]'}`} />
-        <span
-          className={`ease-in-out duration-300 font-sans font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-[0.6] ${
-            isMinimised ? 'text-[16px]' : 'text-[22px]'
+    <div className='flex lg:flex-1 z-20' data-aos='fade-down' data-aos-delay='100'>
+      <div className='flex justify-center w-[50px] md:w-[70px]'>
+        <div
+          className={`box-gradient !rounded-full aspect-square ease-in-out duration-300 border-2 border-d-primary-gradient-to ${
+            isMinimised ? 'w-[50px]' : 'w-[70px]'
           }`}
         >
-          O
-        </span>
-      </a>
+          <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full rounded-full' alt='Head shot logo' />
+        </div>
+      </div>
     </div>
   );
 }

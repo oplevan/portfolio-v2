@@ -4,10 +4,6 @@
 @import './modules/all';
 
 :root {
-  --fz-heading: 32px;
-  --border-radius: 4px;
-  --tab-height: 42px;
-  --tab-width: 120px;
   --hamburger-width: 30px;
   --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
   --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
@@ -92,4 +88,8 @@ main {
 .group[data-te-input-focused] .group-data-\[te-input-focused\]\:border-primary,
 .group[data-te-input-state-active] .group-data-\[te-input-state-active\]\:border-primary {
   border-color: transparent !important;
+}
+
+.box-gradient {
+  @apply shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md;
 }

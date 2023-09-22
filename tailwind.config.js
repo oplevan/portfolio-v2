@@ -74,13 +74,9 @@ module.exports = {
         mobile: '70px',
       },
       boxShadow: {
-        'shadow-1': '10px 10px 19px #111214, -10px -10px 19px #262a2e',
-        'shadow-2': 'inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225',
         'mobile-nav': '-10px 0px 19px #111214',
-        'inner-shadow': '1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset',
-        'inner-shadow-white': '1px 4px 2px -3px #D1D9E6 inset, -1px -3px 3px -2px #ffffff inset',
-        'shadow-white-3': '5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff',
-        'button-primary': '0 0 15px 3px theme("colors.primary")',
+        'primary-dt': '10px 10px 19px #111214, -10px -10px 19px #262a2e',
+        'primary-wt': '5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff',
 
         'neon-dark': '0 0 10px theme("colors.dark.primary"), 0 0 40px theme("colors.dark.primary"), 0 0 80px theme("colors.dark.primary")',
         'neon-light': '0 0 10px theme("colors.light.primary"), 0 0 40px theme("colors.light.primary"), 0 0 80px theme("colors.light.primary")',

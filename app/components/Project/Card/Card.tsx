@@ -4,6 +4,7 @@ import { TbExternalLink } from 'react-icons/tb';
 import { FiGithub } from 'react-icons/fi';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '@/app/components/Button/Button';
 
 type Props = {
   slug: string;
@@ -24,16 +25,8 @@ export default function Card({ title, slug, links, thumbnail, shortDescription, 
             <LiaProjectDiagramSolid />
           </div>
           <div className='project-links'>
-            {links?.web && (
-              <a href={links.web} target='_blank' rel='noopener noreferrer'>
-                <TbExternalLink />
-              </a>
-            )}
-            {links?.gitHub && (
-              <a href={links.web} target='_blank' rel='noopener noreferrer'>
-                <FiGithub />
-              </a>
-            )}
+            {links?.web && <Button as='link' size='lg' variant='icon' icon={<TbExternalLink />} href={links.web} className='!p-2 !-m-2' externalLink />}
+            {links?.gitHub && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.gitHub} className='!p-2 !-m-2' externalLink />}
           </div>
         </div>
         <div className='thumbnail'>

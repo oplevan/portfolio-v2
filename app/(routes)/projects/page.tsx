@@ -17,14 +17,9 @@ export default function ProjectList() {
   const allProjectsDisplayed = visibleProjects >= projects.length;
   return (
     <section className='min-h-screen md:max-w-7xl relative'>
-      <Link
-        href='/'
-        className='hidden md:block fixed left-8 top-32 lg:top-36 lg:left-16 p-2 lg:p-3 bg-white shadow-md dark:bg-dark-secondary-2 rounded-full dark:hover:bg-dark-secondary-3 transition-all z-20'
-        // data-aos='fade-right'
-        data-aos-delay='100'
-      >
-        <IoArrowBackSharp className='w-4 h-4 lg:w-5 lg:h-5' />
-      </Link>
+      <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]' data-aos='fade-down' data-aos-delay='100'>
+        <Button as='link' href='/' variant='icon-round' icon={<IoArrowBackSharp className='w-5 h-5' />} />
+      </div>
       <div className='heading-2 text-center mt-24 mb-10 lg:mt-20 lg:mb-24' data-aos='fade-up' data-aos-delay='100'>
         All Projects
       </div>

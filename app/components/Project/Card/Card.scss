@@ -1,5 +1,5 @@
 .project-card {
-  @apply overflow-hidden p-5 relative flex flex-col items-start top-0 justify-between shadow-shadow-white-3 dark:shadow-shadow-1 bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md hover:-translate-y-1 hover:before:opacity-100;
+  @apply overflow-hidden p-5 relative flex flex-col items-start top-0 justify-between shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md hover:-translate-y-1 hover:before:opacity-100;
 
   &:before {
     @apply content-[''] absolute z-0 top-0 left-0 w-full h-full bg-gradient-to-br from-l-primary-gradient-from to-l-primary-gradient-to dark:from-d-secondary-gradient-from dark:to-d-secondary-gradient-to opacity-0 transition-all ease-linear duration-200 rounded-md;
@@ -13,11 +13,7 @@
     }
 
     .project-links {
-      @apply flex text-[20px] -mr-2;
-
-      a {
-        @apply p-2 hover:text-primary dark:hover:text-primary transition ease-in-out duration-200;
-      }
+      @apply flex gap-4;
     }
   }
 

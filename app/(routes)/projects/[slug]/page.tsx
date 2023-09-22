@@ -1,5 +1,6 @@
 import allProjects from '@/public/data/projects';
 import Button from '@/app/components/Button/Button';
+import { IoArrowBackSharp } from 'react-icons/io5';
 import Link from 'next/link';
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -22,7 +23,9 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <Button as='link' href='/projects' variant='back-to-list' className='!fixed !hidden md:!block left-6 top-32 lg:top-36 lg:left-16 shadow-md z-20' />
+      <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]' data-aos='fade-down' data-aos-delay='100'>
+        <Button as='link' href='/projects' variant='icon-round' icon={<IoArrowBackSharp className='w-5 h-5' />} />
+      </div>
       <h1 className='heading-3'>{project.title}</h1>
     </>
   );

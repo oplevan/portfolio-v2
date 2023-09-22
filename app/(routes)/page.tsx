@@ -4,7 +4,7 @@ import AnimatedScrollDownArrow from '../components/AnimatedScrollDownArrow/Anima
 import Button from '../components/Button/Button';
 import Card from '../components/Project/Card/Card';
 import allProjects from '@/public/data/projects';
-import HeadShot from '@/public/assets/images/head-shot.jpeg';
+import HeadShot from '@/public/assets/images/head-shot.png';
 import Experience from '../components/Experience/Experience';
 
 export default function Home() {
@@ -58,8 +58,8 @@ export default function Home() {
               I&apos;m here to collaborate and bring your ideas to life. Let&apos;s harness the full potential of technology together.
             </p>
           </div>
-          <div className='max-w-[199px] lg:max-w-[300px] rounded-full border-[5px] border-slate-700 dark:border-slate-600 drop-shadow-xl m-auto lg:m-0'>
-            <Image src={HeadShot} className='rounded-full overflow-hidden w-auto h-auto max-w-full max-h-full radius' alt='Head shot' />
+          <div className='box-gradient max-w-[199px] lg:max-w-[300px] m-auto lg:m-0'>
+            <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full' alt='Head shot' />
           </div>
         </div>
       </section>

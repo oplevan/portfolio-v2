@@ -11,6 +11,8 @@ interface CommonProps {
   size?: string;
   icon?: JSX.Element | React.ReactElement;
   iconPosition?: 'left' | 'right';
+  aosAnimation?: string;
+  AosAnimationDelay?: number | string;
   children?: React.ReactNode;
 }
 
@@ -27,7 +29,7 @@ interface AsLinkProps extends CommonProps {
 
 type ButtonProps = AsButtonProps | AsLinkProps;
 
-export default function Button({ size = 'md', variant = 'primary', iconPosition = 'right', ...props }: ButtonProps) {
+export default function Button({ size = 'md', variant = 'primary', iconPosition = 'right', aosAnimation, AosAnimationDelay, ...props }: ButtonProps) {
   const classNames = ['button', variant, size, props.reflect ? 'reflect' : '', props.className].filter((n) => n).join(' ');
 
   function classes(...classes: string[]) {
@@ -87,7 +89,13 @@ export default function Button({ size = 'md', variant = 'primary', iconPosition 
   if (props.as === 'link') {
     const { href } = props;
     return (
-      <Link href={href} className={classNames} {...(props.externalLink && { target: '_blank' })}>
+      <Link
+        href={href}
+        className={classNames}
+        {...(props.externalLink && { target: '_blank' })}
+        {...(aosAnimation && { 'data-aos': aosAnimation })}
+        {...(AosAnimationDelay && { 'data-aos': AosAnimationDelay })}
+      >
         {variant === 'icon' || variant === 'icon-round' ? props.icon : buttonInnerMarkup()}
       </Link>
     );
