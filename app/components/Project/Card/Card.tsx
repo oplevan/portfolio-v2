@@ -10,13 +10,13 @@ type Props = {
   slug: string;
   title: string | React.ReactNode;
   links?: { web?: string; gitHub?: string };
-  thumbnail: string;
+  previewImage: string;
   shortDescription?: string | React.ReactNode;
   techList: string[];
   animationDelay?: number;
 };
 
-export default function Card({ title, slug, links, thumbnail, shortDescription, techList, animationDelay = 0 }: Props) {
+export default function Card({ title, slug, links, previewImage, shortDescription, techList, animationDelay = 0 }: Props) {
   return (
     <Link href={`/projects/${slug}`} className='project-card' data-aos='fade-up' data-aos-delay={animationDelay}>
       <div className='z-10'>
@@ -29,8 +29,8 @@ export default function Card({ title, slug, links, thumbnail, shortDescription, 
             {links?.gitHub && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.gitHub} className='!p-2 !-m-2' externalLink />}
           </div>
         </div>
-        <div className='thumbnail'>
-          <Image src={thumbnail} width={360} height={180} alt='Project preview image' />
+        <div className='preview-image'>
+          <Image src={previewImage} width={360} height={180} alt='Project preview image' />
         </div>
         <div className='title'>{title}</div>
         <div className='short-description'>{shortDescription}</div>

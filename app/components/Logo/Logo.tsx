@@ -12,13 +12,14 @@ export default function Logo({ isMinimised }: LogoProps) {
   return (
     <div className='flex lg:flex-1 z-20' data-aos='fade-down' data-aos-delay='100'>
       <div className='flex justify-center w-[50px] md:w-[70px]'>
-        <div
-          className={`box-gradient !rounded-full aspect-square ease-in-out duration-300 border-2 border-d-primary-gradient-to ${
+        <Link
+          href='/'
+          className={`gradient-box !rounded-full aspect-square ease-in-out duration-300 border-2 border-dt-primary-gradient-to ${
             isMinimised ? 'w-[50px]' : 'w-[70px]'
           }`}
         >
           <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full rounded-full' alt='Head shot logo' />
-        </div>
+        </Link>
       </div>
     </div>
   );

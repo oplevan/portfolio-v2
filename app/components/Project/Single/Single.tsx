@@ -8,7 +8,7 @@ import Button from '@/app/components/Button/Button';
 type Props = {
   title: string | React.ReactNode;
   links?: { web?: string; gitHub?: string };
-  thumbnail: string;
+  previewImage: string;
   shortDescription?: string | React.ReactNode;
   techList: string[];
   animationDelay?: number;
@@ -16,7 +16,7 @@ type Props = {
   slug: string;
 };
 
-export default function SingleProject({ title, links, thumbnail, shortDescription, techList, animationDelay = 0, reverse = false, slug }: Props) {
+export default function SingleProject({ title, links, previewImage, shortDescription, techList, animationDelay = 0, reverse = false, slug }: Props) {
   return (
     <div className={`single-project ${reverse ? 'reverse' : ''}`} data-aos='fade-up' data-aos-delay={animationDelay}>
       <Link href={`/projects/${slug}`} className='title md:hidden'>
@@ -31,13 +31,13 @@ export default function SingleProject({ title, links, thumbnail, shortDescriptio
           </div>
           <div className='caption'>{title}</div>
         </figcaption>
-        <Image src={thumbnail} width={700} height={350} alt='Project preview image' />
+        <Image src={previewImage} width={700} height={350} alt='Project preview image' />
       </figure>
       <div className='project-content'>
         <Link href={`/projects/${slug}`} className='title hidden md:block'>
           {title}
         </Link>
-        <div className='description box-gradient'>{shortDescription}</div>
+        <div className='description gradient-box'>{shortDescription}</div>
         <div className='tech-list'>
           {techList.map((item, i) => (
             <div key={i}>

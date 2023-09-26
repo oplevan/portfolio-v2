@@ -16,25 +16,25 @@ module.exports = {
         primary: '#ff014f',
 
         // dark theme colors
+        'heading-dt': '#c4cfde',
         'body-dark': '#212428',
         'text-dark': '#c4cfde',
         'header-dark': '#212428de',
-        'd-primary-gradient-from': '#181a1d',
-        'd-primary-gradient-to': '#292f35',
-        'd-secondary-gradient-from': '#2b3035',
-        'd-secondary-gradient-to': '#0c0d0f',
+        'dt-primary-gradient-from': '#181a1d',
+        'dt-primary-gradient-to': '#292f35',
+        'dt-secondary-gradient-from': '#2b3035',
+        'dt-secondary-gradient-to': '#0c0d0f',
         'dt-separator': '#121415',
 
         // light theme colors
+        'heading-lt': '#1e2125',
         'body-light': '#ECF0F3',
         'text-light': '#3c3e41',
-        'l-primary-gradient-from': '#6a67ce',
-        'l-primary-gradient-to': '#fc636b',
-        'l-secondary-gradient-from': '#e2e8ec',
-        'l-secondary-gradient-to': '#ffffff',
+        'lt-primary-gradient-from': '#6a67ce',
+        'lt-primary-gradient-to': '#fc636b',
+        'lt-secondary-gradient-from': '#e2e8ec',
+        'lt-secondary-gradient-to': '#ffffff',
         'lt-separator': '#dce1e4',
-        'gradient-box-w': 'linear-gradient(145deg, #e2e8ec, #ffffff)',
-        'gradient-red-hover': 'linear-gradient(145deg, theme("colors.primary-gradient-from"), theme("colors.primary-gradient-to"))',
 
         dark: {
           primary: '#E5FF45',

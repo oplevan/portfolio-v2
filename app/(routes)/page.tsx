@@ -58,7 +58,7 @@ export default function Home() {
               I&apos;m here to collaborate and bring your ideas to life. Let&apos;s harness the full potential of technology together.
             </p>
           </div>
-          <div className='box-gradient max-w-[199px] lg:max-w-[300px] m-auto lg:m-0'>
+          <div className='gradient-box max-w-[199px] lg:max-w-[300px] m-auto lg:m-0'>
             <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full' alt='Head shot' />
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function Home() {
               title={project.title}
               links={project.links}
               shortDescription={project.description.short}
-              thumbnail={project.thumbnail}
+              previewImage={project.images.preview}
               techList={project.techList}
               animationDelay={index % 3 === 0 ? 100 : index % 3 === 1 ? 200 : 300}
             />

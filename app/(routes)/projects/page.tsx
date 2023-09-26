@@ -32,7 +32,7 @@ export default function ProjectList() {
               slug={project.slug}
               links={project.links}
               shortDescription={project.description.short}
-              thumbnail={project.thumbnail}
+              previewImage={project.images.preview}
               techList={project.techList}
               reverse={index % 2 !== 0}
               animationDelay={index % 3 === 0 ? 200 : index % 3 === 1 ? 300 : 400}

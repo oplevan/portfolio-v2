@@ -30,10 +30,10 @@
   }
 
   &.primary {
-    @apply transition-all ease-linear duration-200 text-primary hover:text-white dark:hover:text-primary shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md hover:-translate-y-1 relative hover:before:opacity-100;
+    @apply transition-all ease-linear duration-200 text-primary hover:text-white dark:hover:text-primary shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md hover:-translate-y-1 relative hover:before:opacity-100;
 
     &:before {
-      @apply content-[''] absolute -z-[1] top-0 left-0 w-full h-full bg-gradient-to-br from-l-primary-gradient-from to-l-primary-gradient-to dark:from-d-secondary-gradient-from dark:to-d-secondary-gradient-to opacity-0 transition-all ease-linear duration-200 rounded-md;
+      @apply content-[''] absolute -z-[1] top-0 left-0 w-full h-full bg-gradient-to-br from-lt-primary-gradient-from to-lt-primary-gradient-to dark:from-dt-secondary-gradient-from dark:to-dt-secondary-gradient-to opacity-0 transition-all ease-linear duration-200 rounded-md;
     }
   }
   &.icon {
@@ -49,10 +49,10 @@
   }
 
   &.icon-round {
-    @apply justify-center p-0 aspect-square rounded-full relative shadow-primary-wt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to dark:shadow-primary-dt hover:before:opacity-100 hover:before:scale-110 hover:text-primary;
+    @apply justify-center p-0 aspect-square rounded-full relative shadow-primary-wt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to dark:shadow-primary-dt hover:before:opacity-100 hover:before:scale-110 hover:text-primary;
 
     &:before {
-      @apply content-[''] z-10 absolute top-0 left-0 w-full h-full shadow-primary-wt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to dark:shadow-primary-dt rounded-full opacity-0 transition-all ease-linear duration-200;
+      @apply content-[''] z-10 absolute top-0 left-0 w-full h-full shadow-primary-wt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to dark:shadow-primary-dt rounded-full opacity-0 transition-all ease-linear duration-200;
     }
 
     svg {

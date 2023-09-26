@@ -18,7 +18,7 @@ export default function Example() {
           <Disclosure key={id}>
             {({ open }) => (
               <div
-                className={`transition-all ease-linear !duration-300 shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-l-secondary-gradient-from to-white dark:from-d-primary-gradient-from dark:to-d-primary-gradient-to rounded-md ${
+                className={`transition-all ease-linear !duration-300 shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md ${
                   open ? 'max-h-96' : 'max-h-20'
                 }`}
               >
