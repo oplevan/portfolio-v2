@@ -1,4 +1,3 @@
-import 'tw-elements/dist/css/tw-elements.min.css';
 import '../styles/globals.scss';
 import Navigation from '../components/Navigation/Navigation';
 import SideElement from '../components/SideElement/SideElement';

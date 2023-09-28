@@ -2,7 +2,6 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import './button.scss';
-import { Ripple, initTE } from 'tw-elements';
 
 interface CommonProps {
   variant?: 'primary' | 'secondary' | 'neon' | 'back-to-list' | 'icon' | 'icon-round';
@@ -35,10 +34,6 @@ export default function Button({ size = 'md', variant = 'primary', iconPosition 
   function classes(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
   }
-
-  useEffect(() => {
-    initTE({ Ripple });
-  }, []);
 
   const buttonInnerMarkup = () => {
     const inner = (
