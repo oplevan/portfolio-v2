@@ -36,7 +36,7 @@
 
   .title {
     font-size: clamp(20px, 5vw, 24px);
-    @apply md:mb-3 font-bold dark:text-white hover:text-secondary dark:text-primary dark:hover:text-secondary dark:text-primary;
+    @apply md:mb-3 font-bold hover:text-secondary dark:hover:text-primary;
   }
 
   .project-content {

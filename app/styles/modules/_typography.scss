@@ -2,10 +2,6 @@
   font-size: clamp(24px, 5vw, 38px);
   @apply font-semibold flex items-end w-full mt-2 mb-14 relative leading-none text-heading-lt dark:text-heading-dt max-w-xl;
 
-  span {
-    font-size: clamp(14px, 3vw, 20px);
-    @apply font-normal font-mono mr-2 mb-[1px] text-secondary dark:text-primary dark:text-secondary dark:text-primary;
-  }
   &:after {
     content: '';
     @apply bg-slate-400 dark:bg-text-dark ml-5 h-[1px] flex-1 mb-[6px];
@@ -17,7 +13,7 @@
 }
 .heading-2 {
   font-size: clamp(18px, 5vw, 50px);
-  @apply font-sans font-bold leading-tight text-slate-700 dark:text-slate-400;
+  @apply font-sans font-bold leading-tight;
 }
 .heading-3 {
   @apply font-bold text-5xl mb-4 text-heading-lt dark:text-heading-dt;

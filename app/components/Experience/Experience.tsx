@@ -24,7 +24,7 @@ export default function Example() {
               >
                 <Disclosure.Button
                   className={`transition-all ease-linear relative z-10 flex flex-col lg:flex-row w-full justify-between pl-4 pr-12 py-2 text-left text-sm font-bold ${
-                    open ? 'text-secondary dark:text-primary border-b-[1px] border-lt-separator dark:border-dt-separator' : ''
+                    open ? 'text-secondary dark:text-primary' : ''
                   }`}
                 >
                   <div>
@@ -37,7 +37,7 @@ export default function Example() {
                   <ChevronUpIcon
                     className={`${
                       open ? 'rotate-180 transform' : ''
-                    } transition-all ease-linear h-6 w-6 text-secondary dark:text-primary dark:text-secondary dark:text-primary absolute top-1/2 right-3 -translate-y-1/2`}
+                    } transition-all ease-linear h-6 w-6 text-secondary dark:text-primary absolute top-1/2 right-3 -translate-y-1/2`}
                   />
                 </Disclosure.Button>
                 <Transition
@@ -47,7 +47,7 @@ export default function Example() {
                   leave='transition-all ease-linear !duration-300'
                   leaveFrom='max-h-96'
                   leaveTo='max-h-0'
-                  className='overflow-hidden'
+                  className='overflow-hidden border-t-[1px] border-lt-separator dark:border-dt-separator'
                 >
                   <Disclosure.Panel className='py-4 px-4 text-sm dark:text-slate-200 '>
                     <div className='flex flex-col lg:flex-row lg:items-center mb-5 dark:text-slate-400'>
@@ -65,7 +65,7 @@ export default function Example() {
                             href={company.website}
                             target='_blank'
                             rel='noreferrer noopener'
-                            className='flex leading-tight items-end transition ease-linear hover:text-secondary dark:text-primary hover:dark:text-secondary dark:text-primary hover:underline'
+                            className='flex leading-tight items-center transition ease-linear text-secondary dark:text-primary hover:underline'
                           >
                             <TbExternalLink className='h-5 w-5 mr-1 text-slate-500' />
                             {company.website.slice(8)}
@@ -77,7 +77,7 @@ export default function Example() {
                       {description.map((item, i) => (
                         <li
                           key={i}
-                          className='pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-secondary dark:text-primary dark:before:text-secondary dark:text-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px]'
+                          className='pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-secondary dark:before:text-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px]'
                         >
                           {item}
                         </li>

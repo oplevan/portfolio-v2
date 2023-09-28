@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <>
       <section id='intro'>
-        <div className='text-secondary dark:text-primary mb-4' data-aos='fade-up' data-aos-delay='900'>
+        <div className='mb-2' data-aos='fade-up' data-aos-delay='900'>
           Hi, my name is
         </div>
         <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>
-          Oleg Plevan.
+          Oleg Plevan
         </div>
         <div className='heading-2 leading-thin mb-4' data-aos='fade-up' data-aos-delay='1100'>
           Transforming ideas into seamless <br className='hidden lg:block' /> Web and App Solutions.

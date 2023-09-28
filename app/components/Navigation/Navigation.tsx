@@ -133,7 +133,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:!text-secondary dark:text-primary uppercase'
+                className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary uppercase'
                 data-aos='fade-down'
                 data-aos-delay={(index + 1) * 100}
               >
@@ -214,7 +214,7 @@ export default function Navigation() {
             <Button
               as='link'
               variant='primary'
-              size='lg'
+              size='md'
               href='https://drive.google.com/file/d/1eTjj7ljjFtpmJBPain_UXaQWQQKUfMO5/view?pli=1'
               icon={<BiLinkExternal />}
               className='mt-14'
