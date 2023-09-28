@@ -1,71 +1,179 @@
 'use client';
+import './ContactForm.scss';
+import { useState, useEffect } from 'react';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { toast } from 'react-toastify';
+import Link from 'next/link';
 
-import React, { useEffect } from 'react';
-import Button from '../Button/Button';
-import { Ripple, Input, initTE } from 'tw-elements';
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
-type Props = {};
+function ContactForm() {
+  const initialFormData: FormData = {
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  };
 
-export default function ContactForm({}: Props) {
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [validationErrors, setValidationErrors] = useState<Partial<FormData>>({});
+  const { isDark } = useColorScheme();
+
+  // Function to handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear the validation error message for the field when the user starts typing
+    setValidationErrors({ ...validationErrors, [name]: '' });
+  };
+
+  // Function to validate a single field
+  const validateField = (fieldName: string, value: string) => {
+    let errorMessage = '';
+
+    // Custom validation rules for each field
+    switch (fieldName) {
+      case 'name':
+        errorMessage = value.trim() === '' ? '*Name is required' : '';
+        break;
+      case 'email':
+        errorMessage = value.trim() === '' ? '*Email is required' : !/^\S+@\S+\.\S+$/.test(value) ? '*Invalid email address' : '';
+        break;
+      case 'subject':
+        errorMessage = value.trim() === '' ? '*Subject is required' : '';
+        break;
+      default:
+        break;
+    }
+
+    // Update validationErrors state
+    setValidationErrors({ ...validationErrors, [fieldName]: errorMessage });
+  };
+
+  // Function to validate the entire form
+  const validateForm = () => {
+    const isValid = formData.name.trim() !== '' && /^\S+@\S+\.\S+$/.test(formData.email) && formData.subject.trim() !== '';
+
+    setIsFormValid(isValid);
+  };
+
+  // Function to handle field blur (loss of focus)
+  const handleFieldBlur = (fieldName: string) => {
+    // @ts-ignore: Unreachable code error
+    const { [fieldName]: value } = formData;
+    validateField(fieldName, value);
+  };
+
+  // Debounced function to perform validation after typing is complete
+  const debouncedValidateForm = () => {
+    clearTimeout(validationTimeout);
+    validationTimeout = setTimeout(validateForm, 500); // Adjust the debounce delay as needed
+  };
+
+  let validationTimeout: NodeJS.Timeout;
+
+  // Effect to run the debounced validation on form data changes
   useEffect(() => {
-    initTE({ Input });
-  }, []);
+    debouncedValidateForm();
+  }, [formData]);
 
-  function handleSubmit(event: any) {
-    event.preventDefault();
-    console.log('submit the form');
-  }
+  // Function to reset the form after a successful submit
+  const resetForm = () => {
+    setFormData(initialFormData);
+    setValidationErrors({});
+    setIsSubmitted(false);
+  };
+
+  // Function to submit the form
+  const submitForm = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Manually validate all fields one last time
+    Object.keys(formData).forEach((fieldName) => {
+      // @ts-ignore: Unreachable code error
+      validateField(fieldName, formData[fieldName]);
+    });
+
+    if (isFormValid) {
+      // Perform form submission here (e.g., send data to the server)
+      console.log('Form Data:', formData);
+      toast.success('Message sent successfully!', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: isDark ? 'dark' : 'light',
+      });
+      setIsSubmitted(true);
+      setTimeout(() => resetForm(), 10000); // Reset the form after successful submit
+    }
+  };
+
   return (
-    <div className='w-full max-w-md p-6 mx-auto mt-10 shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md'>
-      <form onSubmit={handleSubmit}>
-        <div className='relative mb-6' data-te-input-wrapper-init>
+    <div className='form-wrap'>
+      {isSubmitted && <ThankYouMessage />}
+      <form onSubmit={submitForm}>
+        <div className='form-group'>
+          <label htmlFor='name' className='text-left'>
+            Your name*
+          </label>
+          <input type='text' id='name' name='name' value={formData.name} onChange={handleInputChange} onBlur={() => handleFieldBlur('name')} required />
+          {validationErrors.name && <div className='error'>{validationErrors.name}</div>}
+        </div>
+        <div className='form-group'>
+          <label htmlFor='email'>Email*</label>
+          <input type='email' id='email' name='email' value={formData.email} onChange={handleInputChange} onBlur={() => handleFieldBlur('email')} required />
+          <div className='error'>{validationErrors.email}</div>
+        </div>
+        <div className='form-group'>
+          <label htmlFor='subject'>Subject*</label>
           <input
             type='text'
-            className='peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0'
-            id='name'
-            placeholder='Name'
+            id='subject'
+            name='subject'
+            value={formData.subject}
+            onChange={handleInputChange}
+            onBlur={() => handleFieldBlur('subject')}
+            required
           />
-          <label
-            htmlFor='name'
-            className='pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 dark:text-slate-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-light-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none'
-          >
-            Name
-          </label>
+          <div className='error'>{validationErrors.subject}</div>
         </div>
-
-        <div className='relative mb-6' data-te-input-wrapper-init>
-          <input
-            type='email'
-            className='peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0'
-            id='email'
-            placeholder='Email address'
-          />
-          <label
-            htmlFor='email'
-            className='pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 dark:text-slate-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-light-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none'
-          >
-            Email address
-          </label>
+        <div className='form-group'>
+          <label htmlFor='message'>Message</label>
+          <textarea id='message' name='message' value={formData.message} onChange={handleInputChange} onBlur={() => handleFieldBlur('message')} />
+          <div className='error'>{validationErrors.message}</div>
         </div>
-
-        <div className='relative mb-6' data-te-input-wrapper-init>
-          <textarea
-            className='peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0'
-            id='message'
-            rows={3}
-            placeholder='Message'
-          ></textarea>
-          <label
-            htmlFor='message'
-            className='pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 dark:text-slate-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-light-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none'
-          >
-            Message
-          </label>
-        </div>
-        <Button as='button' variant='primary' className='mx-auto'>
-          SEND
-        </Button>
+        <button className='submit-button' type='submit' disabled={!isFormValid}>
+          Send Message
+        </button>
       </form>
     </div>
   );
 }
+
+export default ContactForm;
+
+const ThankYouMessage = () => {
+  return (
+    <div className='thank-you gradient-box'>
+      <h5 className='mb-5'>
+        Thank you for your <br /> message!
+      </h5>
+      <p>I appreciate you getting in touch. I will review your message as soon as possible and get back to you shortly.</p>
+      <p className='mt-5'>
+        In the meantime feel free to explore more projects in my <Link href='/projects'>Portfolio</Link>.
+      </p>
+    </div>
+  );
+};

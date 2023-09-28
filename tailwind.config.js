@@ -14,6 +14,9 @@ module.exports = {
     extend: {
       colors: {
         primary: '#ff014f',
+        success: '#3EB75E',
+        danger: '#FF0003',
+        warning: '#FF8F3C',
 
         // dark theme colors
         'heading-dt': '#c4cfde',
@@ -77,6 +80,8 @@ module.exports = {
         'mobile-nav': '-10px 0px 19px #111214',
         'primary-dt': '10px 10px 19px #111214, -10px -10px 19px #262a2e',
         'primary-wt': '5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff',
+        'inner-dt': '1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset',
+        'inner-lt': '1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset',
 
         'neon-dark': '0 0 10px theme("colors.dark.primary"), 0 0 40px theme("colors.dark.primary"), 0 0 80px theme("colors.dark.primary")',
         'neon-light': '0 0 10px theme("colors.light.primary"), 0 0 40px theme("colors.light.primary"), 0 0 80px theme("colors.light.primary")',

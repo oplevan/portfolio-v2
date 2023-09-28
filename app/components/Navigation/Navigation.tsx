@@ -68,6 +68,7 @@ export default function Navigation() {
         <button type='button' className={addClassNames('hamburger lg:hidden relative z-20', mobileMenuOpen ? 'open' : '')} onClick={toggleMenu} />
         <Popover.Group className='hidden lg:flex lg:gap-x-6'>
           {navItems?.map((item, index) =>
+            // @ts-ignore: Unreachable code error
             item?.subItems ? (
               <Popover key={item.name} className={'relative'}>
                 {({ open }) => (
@@ -93,20 +94,23 @@ export default function Navigation() {
                     >
                       <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                         <div className='p-4'>
-                          {item?.subItems.map((item) => (
-                            <div key={item.name} className='group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'>
-                              <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
-                                <item.icon className='h-6 w-6 text-gray-600 group-hover:text-indigo-600' aria-hidden='true' />
+                          {
+                            // @ts-ignore: Unreachable code error
+                            item?.subItems.map((item) => (
+                              <div key={item.name} className='group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'>
+                                <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
+                                  <item.icon className='h-6 w-6 text-gray-600 group-hover:text-indigo-600' aria-hidden='true' />
+                                </div>
+                                <div className='flex-auto'>
+                                  <Link href={item.href} className='block font-semibold text-gray-900'>
+                                    {item.name}
+                                    <span className='absolute inset-0' />
+                                  </Link>
+                                  <p className='mt-1 text-gray-600'>{item.description}</p>
+                                </div>
                               </div>
-                              <div className='flex-auto'>
-                                <Link href={item.href} className='block font-semibold text-gray-900'>
-                                  {item.name}
-                                  <span className='absolute inset-0' />
-                                </Link>
-                                <p className='mt-1 text-gray-600'>{item.description}</p>
-                              </div>
-                            </div>
-                          ))}
+                            ))
+                          }
                         </div>
                         <div className='grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50'>
                           {callsToAction.map((item) => (
@@ -161,6 +165,7 @@ export default function Navigation() {
               <SelectThemeColor />
             </div>
             {navItems?.map((item, i) =>
+              // @ts-ignore: Unreachable code error
               item?.subItems ? (
                 <Disclosure key={item.name} as={Fragment}>
                   {({ open }) => (
@@ -184,11 +189,14 @@ export default function Navigation() {
                         leaveTo='opacity-0'
                       >
                         <Disclosure.Panel className='space-y-2'>
-                          {[...item.subItems, ...callsToAction].map((item) => (
-                            <Disclosure.Button key={item.name} as='a' href={item.href} className='block rounded-lg text-sm text-center leading-7'>
-                              {item.name}
-                            </Disclosure.Button>
-                          ))}
+                          {
+                            // @ts-ignore: Unreachable code error
+                            [...item.subItems, ...callsToAction].map((item) => (
+                              <Disclosure.Button key={item.name} as='a' href={item.href} className='block rounded-lg text-sm text-center leading-7'>
+                                {item.name}
+                              </Disclosure.Button>
+                            ))
+                          }
                         </Disclosure.Panel>
                       </Transition>
                     </div>

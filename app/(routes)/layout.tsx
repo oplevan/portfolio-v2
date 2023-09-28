@@ -5,12 +5,15 @@ import SideElement from '../components/SideElement/SideElement';
 import Button from '../components/Button/Button';
 import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
 import { AOSInit } from '../utils/aos';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <AOSInit />
       <body>
+        <ToastContainer />
         <Navigation />
         <main>
           <SideElement side='left'>
