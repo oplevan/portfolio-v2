@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SideElement side='right'>
             <a
               href='mailto:oleg.plevan@gmail.com'
-              className='easy-in-out duration-300 [writing-mode:vertical-rl] font-mono leading-none hover:-translate-y-1 p-3 -m-3 block hover:text-primary'
+              className='easy-in-out duration-300 [writing-mode:vertical-rl] font-mono leading-none hover:-translate-y-1 p-3 -m-3 block hover:text-secondary dark:hover:text-secondary dark:text-primary'
             >
               oleg.plevan@gmail.com
             </a>

@@ -18,7 +18,7 @@ $anim-timing: 3s;
     perspective: 9000px;
     transform: translateZ(0);
     transform-origin: bottom;
-    @apply w-5 h-5 fill-primary;
+    @apply w-5 h-5 fill-secondary dark:fill-primary;
   }
 }
 

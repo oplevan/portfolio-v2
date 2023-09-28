@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <section id='intro'>
-        <div className='text-primary mb-4' data-aos='fade-up' data-aos-delay='900'>
+        <div className='text-secondary dark:text-primary mb-4' data-aos='fade-up' data-aos-delay='900'>
           Hi, my name is
         </div>
         <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>

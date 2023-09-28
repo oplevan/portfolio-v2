@@ -75,8 +75,8 @@ export default function Navigation() {
                   <>
                     <Popover.Button
                       className={addClassNames(
-                        'p-4 flex items-center gap-x-1 text-sm font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-primary',
-                        open ? '!text-light-primary dark:!text-primary' : ''
+                        'p-4 flex items-center gap-x-1 text-sm font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-secondary dark:text-primary',
+                        open ? '!text-light-primary dark:!text-secondary dark:text-primary' : ''
                       )}
                     >
                       {item.name}
@@ -133,7 +133,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:!text-primary uppercase'
+                className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:!text-secondary dark:text-primary uppercase'
                 data-aos='fade-down'
                 data-aos-delay={(index + 1) * 100}
               >
@@ -173,7 +173,7 @@ export default function Navigation() {
                       <Disclosure.Button
                         className={addClassNames(
                           'flex w-full items-center justify-center rounded-lg py-2 text-base',
-                          open ? 'text-primary dark:text-primary uppercase' : ''
+                          open ? 'text-secondary dark:text-primary dark:text-secondary dark:text-primary uppercase' : ''
                         )}
                       >
                         {item.name}

@@ -4,7 +4,7 @@
 
   span {
     font-size: clamp(14px, 3vw, 20px);
-    @apply font-normal font-mono mr-2 mb-[1px] text-primary dark:text-primary;
+    @apply font-normal font-mono mr-2 mb-[1px] text-secondary dark:text-primary dark:text-secondary dark:text-primary;
   }
   &:after {
     content: '';

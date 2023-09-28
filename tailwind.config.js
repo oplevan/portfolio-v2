@@ -13,7 +13,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#ff014f',
+        primary: '#64ffda',
+        secondary: '#1B0085',
         success: '#3EB75E',
         danger: '#FF0003',
         warning: '#FF8F3C',
@@ -79,7 +80,7 @@ module.exports = {
       boxShadow: {
         'mobile-nav': '-10px 0px 19px #111214',
         'primary-dt': '10px 10px 19px #111214, -10px -10px 19px #262a2e',
-        'primary-wt': '5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff',
+        'primary-wt': '5px 5px 15px #B0B7C2, -5px -5px 15px #fcfcfc', // B0B7C2
         'inner-dt': '1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset',
         'inner-lt': '1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset',
 
