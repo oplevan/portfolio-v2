@@ -11,6 +11,7 @@ import Logo from '../Logo/Logo';
 import SelectThemeColor from '../SelectThemeColor/SelectThemeColor';
 import Link from 'next/link';
 import './navigation.scss';
+import useHasMounted from '@/app/hooks/useHasMounted';
 
 const navItems = [
   { name: 'About', href: '/#about' },
@@ -83,7 +84,7 @@ export default function Navigation() {
           <Button as='link' variant='primary' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>
-          <SelectThemeColor />
+          {useHasMounted() && <SelectThemeColor />}
         </div>
 
         {/* Mobile nav */}
@@ -98,9 +99,7 @@ export default function Navigation() {
           show={mobileMenuOpen}
         >
           <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-body-light dark:bg-body-dark flex flex-col justify-center items-center gap-3 font-semibold'>
-            <div className='absolute top-5 left-5'>
-              <SelectThemeColor />
-            </div>
+            <div className='absolute top-5 left-5'>{useHasMounted() && <SelectThemeColor />}</div>
             {navItems?.map((item, i) => (
               <Fragment key={item.name}>
                 {i !== 0 && <hr className='w-[35px] border-slate-600' />}

@@ -18,7 +18,7 @@ export default function Logo({ isMinimised }: LogoProps) {
             isMinimised ? 'w-[50px]' : 'w-[70px]'
           }`}
         >
-          <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full rounded-full' alt='Head shot logo' />
+          <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full rounded-full' alt='Head shot logo' priority />
         </Link>
       </div>
     </div>
