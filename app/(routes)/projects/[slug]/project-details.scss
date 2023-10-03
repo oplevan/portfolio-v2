@@ -17,12 +17,11 @@
 
       .intro-image {
         @apply basis-6/12 aspect-[6/4] rounded-lg shadow-primary-wt dark:shadow-primary-dt flex items-center justify-center relative;
-        background: radial-gradient(circle at 50% -100px, rgba(255, 1, 79, 0.5), transparent 300px),
-          radial-gradient(circle at 50% calc(100% + 100px), rgba(255, 1, 79, 0.5), transparent 300px), linear-gradient(rgba(10, 4, 15, 1), rgba(10, 4, 15, 1));
+        background: linear-gradient(#e2e8ec, #fff);
 
         @media (max-width: 768px) {
           background: radial-gradient(circle at 50% -50px, rgba(255, 1, 79, 0.5), transparent 130px),
-            radial-gradient(circle at 50% calc(100% + 50px), rgba(255, 1, 79, 0.5), transparent 130px), linear-gradient(rgba(10, 4, 15, 1), rgba(10, 4, 15, 1));
+            radial-gradient(circle at 50% calc(100% + 50px), rgba(255, 1, 79, 0.5), transparent 130px), linear-gradient(#e2e8ec, #fff);
         }
 
         img {
@@ -61,9 +60,14 @@
         }
       }
     }
+  }
+}
+.dark .project-details .wrap .intro .intro-image {
+  background: radial-gradient(circle at 50% -100px, rgba(255, 1, 79, 0.5), transparent 300px),
+    radial-gradient(circle at 50% calc(100% + 100px), rgba(255, 1, 79, 0.5), transparent 300px), linear-gradient(rgba(10, 4, 15, 1), rgba(10, 4, 15, 1));
 
-    // img {
-    //   @apply rounded-lg shadow-primary-wt dark:shadow-primary-dt;
-    // }
+  @media (max-width: 768px) {
+    background: radial-gradient(circle at 50% -50px, rgba(255, 1, 79, 0.5), transparent 130px),
+      radial-gradient(circle at 50% calc(100% + 50px), rgba(255, 1, 79, 0.5), transparent 130px), linear-gradient(rgba(10, 4, 15, 1), rgba(10, 4, 15, 1));
   }
 }
