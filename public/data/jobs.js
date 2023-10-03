@@ -7,7 +7,15 @@ const jobs = [
     type: 'Full-time',
     startDate: 'Feb, 2021',
     endDate: 'Present',
-    description: ['Did this', 'Did that', 'And also that'],
+    description: [
+      "Established and maintained a comprehensive design system for building Veeva CRM presentations. This system, utilized by our team, ensured consistent branding and design across multiple clients' projects, enhancing overall project efficiency and client satisfaction, as well as significantly reduced development time",
+      'Implemented CI/CD pipelines, reducing development time and improving the overall development experience. Streamlined the release process, leading to faster and more reliable software deployments',
+      'Worked closely with product managers, designers, and QA engineers to understand project requirements, refine features, and implement solutions',
+      'Demonstrated proficiency in both front-end and back-end technologies, contributing to the entire software development lifecycle. Utilized frameworks such as React.js and Node.js to build scalable and responsive applications',
+      'Interacted directly with clients to gather requirements, address technical queries, and provide demonstrations of software functionalities. Received consistently positive feedback for clear communication and understanding of client needs',
+      'Played a key role in project estimation, providing accurate assessments of development efforts and timelines. Collaborated in project planning sessions, contributing insights that shaped project roadmaps and milestones',
+      'Authored comprehensive technical documents, including system architectures, API specifications, and user guides for diverse projects. Ensured clarity in communication by creating user-friendly guides, enhancing user onboarding experiences',
+    ],
     achievements: '',
   },
   {
@@ -38,7 +46,7 @@ const jobs = [
       'Developed, maintained, and shipped production code for client websites primarily using HTML, CSS, JavaScript, and jQuery',
       'Maintained templates and content management systems',
       'Assisted in testing and deploying Web applications',
-      "Collaborated with designers and other developers to ensure thoughtful and consistent user experiences across various GBC's client's web apps",
+      "Collaborated with designers and other developers to ensure thoughtful and consistent user experiences across various client's web apps",
     ],
     achievements:
       'Took the ownership of the entire process of development, content management and launch of a project, which led to a significant increase in managerial and communication skills.',

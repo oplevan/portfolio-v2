@@ -18,7 +18,7 @@
   }
 
   .preview-image {
-    @apply relative mb-3 overflow-hidden -mx-6 aspect-[16/8] transition ease-in-out duration-500;
+    @apply block relative mb-3 overflow-hidden -mx-6 aspect-[16/8] transition ease-in-out duration-500;
     filter: grayscale(100%);
 
     img {

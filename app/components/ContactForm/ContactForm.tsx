@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import axios from 'axios';
 
 interface FormData {
   name: string;
   email: string;
-  subject: string;
   message: string;
 }
 
@@ -16,7 +16,6 @@ function ContactForm() {
   const initialFormData: FormData = {
     name: '',
     email: '',
-    subject: '',
     message: '',
   };
 
@@ -47,9 +46,6 @@ function ContactForm() {
       case 'email':
         errorMessage = value.trim() === '' ? '*Email is required' : !/^\S+@\S+\.\S+$/.test(value) ? '*Invalid email address' : '';
         break;
-      case 'subject':
-        errorMessage = value.trim() === '' ? '*Subject is required' : '';
-        break;
       default:
         break;
     }
@@ -60,7 +56,7 @@ function ContactForm() {
 
   // Function to validate the entire form
   const validateForm = () => {
-    const isValid = formData.name.trim() !== '' && /^\S+@\S+\.\S+$/.test(formData.email) && formData.subject.trim() !== '';
+    const isValid = formData.name.trim() !== '' && /^\S+@\S+\.\S+$/.test(formData.email);
 
     setIsFormValid(isValid);
   };
@@ -103,19 +99,40 @@ function ContactForm() {
     });
 
     if (isFormValid) {
-      // Perform form submission here (e.g., send data to the server)
-      console.log('Form Data:', formData);
-      toast.success('Message sent successfully!', {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: isDark ? 'dark' : 'light',
+      // Perform form submission here
+      axios({
+        url: 'https://formspree.io/f/xknlpgll',
+        method: 'post',
+        headers: { Accept: 'application/json' },
+        data: formData,
+      }).then((response) => {
+        if (response.status === 200) {
+          toast.success('Message sent successfully!', {
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: isDark ? 'dark' : 'light',
+          });
+          setIsSubmitted(true);
+        } else {
+          console.log(response);
+          toast.error('Error! Please try again later', {
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: isDark ? 'dark' : 'light',
+          });
+        }
       });
-      setIsSubmitted(true);
+
       setTimeout(() => resetForm(), 10000); // Reset the form after successful submit
     }
   };
@@ -126,7 +143,7 @@ function ContactForm() {
       <form onSubmit={submitForm}>
         <div className='form-group'>
           <label htmlFor='name' className='text-left'>
-            Your name*
+            Name*
           </label>
           <input type='text' id='name' name='name' value={formData.name} onChange={handleInputChange} onBlur={() => handleFieldBlur('name')} required />
           {validationErrors.name && <div className='error'>{validationErrors.name}</div>}
@@ -135,19 +152,6 @@ function ContactForm() {
           <label htmlFor='email'>Email*</label>
           <input type='email' id='email' name='email' value={formData.email} onChange={handleInputChange} onBlur={() => handleFieldBlur('email')} required />
           <div className='error'>{validationErrors.email}</div>
-        </div>
-        <div className='form-group'>
-          <label htmlFor='subject'>Subject*</label>
-          <input
-            type='text'
-            id='subject'
-            name='subject'
-            value={formData.subject}
-            onChange={handleInputChange}
-            onBlur={() => handleFieldBlur('subject')}
-            required
-          />
-          <div className='error'>{validationErrors.subject}</div>
         </div>
         <div className='form-group'>
           <label htmlFor='message'>Message</label>

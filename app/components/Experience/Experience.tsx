@@ -19,7 +19,7 @@ export default function Example() {
             {({ open }) => (
               <div
                 className={`transition-all ease-linear !duration-300 shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md ${
-                  open ? 'max-h-96' : 'max-h-20'
+                  open ? 'max-h-[1200px] md:max-h-[600px]' : 'max-h-20'
                 }`}
               >
                 <Disclosure.Button
@@ -43,15 +43,15 @@ export default function Example() {
                 <Transition
                   enter='transition-all ease-linear !duration-300'
                   enterFrom='max-h-0'
-                  enterTo='max-h-96'
+                  enterTo='max-h-[1200px] md:max-h-[600px]'
                   leave='transition-all ease-linear !duration-300'
-                  leaveFrom='max-h-96'
+                  leaveFrom='max-h-[1200px] md:max-h-[600px]'
                   leaveTo='max-h-0'
                   className='overflow-hidden border-t-[1px] border-lt-separator dark:border-dt-separator'
                 >
-                  <Disclosure.Panel className='py-4 px-4 text-sm dark:text-slate-200 '>
+                  <Disclosure.Panel className='py-4 px-4 text-sm dark:text-slate-200'>
                     <div className='flex flex-col lg:flex-row lg:items-center mb-5 dark:text-slate-400'>
-                      <div className='flex items-center gap-4'>
+                      <div className='flex items-start flex-col sm:flex-row sm:items-center gap-4'>
                         <div className='flex leading-tight items-end'>
                           <HiBriefcase className='h-5 w-5 mr-1 text-slate-500/80' />
                           {type}
@@ -65,9 +65,9 @@ export default function Example() {
                             href={company.website}
                             target='_blank'
                             rel='noreferrer noopener'
-                            className='flex leading-tight items-center transition ease-linear text-secondary dark:text-primary hover:underline'
+                            className='flex leading-tight items-center transition ease-linear hover:text-secondary dark:hover:text-primary hover:underline'
                           >
-                            <TbExternalLink className='h-5 w-5 mr-1 text-slate-500' />
+                            <TbExternalLink className='h-5 w-5 mr-1' />
                             {company.website.slice(8)}
                           </a>
                         )}

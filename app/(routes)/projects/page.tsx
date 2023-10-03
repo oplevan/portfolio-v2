@@ -1,8 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
-import Button from '../../components/Button/Button';
-import SingleProject from '../../components/Project/Single/Single';
+import Button from '@/app/components/Button/Button';
+import SingleProject from '@/app/components/Project/Single/Single';
 import allProjects from '@/public/data/projects';
 import { IoArrowBackSharp } from 'react-icons/io5';
 
@@ -25,9 +24,8 @@ export default function ProjectList() {
       </div>
       <div className='grid grid-cols-1 gap-10 md:gap-20'>
         {projects.slice(0, visibleProjects).map((project, index) => (
-          <>
+          <React.Fragment key={project.id}>
             <SingleProject
-              key={project.id}
               title={project.title}
               slug={project.slug}
               links={project.links}
@@ -38,7 +36,7 @@ export default function ProjectList() {
               animationDelay={index % 3 === 0 ? 200 : index % 3 === 1 ? 300 : 400}
             />
             <hr className='md:hidden m-auto w-[30px] border-slate-600' />
-          </>
+          </React.Fragment>
         ))}
       </div>
       <div className='mt-10 flex justify-center'>

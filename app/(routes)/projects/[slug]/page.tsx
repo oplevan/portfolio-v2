@@ -3,6 +3,8 @@ import Image from 'next/image';
 import allProjects from '@/public/data/projects';
 import Button from '@/app/components/Button/Button';
 import ContactForm from '@/app/components/ContactForm/ContactForm';
+import PhotoGallery from '@/app/components/PhotoGallery/PhotoGallery';
+import { TbExternalLink } from 'react-icons/tb';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import './project-details.scss';
 
@@ -56,12 +58,12 @@ export default function Page({ params }: { params: { slug: string } }) {
             </div>
             <div className='buttons'>
               {project.links.web && (
-                <Button as='link' variant='primary' href={project.links.web} externalLink>
+                <Button as='link' variant='primary' href={project.links.web} icon={<TbExternalLink className='w-5 h-5 mb-[3px]' />} externalLink>
                   View on the web
                 </Button>
               )}
               {project.links.gitHub && (
-                <Button as='link' variant='primary' href={project.links.gitHub} externalLink>
+                <Button as='link' variant='primary' href={project.links.gitHub} icon={<TbExternalLink className='w-5 h-5 mb-[3px]' />} externalLink>
                   View on GitHub
                 </Button>
               )}
@@ -74,6 +76,8 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
         <hr className='my-10' />
         {project.developmentProcess && <div className='development-process'>{project.developmentProcess}</div>}
+        <hr className='my-10' />
+        <PhotoGallery images={project.images.gallery} />
       </div>
       <div className='text-center mt-20'>
         <div className='heading-3'>Get In Touch</div>

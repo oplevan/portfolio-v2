@@ -67,80 +67,17 @@ export default function Navigation() {
         {/* hamburger */}
         <button type='button' className={addClassNames('hamburger lg:hidden relative z-20', mobileMenuOpen ? 'open' : '')} onClick={toggleMenu} />
         <Popover.Group className='hidden lg:flex lg:gap-x-6'>
-          {navItems?.map((item, index) =>
-            // @ts-ignore: Unreachable code error
-            item?.subItems ? (
-              <Popover key={item.name} className={'relative'}>
-                {({ open }) => (
-                  <>
-                    <Popover.Button
-                      className={addClassNames(
-                        'p-4 flex items-center gap-x-1 text-sm font-semibold leading-6 text-slate-800 dark:text-slate-400 hover:text-light-primary dark:hover:text-secondary dark:text-primary',
-                        open ? '!text-light-primary dark:!text-secondary dark:text-primary' : ''
-                      )}
-                    >
-                      {item.name}
-                      <ChevronDownIcon className='h-5 w-5 flex-none' aria-hidden='true' />
-                    </Popover.Button>
-
-                    <Transition
-                      as={Fragment}
-                      enter='transition ease-out duration-200'
-                      enterFrom='opacity-0 translate-y-1'
-                      enterTo='opacity-100 translate-y-0'
-                      leave='transition ease-in duration-150'
-                      leaveFrom='opacity-100 translate-y-0'
-                      leaveTo='opacity-0 translate-y-1'
-                    >
-                      <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                        <div className='p-4'>
-                          {
-                            // @ts-ignore: Unreachable code error
-                            item?.subItems.map((item) => (
-                              <div key={item.name} className='group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'>
-                                <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
-                                  <item.icon className='h-6 w-6 text-gray-600 group-hover:text-indigo-600' aria-hidden='true' />
-                                </div>
-                                <div className='flex-auto'>
-                                  <Link href={item.href} className='block font-semibold text-gray-900'>
-                                    {item.name}
-                                    <span className='absolute inset-0' />
-                                  </Link>
-                                  <p className='mt-1 text-gray-600'>{item.description}</p>
-                                </div>
-                              </div>
-                            ))
-                          }
-                        </div>
-                        <div className='grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50'>
-                          {callsToAction.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className='flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100'
-                            >
-                              <item.icon className='h-5 w-5 flex-none text-gray-400' aria-hidden='true' />
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      </Popover.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Popover>
-            ) : (
-              <Link
-                key={item.name}
-                href={item.href}
-                className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary uppercase'
-                data-aos='fade-down'
-                data-aos-delay={(index + 1) * 100}
-              >
-                {item.name}
-              </Link>
-            )
-          )}
+          {navItems?.map((item, index) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary uppercase'
+              data-aos='fade-down'
+              data-aos-delay={(index + 1) * 100}
+            >
+              {item.name}
+            </Link>
+          ))}
         </Popover.Group>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-10' data-aos='fade-down' data-aos-delay='600'>
           <Button as='link' variant='primary' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
@@ -164,53 +101,14 @@ export default function Navigation() {
             <div className='absolute top-5 left-5'>
               <SelectThemeColor />
             </div>
-            {navItems?.map((item, i) =>
-              // @ts-ignore: Unreachable code error
-              item?.subItems ? (
-                <Disclosure key={item.name} as={Fragment}>
-                  {({ open }) => (
-                    <div className={addClassNames('max-h-11 ease-in-out duration-300 w-full bg-transparent', open ? '!max-h-screen pb-2' : '')}>
-                      <Disclosure.Button
-                        className={addClassNames(
-                          'flex w-full items-center justify-center rounded-lg py-2 text-base',
-                          open ? 'text-secondary dark:text-primary dark:text-secondary dark:text-primary uppercase' : ''
-                        )}
-                      >
-                        {item.name}
-                        <ChevronDownIcon className={addClassNames(open ? 'rotate-180' : '', 'relative -mr-2 h-5 w-5 flex-none')} aria-hidden='true' />
-                      </Disclosure.Button>
-                      <Transition
-                        as={Fragment}
-                        enter='transition-opacity duration-300'
-                        enterFrom='opacity-0'
-                        enterTo='opacity-100'
-                        leave='transition-opacity duration-300'
-                        leaveFrom='opacity-100'
-                        leaveTo='opacity-0'
-                      >
-                        <Disclosure.Panel className='space-y-2'>
-                          {
-                            // @ts-ignore: Unreachable code error
-                            [...item.subItems, ...callsToAction].map((item) => (
-                              <Disclosure.Button key={item.name} as='a' href={item.href} className='block rounded-lg text-sm text-center leading-7'>
-                                {item.name}
-                              </Disclosure.Button>
-                            ))
-                          }
-                        </Disclosure.Panel>
-                      </Transition>
-                    </div>
-                  )}
-                </Disclosure>
-              ) : (
-                <>
-                  {i !== 0 && <hr className='w-[35px] border-slate-600' />}
-                  <Link key={item.name} href={item.href} className='block rounded-lg py-2 leading-7'>
-                    {item.name}
-                  </Link>
-                </>
-              )
-            )}
+            {navItems?.map((item, i) => (
+              <Fragment key={item.name}>
+                {i !== 0 && <hr className='w-[35px] border-slate-600' />}
+                <Link key={item.name} href={item.href} className='block rounded-lg py-2 leading-7'>
+                  {item.name}
+                </Link>
+              </Fragment>
+            ))}
             <Button
               as='link'
               variant='primary'

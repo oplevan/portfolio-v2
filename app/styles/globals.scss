@@ -93,3 +93,13 @@ main {
 hr {
   @apply border-lt-separator dark:border-dt-separator;
 }
+
+.react-photo-gallery--gallery img {
+  @apply transition ease-ease-in-out duration-300 rounded-md hover:-translate-y-2 relative z-0 hover:z-10 hover:shadow-md;
+}
+.react-images__positioner {
+  backdrop-filter: blur(15px);
+}
+.react-images__view img {
+  @apply inline rounded-md;
+}
