@@ -14,7 +14,7 @@ export default function Logo({ isMinimised }: LogoProps) {
       <div className='flex justify-center w-[50px] md:w-[70px]'>
         <Link
           href='/'
-          className={`gradient-box !rounded-full aspect-square ease-in-out duration-300 border-2 border-dt-primary-gradient-to ${
+          className={`gradient-box !rounded-full aspect-square border-2 border-dt-primary-gradient-to transition ease-linear duration-200 hover:scale-110 shadow-primary-wt dark:shadow-primary-dt ${
             isMinimised ? 'w-[50px]' : 'w-[70px]'
           }`}
         >
