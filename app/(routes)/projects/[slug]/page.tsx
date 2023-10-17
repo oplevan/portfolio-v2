@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import allProjects from '@/public/data/projects';
-import Button from '@/app/components/Button/Button';
-import ContactForm from '@/app/components/ContactForm/ContactForm';
-import PhotoGallery from '@/app/components/PhotoGallery/PhotoGallery';
+import Button from '@/components/Button/Button';
+import ContactForm from '@/components/ContactForm/ContactForm';
+import PhotoGallery from '@/components/PhotoGallery/PhotoGallery';
 import { TbExternalLink } from 'react-icons/tb';
 import { IoArrowBackSharp } from 'react-icons/io5';
 import './project-details.scss';

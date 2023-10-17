@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useCallback } from 'react';
-import Carousel, { Modal, ModalGateway } from 'react-images';
-import Gallery from 'react-photo-gallery';
+// import Carousel, { Modal, ModalGateway } from 'react-images';
+// import Gallery from 'react-photo-gallery';
 
 interface Image {
   src: string;
@@ -32,9 +32,10 @@ export default function PhotoGallery({ images }: Props) {
 
   return (
     <>
-      <Gallery photos={images} onClick={openLightbox} />
+      photo gallery
+      {/* <Gallery photos={images} onClick={openLightbox} /> */}
       {/* @ts-ignore: Unreachable code error */}
-      <ModalGateway>
+      {/* <ModalGateway>
         {viewerIsOpen && (
           <Modal onClose={closeLightbox}>
             <Carousel
@@ -48,7 +49,7 @@ export default function PhotoGallery({ images }: Props) {
             />
           </Modal>
         )}
-      </ModalGateway>
+      </ModalGateway> */}
     </>
   );
 }

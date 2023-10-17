@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import ContactForm from '../components/ContactForm/ContactForm';
-import AnimatedScrollDownArrow from '../components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
-import Button from '../components/Button/Button';
-import Card from '../components/Project/Card/Card';
+import ContactForm from '@/components/ContactForm/ContactForm';
+import AnimatedScrollDownArrow from '@/components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
+import Button from '@/components/Button/Button';
+import Card from '@/components/Project/Card/Card';
 import allProjects from '@/public/data/projects';
 import HeadShot from '@/public/assets/images/head-shot.png';
-import Experience from '../components/Experience/Experience';
+import Experience from '@/components/Experience/Experience';
 
 export default function Home() {
   return (

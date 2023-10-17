@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import Button from '@/app/components/Button/Button';
-import SingleProject from '@/app/components/Project/Single/Single';
+import Button from '@/components/Button/Button';
+import SingleProject from '@/components/Project/Single/Single';
 import allProjects from '@/public/data/projects';
 import { IoArrowBackSharp } from 'react-icons/io5';
 

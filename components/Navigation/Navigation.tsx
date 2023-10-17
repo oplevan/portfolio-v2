@@ -5,13 +5,13 @@ import { Disclosure, Popover, Transition } from '@headlessui/react';
 import { ArrowPathIcon, ChartPieIcon, CursorArrowRaysIcon, FingerPrintIcon, SquaresPlusIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import { BiLinkExternal } from 'react-icons/bi';
-import { addClassNames } from '@/app/utils/helpers';
+import { addClassNames } from '@/utils/helpers';
 import Button from '../Button/Button';
 import Logo from '../Logo/Logo';
 import SelectThemeColor from '../SelectThemeColor/SelectThemeColor';
 import Link from 'next/link';
 import './navigation.scss';
-import useHasMounted from '@/app/hooks/useHasMounted';
+import useHasMounted from '@/hooks/useHasMounted';
 
 const navItems = [
   { name: 'About', href: '/#about' },

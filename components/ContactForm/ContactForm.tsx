@@ -1,10 +1,12 @@
 'use client';
-import './ContactForm.scss';
+
 import { useState, useEffect } from 'react';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from 'next-themes';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import axios from 'axios';
+
+import './ContactForm.scss';
 
 interface FormData {
   name: string;
@@ -24,7 +26,7 @@ function ContactForm() {
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [validationErrors, setValidationErrors] = useState<Partial<FormData>>({});
-  const { isDark } = useColorScheme();
+  const { theme, setTheme } = useTheme();
 
   // Function to handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -115,7 +117,7 @@ function ContactForm() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: isDark ? 'dark' : 'light',
+            theme: theme === 'dark' ? 'dark' : 'light',
           });
           setIsSubmitted(true);
         } else {
@@ -128,7 +130,7 @@ function ContactForm() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: isDark ? 'dark' : 'light',
+            theme: theme === 'dark' ? 'dark' : 'light',
           });
         }
       });
