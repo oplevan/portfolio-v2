@@ -1,9 +1,7 @@
 'use client';
 
 import { Fragment, useState, useEffect } from 'react';
-import { Disclosure, Popover, Transition } from '@headlessui/react';
-import { ArrowPathIcon, ChartPieIcon, CursorArrowRaysIcon, FingerPrintIcon, SquaresPlusIcon } from '@heroicons/react/24/outline';
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
+import { Popover, Transition } from '@headlessui/react';
 import { BiLinkExternal } from 'react-icons/bi';
 import { addClassNames } from '@/utils/helpers';
 import Button from '../Button/Button';
@@ -17,26 +15,10 @@ const navItems = [
   { name: 'About', href: '/#about' },
   { name: 'Projects', href: '/#projects' },
   { name: 'Experience', href: '/#experience' },
-  // {
-  //   name: 'Products',
-  //   href: '',
-  //   subItems: [
-  //     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  //     { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  //     { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  //     { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  //     { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-  //   ],
-  // },
   { name: 'Contact', href: '/#contact' },
 ];
 
-const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
-];
-
-export default function Navigation() {
+export default function Navigation(cvURL: any) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -81,7 +63,7 @@ export default function Navigation() {
           ))}
         </Popover.Group>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-10' data-aos='fade-down' data-aos-delay='600'>
-          <Button as='link' variant='primary' href='/assets/pdf/resume.pdf' icon={<BiLinkExternal />} externalLink>
+          <Button as='link' variant='primary' href={cvURL.cvURL} icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>
           {useHasMounted() && <SelectThemeColor />}

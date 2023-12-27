@@ -1,28 +1,36 @@
 import Image from 'next/image';
-import ContactForm from '@/components/ContactForm/ContactForm';
+import { PortableText } from '@portabletext/react';
+
 import AnimatedScrollDownArrow from '@/components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
+import ContactForm from '@/components/ContactForm/ContactForm';
 import Button from '@/components/Button/Button';
 import Card from '@/components/Project/Card/Card';
-import allProjects from '@/public/data/projects';
-import HeadShot from '@/public/assets/images/head-shot.png';
 import Experience from '@/components/Experience/Experience';
 
-export default function Home() {
+import allProjects from '@/public/data/projects';
+
+import { getProfile } from '@/sanity/queries/getProfile';
+import type { Profile } from '@/sanity/types/ProfileInfoType';
+
+export default async function Home() {
+  const profile: Profile[] = await getProfile();
+  const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = profile[0];
   return (
     <>
       <section id='intro'>
         <div className='mb-2' data-aos='fade-up' data-aos-delay='900'>
-          Hi, my name is
+          {introLine}
         </div>
-        <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>
-          Oleg Plevan
-        </div>
-        <div className='heading-2 leading-thin mb-4' data-aos='fade-up' data-aos-delay='1100'>
-          Transforming ideas into seamless <br className='hidden lg:block' /> Web and App Solutions.
+        {
+          <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>
+            {fullName}
+          </div>
+        }
+        <div className='heading-2 leading-thin mb-4 lg:max-w-[800px]' data-aos='fade-up' data-aos-delay='1100'>
+          {headline}
         </div>
         <p className='lg:max-w-xl' data-aos='fade-up' data-aos-delay='1200'>
-          I&apos;m a software engineer with a passion for creating seamless digital experiences that leave a lasting impact. From elegant web applications
-          to&nbsp;intuitive mobile apps, I thrive on transforming ideas into reality with cutting&#8209;edge solutions.
+          {shortBio}
         </p>
         <AnimatedScrollDownArrow />
       </section>
@@ -30,36 +38,16 @@ export default function Home() {
         <div className='section-title'>About me</div>
         <div className='flex gap-10 items-start flex-col-reverse lg:flex-row lg:items-start' data-aos='fade-up' data-aos-delay='400'>
           <div className='flex flex-col gap-3 flex-1'>
-            <p>
-              Hey there, I&apos;m Oleg, a dedicated software developer with a strong skill set honed through years of hands-on experience. My journey as a
-              developer has been shaped by a commitment to pushing the boundaries of what&apos;s possible. I specialize in architecting and developing robust
-              applications that seamlessly marry functionality and design. My proficiency extends to AWS services, enabling me to build scalable and reliable
-              systems that adapt to the demands of the digital landscape.
-            </p>
-            <p>
-              What excites me most is the transformative potential of technology. Whether it&apos;s crafting intuitive user interfaces, optimizing performance
-              for exceptional user experiences, or diving into collaborative cross-functional projects, I thrive on the challenges that come with turning
-              concepts into reality.
-            </p>
-            <p>My expertise lies in the following technologies that empower me to create dynamic, user&#8209;centric digital solutions:</p>
-            <ul className='skills-list'>
-              <li>JavaScript(ES5+)</li>
-              <li>HTML</li>
-              <li>CSS(SCSS/SASS)</li>
-              <li>TypeScript</li>
-              <li>React</li>
-              <li>React Native</li>
-              <li>Next.js</li>
-              <li>Node.js</li>
-              <li>AWS</li>
-            </ul>
-            <p>
-              If you&apos;re looking for a developer who&apos;s not only passionate about coding but also dedicated to producing impactful digital solutions,
-              I&apos;m here to collaborate and bring your ideas to life. Let&apos;s harness the full potential of technology together.
-            </p>
+            <PortableText value={fullBio} />
           </div>
           <div className='gradient-box max-w-[199px] lg:max-w-[300px] m-auto lg:m-0'>
-            <Image src={HeadShot} className='overflow-hidden w-auto h-auto max-w-full max-h-full' alt='Head shot' />
+            <Image
+              src={profilePicture.image}
+              alt={profilePicture.alt ? profilePicture.alt : 'Head shot'}
+              className='overflow-hidden w-auto h-auto max-w-full max-h-full'
+              width={350}
+              height={350}
+            />
           </div>
         </div>
       </section>

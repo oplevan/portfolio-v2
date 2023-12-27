@@ -1,8 +1,0 @@
-.side-element {
-  @apply fixed hidden md:block bottom-0 z-30;
-
-  &:after {
-    content: '';
-    @apply block bg-slate-800 dark:bg-slate-400 mx-auto mt-5 h-[60px] lg:h-[90px] w-[1px];
-  }
-}
