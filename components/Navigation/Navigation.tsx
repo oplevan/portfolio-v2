@@ -9,7 +9,6 @@ import Logo from '../Logo/Logo';
 import ThemeSwitcher from '../ThemeSwitcher';
 import Link from 'next/link';
 import './navigation.scss';
-import useHasMounted from '@/hooks/useHasMounted';
 
 const navItems = [
   { name: 'About', href: '/#about' },
