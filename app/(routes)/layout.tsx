@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import '@/styles/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { NextThemeProvider } from '@/components/theme-provider';
+import ThemeProvider from '@/components/ThemeProvider';
 import Navigation from '@/components/Navigation/Navigation';
 import SideElements from '@/components/SideElements';
 
@@ -20,7 +20,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang='en' suppressHydrationWarning>
       <AOSInit />
       <body>
-        <NextThemeProvider>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <ToastContainer />
           <Navigation cvURL={CV} />
           <main>
@@ -32,7 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               Copyright &copy; 2023 Oleg Plevan. <span className='whitespace-nowrap'>All rights reserved.</span>
             </small>
           </footer>
-        </NextThemeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

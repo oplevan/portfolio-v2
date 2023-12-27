@@ -6,7 +6,7 @@ import { BiLinkExternal } from 'react-icons/bi';
 import { addClassNames } from '@/utils/helpers';
 import Button from '../Button/Button';
 import Logo from '../Logo/Logo';
-import SelectThemeColor from '../SelectThemeColor/SelectThemeColor';
+import ThemeSwitcher from '../ThemeSwitcher';
 import Link from 'next/link';
 import './navigation.scss';
 import useHasMounted from '@/hooks/useHasMounted';
@@ -66,7 +66,7 @@ export default function Navigation(cvURL: any) {
           <Button as='link' variant='primary' href={cvURL.cvURL} icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>
-          {useHasMounted() && <SelectThemeColor />}
+          <ThemeSwitcher />
         </div>
 
         {/* Mobile nav */}
@@ -81,7 +81,9 @@ export default function Navigation(cvURL: any) {
           show={mobileMenuOpen}
         >
           <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-body-light dark:bg-body-dark flex flex-col justify-center items-center gap-3 font-semibold'>
-            <div className='absolute top-5 left-5'>{useHasMounted() && <SelectThemeColor />}</div>
+            <div className='absolute top-5 left-5'>
+              <ThemeSwitcher />
+            </div>
             {navItems?.map((item, i) => (
               <Fragment key={item.name}>
                 {i !== 0 && <hr className='w-[35px] border-slate-600' />}
