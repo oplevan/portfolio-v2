@@ -14,5 +14,4 @@ export type Profile = {
   socials: [];
   email: string;
   CV: string;
-  // skills: string[];
 };

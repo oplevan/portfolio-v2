@@ -10,7 +10,7 @@ import Experience from '@/components/Experience/Experience';
 import allProjects from '@/public/data/projects';
 
 import { getProfile } from '@/sanity/queries/getProfile';
-import type { Profile } from '@/sanity/types/ProfileInfoType';
+import type { Profile } from '@/sanity/types/Profile';
 
 export default async function Home() {
   const profile: Profile[] = await getProfile();

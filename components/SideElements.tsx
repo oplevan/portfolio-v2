@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Button from './Button/Button';
 
 import { getProfile } from '@/sanity/queries/getProfile';
-import type { Profile } from '@/sanity/types/ProfileInfoType';
+import type { Profile } from '@/sanity/types/Profile';
 
 import { FiGithub, FiLinkedin, FiInstagram, FiTwitter, FiFacebook, FiLink } from 'react-icons/fi';
 import { FaXTwitter } from 'react-icons/fa6';

@@ -1,13 +1,14 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import { Fragment, useState, useEffect } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { BiLinkExternal } from 'react-icons/bi';
 import { addClassNames } from '@/utils/helpers';
 import Button from '../Button/Button';
-import Logo from '../Logo/Logo';
 import ThemeSwitcher from '../ThemeSwitcher';
-import Link from 'next/link';
+
 import './navigation.scss';
 
 const navItems = [
@@ -17,17 +18,17 @@ const navItems = [
   { name: 'Contact', href: '/#contact' },
 ];
 
-export default function Navigation(cvURL: any) {
+export default function Navigation({ ...props }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
-  const [isMinimised, setIsMinimised] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   function handleScroll() {
     const currentScrollPos = window.scrollY;
     currentScrollPos > prevScrollPos ? setVisible(false) : setVisible(true);
-    currentScrollPos < prevScrollPos ? setIsMinimised(true) : setIsMinimised(false);
-    currentScrollPos === 0 && setIsMinimised(false); // allows nav to stay visible when click on close menu button
+    currentScrollPos < prevScrollPos ? setIsMinimized(true) : setIsMinimized(false);
+    currentScrollPos === 0 && setIsMinimized(false); // allows nav to stay visible when click on close menu button
     setPrevScrollPos(currentScrollPos);
   }
 
@@ -43,9 +44,28 @@ export default function Navigation(cvURL: any) {
   }
 
   return (
-    <header className={addClassNames(!visible ? 'hidden' : '', isMinimised ? 'minimised' : '')}>
+    <header className={addClassNames(!visible ? 'hidden' : '', isMinimized ? 'minimized' : '')}>
       <nav className='flex w-full h-full items-center justify-between px-6 lg:!px-16' aria-label='Global'>
-        <Logo isMinimised={isMinimised} />
+        <div className='flex lg:flex-1 z-20' data-aos='fade-down' data-aos-delay='100'>
+          {/* Site Logo */}
+          <div className='flex justify-center w-[50px] md:w-[70px]'>
+            <Link
+              href='/'
+              className={`gradient-box !rounded-full aspect-square border-2 border-dt-primary-gradient-to ease-in-out duration-300 delay-100 hover:scale-110 shadow-primary-wt dark:shadow-primary-dt ${
+                isMinimized ? 'w-[50px]' : 'w-[70px]'
+              }`}
+            >
+              <Image
+                src={props.logoSrc}
+                width={70}
+                height={70}
+                className='overflow-hidden w-auto h-auto max-w-full max-h-full rounded-full'
+                alt='Head shot logo'
+                priority
+              />
+            </Link>
+          </div>
+        </div>
         {/* hamburger */}
         <button type='button' className={addClassNames('hamburger lg:hidden relative z-20', mobileMenuOpen ? 'open' : '')} onClick={toggleMenu} />
         <Popover.Group className='hidden lg:flex lg:gap-x-6'>
@@ -62,7 +82,7 @@ export default function Navigation(cvURL: any) {
           ))}
         </Popover.Group>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-10' data-aos='fade-down' data-aos-delay='600'>
-          <Button as='link' variant='primary' href={cvURL.cvURL} icon={<BiLinkExternal />} externalLink>
+          <Button as='link' variant='primary' href={props.cvURL} icon={<BiLinkExternal />} externalLink>
             Resume
           </Button>
           <ThemeSwitcher />
@@ -91,15 +111,7 @@ export default function Navigation(cvURL: any) {
                 </Link>
               </Fragment>
             ))}
-            <Button
-              as='link'
-              variant='primary'
-              size='md'
-              href='https://drive.google.com/file/d/1eTjj7ljjFtpmJBPain_UXaQWQQKUfMO5/view?pli=1'
-              icon={<BiLinkExternal />}
-              className='mt-14'
-              externalLink
-            >
+            <Button as='link' variant='primary' size='md' href={props.cvURL} icon={<BiLinkExternal />} className='mt-14' externalLink>
               Resume
             </Button>
           </div>

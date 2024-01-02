@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity';
+import { IoShareSocial } from 'react-icons/io5';
 
 export default defineType({
   name: 'social',
-  title: 'Social',
+  title: 'Social links',
   type: 'document',
+  icon: IoShareSocial,
   fields: [
     defineField({
       name: 'name',

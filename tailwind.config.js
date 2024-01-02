@@ -74,7 +74,7 @@ module.exports = {
       },
       'nav-height': {
         default: '100px',
-        minimised: '70px',
+        minimized: '70px',
         mobile: '70px',
       },
       boxShadow: {

@@ -74,8 +74,8 @@ export default defineType({
       type: 'string',
     },
     {
-      title: 'Your CV',
       name: 'cv',
+      title: 'Your CV',
       type: 'file',
     },
   ],

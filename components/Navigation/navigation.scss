@@ -9,8 +9,8 @@ header {
     @apply -translate-y-full block;
   }
 
-  &.minimised {
-    height: theme('nav-height.minimised');
+  &.minimized {
+    height: theme('nav-height.minimized');
     backdrop-filter: blur(15px);
     @apply shadow-lg bg-body-light dark:shadow-primary-dt dark:bg-header-dark;
   }
@@ -18,7 +18,7 @@ header {
   @media (max-width: 767px) {
     height: theme('nav-height.mobile');
 
-    &.minimised {
+    &.minimized {
       height: theme('nav-height.mobile');
     }
   }
