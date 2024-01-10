@@ -6,21 +6,21 @@ import Link from 'next/link';
 import Button from '@/components/Button/Button';
 
 type Props = {
-  title: string | React.ReactNode;
-  links?: { web?: string; gitHub?: string };
-  previewImage: string;
-  shortDescription?: string | React.ReactNode;
-  techList: string[];
+  name: string;
+  slug: string;
+  techStack: [...any, { name: string }];
+  links?: { web?: string; gitHub?: string; appStore?: string; googlePlay?: string };
+  previewImage?: string;
+  introDescription?: string;
   animationDelay?: number;
   reverse?: boolean;
-  slug: string;
 };
 
-export default function SingleProject({ title, links, previewImage, shortDescription, techList, animationDelay = 0, reverse = false, slug }: Props) {
+export default function SingleProject({ name, slug, links, previewImage, introDescription, techStack, animationDelay = 0, reverse = false }: Props) {
   return (
     <div className={`single-project ${reverse ? 'reverse' : ''}`} data-aos='fade-up' data-aos-delay={animationDelay}>
       <Link href={`/projects/${slug}`} className='title md:hidden'>
-        {title}
+        {name}
       </Link>
       <figure className='image-wrap'>
         <figcaption className='top-bar'>
@@ -29,19 +29,19 @@ export default function SingleProject({ title, links, previewImage, shortDescrip
             <span></span>
             <span></span>
           </div>
-          <div className='caption'>{title}</div>
+          <div className='caption'>{name}</div>
         </figcaption>
-        <Image src={previewImage} width={700} height={350} alt='Project preview image' />
+        <Image src={previewImage ? previewImage : '/assets/images/placeholder.svg'} width={700} height={350} alt='Project preview image' />
       </figure>
       <div className='project-content'>
         <Link href={`/projects/${slug}`} className='title hidden md:block'>
-          {title}
+          {name}
         </Link>
-        <div className='description gradient-box'>{shortDescription}</div>
+        <div className='description gradient-box'>{introDescription}</div>
         <div className='tech-list'>
-          {techList.map((item, i) => (
+          {techStack.map((item, i) => (
             <div key={i}>
-              <span>▹</span> {item}
+              <span>▹</span> {item.name}
             </div>
           ))}
         </div>

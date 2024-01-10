@@ -1,6 +1,21 @@
 import { PortableTextBlock } from 'sanity';
 
-export type Project = {
+export type ProjectBrief = {
+  _id: string;
+  name: string;
+  slug: string;
+  techStack: [...any, { name: string }];
+  links?: {
+    web?: string;
+    github?: string;
+    appStore?: string;
+    googlePlay?: string;
+  };
+  previewImage: string;
+  introDescription: string;
+};
+
+export type ProjectDetailed = {
   _id: string;
   featured: boolean;
   name: string;
@@ -24,19 +39,4 @@ export type Project = {
     short?: PortableTextBlock[];
   };
   developmentProcess?: PortableTextBlock[];
-};
-
-export type FeaturedProject = {
-  _id: string;
-  name: string;
-  slug: string;
-  techStack: [...any, { name: string }];
-  links?: {
-    web?: string;
-    github?: string;
-    appStore?: string;
-    googlePlay?: string;
-  };
-  previewImage: string;
-  introDescription: string;
 };

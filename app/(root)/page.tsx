@@ -11,11 +11,11 @@ import { getProfile } from '@/sanity/queries/getProfile';
 import { getFeaturedProjects } from '@/sanity/queries/getProjects';
 
 import type { Profile } from '@/sanity/types/Profile';
-import type { FeaturedProject } from '@/sanity/types/Project';
+import type { ProjectBrief } from '@/sanity/types/Project';
 
 export default async function Home() {
   const profile: Profile[] = await getProfile();
-  const featuredProjects: FeaturedProject[] = await getFeaturedProjects();
+  const featuredProjects: ProjectBrief[] = await getFeaturedProjects();
 
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = profile[0];
 

@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity';
 import { client } from '../lib/client';
 
-export async function getProjects() {
+export async function getProjectDetailedInfo() {
   return client.fetch(
     groq`*[_type == "project"]{
       _id,
@@ -22,6 +22,22 @@ export async function getProjects() {
 			},
 			description,
 			developmentProcess,
+    }`
+  );
+}
+
+export async function getAllProjects() {
+  return client.fetch(
+    groq`*[_type == "project"]{
+      _id,
+			name,
+			'slug': slug.current,
+			techStack[]->{
+				name, 
+			},
+			links,
+			'previewImage': images.preview.asset->url,
+			'introDescription': description.intro,
     }`
   );
 }
