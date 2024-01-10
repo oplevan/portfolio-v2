@@ -1,8 +1,8 @@
-import { defineField, defineType } from 'sanity';
+import { defineType } from 'sanity';
 import { BsPersonGear } from 'react-icons/bs';
 
 export default defineType({
-  name: 'skills',
+  name: 'skill',
   title: 'Skills',
   type: 'document',
   icon: BsPersonGear,

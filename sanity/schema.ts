@@ -3,8 +3,9 @@ import { type SchemaTypeDefinition } from 'sanity';
 import profile from './schemas/profile';
 import social from './schemas/social';
 import siteLogo from './schemas/site-logo';
-import skills from './schemas/skills';
+import skills from './schemas/skill';
+import project from './schemas/project';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [siteLogo, profile, skills, social],
+  types: [siteLogo, profile, skills, social, project],
 };

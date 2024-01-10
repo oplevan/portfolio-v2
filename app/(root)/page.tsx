@@ -7,14 +7,18 @@ import Button from '@/components/Button/Button';
 import Card from '@/components/Project/Card/Card';
 import Experience from '@/components/Experience/Experience';
 
-import allProjects from '@/public/data/projects';
-
 import { getProfile } from '@/sanity/queries/getProfile';
+import { getFeaturedProjects } from '@/sanity/queries/getProjects';
+
 import type { Profile } from '@/sanity/types/Profile';
+import type { FeaturedProject } from '@/sanity/types/Project';
 
 export default async function Home() {
   const profile: Profile[] = await getProfile();
+  const featuredProjects: FeaturedProject[] = await getFeaturedProjects();
+
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = profile[0];
+
   return (
     <>
       <section id='intro'>
@@ -53,18 +57,18 @@ export default async function Home() {
       </section>
       <section id='projects'>
         <div className='section-title' data-aos='fade-up'>
-          Projects
+          Featured projects
         </div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {allProjects.slice(0, 3).map((project, index) => (
+          {featuredProjects.map(({ _id, slug, name, techStack, links, previewImage, introDescription }, index) => (
             <Card
-              key={project.id}
-              slug={project.slug}
-              title={project.title}
-              links={project.links}
-              shortDescription={project.description.short}
-              previewImage={project.images.preview}
-              techList={project.techList}
+              key={_id}
+              name={name}
+              slug={slug}
+              techStack={techStack}
+              links={links}
+              previewImage={previewImage}
+              introDescription={introDescription}
               animationDelay={index % 3 === 0 ? 100 : index % 3 === 1 ? 200 : 300}
             />
           ))}

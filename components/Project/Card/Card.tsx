@@ -7,16 +7,16 @@ import Link from 'next/link';
 import Button from '@/components/Button/Button';
 
 type Props = {
+  name: string;
   slug: string;
-  title: string | React.ReactNode;
-  links?: { web?: string; gitHub?: string };
-  previewImage: string;
-  shortDescription?: string | React.ReactNode;
-  techList: string[];
+  techStack: [...any, { name: string }];
+  links?: { web?: string; gitHub?: string; appStore?: string; googlePlay?: string };
+  previewImage?: string;
+  introDescription?: string | React.ReactNode;
   animationDelay?: number;
 };
 
-export default function Card({ title, slug, links, previewImage, shortDescription, techList, animationDelay = 0 }: Props) {
+export default function Card({ name, slug, links, previewImage, introDescription, techStack, animationDelay = 0 }: Props) {
   return (
     <div className='project-card' data-aos='fade-up' data-aos-delay={animationDelay}>
       <div className='z-10'>
@@ -31,16 +31,16 @@ export default function Card({ title, slug, links, previewImage, shortDescriptio
         </div>
         <Link href={`/projects/${slug}`}>
           <div className='preview-image'>
-            <Image src={previewImage} width={360} height={180} alt='Project preview image' />
+            <Image src={previewImage ? previewImage : '/assets/images/placeholder.svg'} width={360} height={180} alt='Project preview image' />
           </div>
-          <div className='title'>{title}</div>
-          <div className='short-description'>{shortDescription}</div>
+          <div className='name'>{name}</div>
+          <div className='intro-description'>{introDescription}</div>
         </Link>
       </div>
-      <div className='tech-list'>
-        {techList.map((item, i) => (
+      <div className='tech-stack'>
+        {techStack.map((item, i) => (
           <div key={i}>
-            <span>▹</span> {item}
+            <span>▹</span> {item.name}
           </div>
         ))}
       </div>
