@@ -52,10 +52,15 @@
     .development-process {
       ul {
         @apply lg:columns-2;
+        column-fill: balance;
+
         li {
           @apply mb-3 pl-3;
-          h6 {
-            @apply -ml-3;
+          break-inside: avoid;
+          text-wrap: pretty;
+
+          strong:first-of-type {
+            @apply -ml-3 block mb-2;
           }
         }
       }

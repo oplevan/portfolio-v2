@@ -1,6 +1,9 @@
-import './SingleProject.scss';
+import './Single.scss';
+
 import { TbExternalLink } from 'react-icons/tb';
 import { FiGithub } from 'react-icons/fi';
+import { PiGooglePlayLogoBold, PiAppStoreLogoBold } from 'react-icons/pi';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/Button/Button';
@@ -9,7 +12,7 @@ type Props = {
   name: string;
   slug: string;
   techStack: [...any, { name: string }];
-  links?: { web?: string; gitHub?: string; appStore?: string; googlePlay?: string };
+  links?: { web?: string; github?: string; appStore?: string; googlePlay?: string };
   previewImage?: string;
   introDescription?: string;
   animationDelay?: number;
@@ -51,7 +54,13 @@ export default function SingleProject({ name, slug, links, previewImage, introDe
           </Button>
           <div className='flex gap-4'>
             {links?.web && <Button as='link' size='lg' variant='icon' icon={<TbExternalLink />} href={links.web} className='!p-2 !-m-2' externalLink />}
-            {links?.gitHub && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.gitHub} className='!p-2 !-m-2' externalLink />}
+            {links?.github && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.github} className='!p-2 !-m-2' externalLink />}
+            {links?.appStore && (
+              <Button as='link' size='lg' variant='icon' icon={<PiAppStoreLogoBold />} href={links.appStore} className='!p-2 !-m-2' externalLink />
+            )}
+            {links?.googlePlay && (
+              <Button as='link' size='lg' variant='icon' icon={<PiGooglePlayLogoBold />} href={links.googlePlay} className='!p-2 !-m-2' externalLink />
+            )}
           </div>
         </div>
       </div>

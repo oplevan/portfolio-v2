@@ -1,16 +1,19 @@
 import './Card.scss';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { AiOutlineFolder } from 'react-icons/ai';
 import { TbExternalLink } from 'react-icons/tb';
 import { FiGithub } from 'react-icons/fi';
-import Image from 'next/image';
-import Link from 'next/link';
+import { PiGooglePlayLogoBold, PiAppStoreLogoBold } from 'react-icons/pi';
+
 import Button from '@/components/Button/Button';
 
 type Props = {
   name: string;
   slug: string;
   techStack: [...any, { name: string }];
-  links?: { web?: string; gitHub?: string; appStore?: string; googlePlay?: string };
+  links?: { web?: string; github?: string; appStore?: string; googlePlay?: string };
   previewImage?: string;
   introDescription?: string | React.ReactNode;
   animationDelay?: number;
@@ -26,7 +29,13 @@ export default function Card({ name, slug, links, previewImage, introDescription
           </div>
           <div className='project-links'>
             {links?.web && <Button as='link' size='lg' variant='icon' icon={<TbExternalLink />} href={links.web} className='!p-2 !-m-2' externalLink />}
-            {links?.gitHub && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.gitHub} className='!p-2 !-m-2' externalLink />}
+            {links?.github && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.github} className='!p-2 !-m-2' externalLink />}
+            {links?.appStore && (
+              <Button as='link' size='lg' variant='icon' icon={<PiAppStoreLogoBold />} href={links.appStore} className='!p-2 !-m-2' externalLink />
+            )}
+            {links?.googlePlay && (
+              <Button as='link' size='lg' variant='icon' icon={<PiGooglePlayLogoBold />} href={links.googlePlay} className='!p-2 !-m-2' externalLink />
+            )}
           </div>
         </div>
         <Link href={`/projects/${slug}`}>

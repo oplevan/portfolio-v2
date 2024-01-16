@@ -1,9 +1,10 @@
 import { groq } from 'next-sanity';
 import { client } from '../lib/client';
+import { ProjectBrief, ProjectDetailed } from '../types/Project';
 
-export async function getProjectDetailedInfo() {
+export async function getProject(slug: string): Promise<ProjectDetailed> {
   return client.fetch(
-    groq`*[_type == "project"]{
+    groq`*[_type == "project" && slug.current == $slug][0]{
       _id,
 			featured,
 			name,
@@ -22,7 +23,8 @@ export async function getProjectDetailedInfo() {
 			},
 			description,
 			developmentProcess,
-    }`
+    }`,
+    { slug }
   );
 }
 

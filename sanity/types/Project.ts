@@ -32,7 +32,7 @@ export type ProjectDetailed = {
   images: {
     preview: string;
     mockup?: string;
-    gallery?: null | string[];
+    gallery?: string[];
   };
   description: {
     intro: string;

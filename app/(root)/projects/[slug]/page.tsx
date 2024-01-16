@@ -1,15 +1,22 @@
+import './project-details.scss';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import allProjects from '@/public/data/projects';
 import Button from '@/components/Button/Button';
 import ContactForm from '@/components/ContactForm/ContactForm';
 import PhotoGallery from '@/components/PhotoGallery/PhotoGallery';
-import { TbExternalLink } from 'react-icons/tb';
-import { IoArrowBackSharp } from 'react-icons/io5';
-import './project-details.scss';
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const project = allProjects.find((project) => project.slug === params.slug);
+import { TbExternalLink } from 'react-icons/tb';
+import { FiGithub } from 'react-icons/fi';
+import { PiGooglePlayLogoBold, PiAppStoreLogoBold } from 'react-icons/pi';
+import { IoArrowBackSharp } from 'react-icons/io5';
+
+import { getProject } from '@/sanity/queries/getProjects';
+import { PortableText } from '@portabletext/react';
+
+export default async function Page({ params }: { params: { slug: string } }) {
+  const project = await getProject(params.slug);
+  // console.log(project);
 
   if (!project) {
     return (
@@ -34,50 +41,64 @@ export default function Page({ params }: { params: { slug: string } }) {
       <div className='wrap gradient-box'>
         <div className='intro'>
           <div className='intro-text'>
-            <h3 className='hidden lg:block mb-5'>{project.title}</h3>
+            <h3 className='hidden lg:block mb-5'>{project.name}</h3>
             <h6>Introduction</h6>
-            <p>{project.description.short}</p>
+            <p>{project.description.intro}</p>
             <div className='mt-3 flex flex-wrap gap-2 justify-between'>
               <div>
-                <strong>Client:</strong> {project.client}
+                <strong>Client: </strong>Client
               </div>
               <div>
-                <strong>Type:</strong> {project.projectType}
+                <strong>Type: </strong>
+                {project.projectType}
               </div>
               <div>
-                <strong>Date:</strong> {project.completionDate}
+                <strong>Date: </strong>
+                {project.completionDate}
               </div>
             </div>
             <div className='tech-list'>
-              <h6>Technologies</h6>
-              {project.techList.map((item, i) => (
+              <h6>Tech Stack</h6>
+              {project.techStack.map(({ name, icon }, i) => (
                 <div key={i}>
-                  <span>▹</span> {item}
+                  <span>▹</span> {name}
                 </div>
               ))}
             </div>
             <div className='buttons'>
-              {project.links.web && (
-                <Button as='link' variant='primary' href={project.links.web} icon={<TbExternalLink className='w-5 h-5 mb-[3px]' />} externalLink>
-                  View on the web
-                </Button>
+              {project.links?.web && (
+                <Button as='link' variant='primary' href={project.links.web} icon={<TbExternalLink className='w-5 h-5 mb-[3px]' />} externalLink />
               )}
-              {project.links.gitHub && (
-                <Button as='link' variant='primary' href={project.links.gitHub} icon={<TbExternalLink className='w-5 h-5 mb-[3px]' />} externalLink>
-                  View on GitHub
-                </Button>
+              {project.links?.github && (
+                <Button as='link' variant='primary' href={project.links.github} icon={<FiGithub className='w-5 h-5 mb-[3px]' />} externalLink />
+              )}
+              {project.links?.appStore && (
+                <Button as='link' variant='primary' href={project.links.appStore} icon={<PiAppStoreLogoBold className='w-5 h-5 mb-[3px]' />} externalLink />
+              )}
+              {project.links?.googlePlay && (
+                <Button as='link' variant='primary' href={project.links.googlePlay} icon={<PiGooglePlayLogoBold className='w-5 h-5 mb-[3px]' />} externalLink />
               )}
             </div>
           </div>
           <div className='intro-image'>
-            <Image src={project.images.mockup} width={800} height={400} alt={project.title} />
+            <Image
+              src={project.images.mockup ? project.images.mockup : '/assets/images/placeholder.svg'}
+              width={800}
+              height={400}
+              alt={project.name}
+              priority
+            />
           </div>
-          <h3 className='lg:hidden'>{project.title}.</h3>
+          <h3 className='lg:hidden'>{project.name}.</h3>
         </div>
         <hr className='my-10' />
-        {project.developmentProcess && <div className='development-process'>{project.developmentProcess}</div>}
+        {project.developmentProcess && (
+          <div className='development-process'>
+            <PortableText value={project.developmentProcess} />
+          </div>
+        )}
         <hr className='my-10' />
-        <PhotoGallery images={project.images.gallery} />
+        {/* <PhotoGallery images={project.images.gallery} /> */}
       </div>
       <div className='text-center mt-20'>
         <div className='heading-3'>Get In Touch</div>
