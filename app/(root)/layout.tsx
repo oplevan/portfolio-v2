@@ -9,19 +9,12 @@ import SideElements from '@/components/SideElements';
 
 import { AOSInit } from '@/utils/aos';
 
-import { getProfile } from '@/sanity/queries/getProfile';
 import { getSiteLogo } from '@/sanity/queries/getSiteLogo';
-
-import type { Profile } from '@/sanity/types/Profile';
-import type { SiteLogo } from '@/sanity/types/SiteLogo';
+import { getProfileInfo } from '@/sanity/queries/getProfile';
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const profile: Profile[] = await getProfile();
-  const logo: SiteLogo[] = await getSiteLogo();
-
-  const { image } = logo[0];
-  const { CV } = profile[0];
-  // console.log(typeof image.src);
+  const logo = await getSiteLogo();
+  const { resume } = await getProfileInfo(['resume']);
 
   return (
     <html lang='en' suppressHydrationWarning>
@@ -29,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <ToastContainer />
-          <Navigation cvURL={CV} logoSrc={image.src} />
+          <Navigation cvURL={resume} logoSrc={logo.src} />
           <main>
             <SideElements />
             {children}

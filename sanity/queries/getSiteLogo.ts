@@ -1,11 +1,16 @@
 import { groq } from 'next-sanity';
 import { client } from '../lib/client';
 
-export async function getSiteLogo() {
+interface SiteLogo {
+  _id: string;
+  src: string;
+}
+
+export async function getSiteLogo(): Promise<SiteLogo> {
   return client.fetch(
-    groq`*[_type == 'siteLogo']{
+    groq`*[_type == 'siteLogo'][0]{
 			_id,
-			image {"src": asset->url},
+			"src": image.asset->url,
 		}`
   );
 }

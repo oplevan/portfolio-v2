@@ -59,3 +59,25 @@ export async function getFeaturedProjects() {
     }`
   );
 }
+
+export async function getProjects(featured?: 'featured'): Promise<ProjectBrief[]> {
+  let query;
+  const queryProps = `
+		_id,
+		name,
+		'slug': slug.current,
+		techStack[]->{
+			name, 
+		},
+		links,
+		'previewImage': images.preview.asset->url,
+		'introDescription': description.intro,
+	`;
+
+  if (featured && featured === 'featured') {
+    query = groq`*[_type == "project" && featured == true]{${queryProps} }`;
+  } else {
+    query = groq`*[_type == "project"]{${queryProps} }`;
+  }
+  return client.fetch(query);
+}

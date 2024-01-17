@@ -7,17 +7,12 @@ import Button from '@/components/Button/Button';
 import Card from '@/components/Project/Card/Card';
 import Experience from '@/components/Experience/Experience';
 
-import { getProfile } from '@/sanity/queries/getProfile';
-import { getFeaturedProjects } from '@/sanity/queries/getProjects';
-
-import type { Profile } from '@/sanity/types/Profile';
-import type { ProjectBrief } from '@/sanity/types/Project';
+import { getProfileInfo } from '@/sanity/queries/getProfile';
+import { getProjects } from '@/sanity/queries/getProjects';
 
 export default async function Home() {
-  const profile: Profile[] = await getProfile();
-  const featuredProjects: ProjectBrief[] = await getFeaturedProjects();
-
-  const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = profile[0];
+  const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = await getProfileInfo();
+  const featuredProjects = await getProjects('featured');
 
   return (
     <>

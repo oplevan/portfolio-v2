@@ -13,5 +13,5 @@ export type Profile = {
   fullBio: PortableTextBlock[];
   socials: [];
   email: string;
-  CV: string;
+  resume: string;
 };

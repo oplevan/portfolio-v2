@@ -1,15 +1,13 @@
 import React, { Fragment } from 'react';
 import Button from './Button/Button';
 
-import { getProfile } from '@/sanity/queries/getProfile';
-import type { Profile } from '@/sanity/types/Profile';
+import { getProfile, getProfileInfo } from '@/sanity/queries/getProfile';
 
 import { FiGithub, FiLinkedin, FiInstagram, FiTwitter, FiFacebook, FiLink } from 'react-icons/fi';
 import { FaXTwitter } from 'react-icons/fa6';
 
 export default async function SideElements() {
-  const profile: Profile[] = await getProfile();
-  const { email, socials } = profile[0];
+  const { email, socials } = await getProfileInfo(['email', 'socials']);
 
   return (
     <>
