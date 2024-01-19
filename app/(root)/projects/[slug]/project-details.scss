@@ -1,73 +1,70 @@
-.project-details {
-  @apply min-h-screen flex flex-col pt-24 md:pt-[15vh] xl:max-w-7xl;
+.project-wrap {
+  @apply p-6 lg:p-10;
 
-  .wrap {
-    @apply p-6 lg:p-10;
+  .intro {
+    @apply flex gap-5 lg:gap-10 flex-col-reverse lg:flex-row;
 
-    .intro {
-      @apply flex gap-5 lg:gap-10 flex-col-reverse lg:flex-row;
+    .intro-text {
+      @apply basis-6/12;
+    }
 
-      .intro-text {
-        @apply basis-6/12;
+    h3 {
+      @apply text-2xl lg:text-4xl font-bold;
+    }
+
+    .intro-image {
+      @apply basis-6/12 aspect-[6/4] rounded-lg shadow-primary-wt dark:shadow-primary-dt flex items-center justify-center relative;
+      background: linear-gradient(#e2e8ec, #fff);
+
+      @media (max-width: 768px) {
+        background: radial-gradient(circle at 50% -50px, rgba(255, 1, 79, 0.5), transparent 130px),
+          radial-gradient(circle at 50% calc(100% + 50px), rgba(255, 1, 79, 0.5), transparent 130px), linear-gradient(#e2e8ec, #fff);
       }
 
-      h3 {
-        @apply text-2xl lg:text-4xl font-bold;
-      }
-
-      .intro-image {
-        @apply basis-6/12 aspect-[6/4] rounded-lg shadow-primary-wt dark:shadow-primary-dt flex items-center justify-center relative;
-        background: linear-gradient(#e2e8ec, #fff);
-
-        @media (max-width: 768px) {
-          background: radial-gradient(circle at 50% -50px, rgba(255, 1, 79, 0.5), transparent 130px),
-            radial-gradient(circle at 50% calc(100% + 50px), rgba(255, 1, 79, 0.5), transparent 130px), linear-gradient(#e2e8ec, #fff);
-        }
-
-        img {
-          @apply relative z-10;
-        }
-      }
-
-      .tech-list {
-        @apply flex flex-wrap text-[13px] font-mono gap-x-4 leading-none mt-3;
-
-        h6 {
-          @apply w-full;
-        }
-
-        div {
-          @apply flex items-center;
-          span {
-            @apply text-secondary dark:text-primary mr-1;
-          }
-        }
-      }
-
-      .buttons {
-        @apply flex flex-col items-center sm:flex-row gap-4 mt-5 lg:mt-8;
+      img {
+        @apply relative z-10;
       }
     }
 
-    .development-process {
-      ul {
-        @apply lg:columns-2;
-        column-fill: balance;
+    .tech-list {
+      @apply flex flex-wrap text-[13px] font-mono gap-x-4 leading-none mt-3;
 
-        li {
-          @apply mb-3 pl-3;
-          break-inside: avoid;
-          text-wrap: pretty;
+      h6 {
+        @apply w-full;
+      }
 
-          strong:first-of-type {
-            @apply -ml-3 block mb-2;
-          }
+      div {
+        @apply flex items-center;
+        span {
+          @apply text-secondary dark:text-primary mr-1;
+        }
+      }
+    }
+
+    .buttons {
+      @apply flex flex-col items-center sm:flex-row gap-4 mt-5 lg:mt-8;
+    }
+  }
+
+  .development-process {
+    ul {
+      @apply lg:columns-2;
+      column-fill: balance;
+
+      li {
+        @apply mb-3 pl-3;
+        break-inside: avoid;
+        text-wrap: pretty;
+
+        strong:first-of-type {
+          @apply -ml-3 block mb-2;
         }
       }
     }
   }
 }
-.dark .project-details .wrap .intro .intro-image {
+
+.dark .project-wrap .intro .intro-image {
   background: radial-gradient(circle at 50% -100px, rgba(255, 1, 79, 0.5), transparent 300px),
     radial-gradient(circle at 50% calc(100% + 100px), rgba(255, 1, 79, 0.5), transparent 300px), linear-gradient(rgba(10, 4, 15, 1), rgba(10, 4, 15, 1));
 

@@ -16,7 +16,6 @@ import { PortableText } from '@portabletext/react';
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const project = await getProject(params.slug);
-  // console.log(project);
 
   if (!project) {
     return (
@@ -34,11 +33,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <>
+    <main>
+      <div className='h-24 md:h-[15vh]'></div>
       <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]' data-aos='fade-down' data-aos-delay='100'>
         <Button as='link' href='/projects' variant='icon-round' icon={<IoArrowBackSharp className='w-5 h-5' />} />
       </div>
-      <div className='wrap gradient-box'>
+      <section className='project-wrap gradient-box'>
         <div className='intro'>
           <div className='intro-text'>
             <h3 className='hidden lg:block mb-5'>{project.name}</h3>
@@ -99,7 +99,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         )}
         <hr className='my-10' />
         {/* <PhotoGallery images={project.images.gallery} /> */}
-      </div>
+      </section>
       <div className='text-center mt-20'>
         <div className='heading-3'>Get In Touch</div>
         <p>
@@ -113,6 +113,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </p>
         <ContactForm />
       </div>
-    </>
+    </main>
   );
 }

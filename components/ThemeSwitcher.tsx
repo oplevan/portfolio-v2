@@ -20,7 +20,7 @@ export default function ThemeSwitcher() {
   }
 
   return (
-    <div className='relative'>
+    <div className='absolute top-4 left-6 lg:relative lg:top-0 lg:left-0'>
       <Button
         as='button'
         variant='icon-round'

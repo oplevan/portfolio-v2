@@ -9,13 +9,14 @@ import Experience from '@/components/Experience/Experience';
 
 import { getProfileInfo } from '@/sanity/queries/getProfile';
 import { getProjects } from '@/sanity/queries/getProjects';
+import PageWrapper from '@/components/page-wrapper';
 
 export default async function Home() {
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = await getProfileInfo();
   const featuredProjects = await getProjects('featured');
 
   return (
-    <>
+    <PageWrapper>
       <section id='intro'>
         <div className='mb-2' data-aos='fade-up' data-aos-delay='900'>
           {introLine}
@@ -88,6 +89,6 @@ export default async function Home() {
         </p>
         <ContactForm />
       </section>
-    </>
+    </PageWrapper>
   );
 }
