@@ -17,7 +17,7 @@ import ThemeSwitcher from '@/components/ThemeSwitcher';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      {/* <AOSInit /> */}
+      <AOSInit />
       <body>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           <Header>
