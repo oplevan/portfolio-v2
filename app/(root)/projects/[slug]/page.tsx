@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <main>
       <div className='h-24 md:h-[15vh]'></div>
-      <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]' data-aos='fade-down' data-aos-delay='100'>
+      <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]'>
         <Button as='link' href='/projects' variant='icon-round' icon={<IoArrowBackSharp className='w-5 h-5' />} />
       </div>
       <section className='project-wrap gradient-box'>

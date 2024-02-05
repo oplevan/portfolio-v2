@@ -5,7 +5,7 @@ import AnimatedScrollDownArrow from '@/components/AnimatedScrollDownArrow/Animat
 import ContactForm from '@/components/ContactForm/ContactForm';
 import Button from '@/components/Button/Button';
 import Card from '@/components/Project/Card/Card';
-import Experience from '@/components/Experience/Experience';
+import Experience from '@/components/experience';
 
 import { getProfileInfo } from '@/sanity/queries/getProfile';
 import { getProjects } from '@/sanity/queries/getProjects';
@@ -18,25 +18,15 @@ export default async function Home() {
   return (
     <PageWrapper>
       <section id='intro'>
-        <div className='mb-2' data-aos='fade-up' data-aos-delay='900'>
-          {introLine}
-        </div>
-        {
-          <div className='heading-1' data-aos='fade-up' data-aos-delay='1000'>
-            {fullName}
-          </div>
-        }
-        <div className='heading-2 leading-thin mb-4 lg:max-w-[800px]' data-aos='fade-up' data-aos-delay='1100'>
-          {headline}
-        </div>
-        <p className='lg:max-w-xl' data-aos='fade-up' data-aos-delay='1200'>
-          {shortBio}
-        </p>
+        <div className='mb-2'>{introLine}</div>
+        {<div className='heading-1'>{fullName}</div>}
+        <div className='heading-2 leading-thin mb-4 lg:max-w-[800px]'>{headline}</div>
+        <p className='lg:max-w-xl'>{shortBio}</p>
         <AnimatedScrollDownArrow />
       </section>
-      <section id='about' data-aos='fade-up'>
+      <section id='about'>
         <div className='section-title'>About me</div>
-        <div className='flex gap-10 items-start flex-col-reverse lg:flex-row lg:items-start' data-aos='fade-up' data-aos-delay='400'>
+        <div className='flex gap-10 items-start flex-col-reverse lg:flex-row lg:items-start'>
           <div className='flex flex-col gap-3 flex-1'>
             <PortableText value={fullBio} />
           </div>
@@ -52,9 +42,7 @@ export default async function Home() {
         </div>
       </section>
       <section id='projects'>
-        <div className='section-title' data-aos='fade-up'>
-          Featured projects
-        </div>
+        <div className='section-title'>Featured projects</div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {featuredProjects.map(({ _id, slug, name, techStack, links, previewImage, introDescription }, index) => (
             <Card
@@ -76,7 +64,7 @@ export default async function Home() {
         </div>
       </section>
       <Experience />
-      <section id='contact' data-aos='fade-up'>
+      <section id='contact'>
         <div className='heading-3'>Get In Touch</div>
         <p>
           Want to get in touch or talk about a project? <br /> Feel free to contact me via email at{' '}

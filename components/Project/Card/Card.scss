@@ -1,5 +1,5 @@
 .project-card {
-  @apply overflow-hidden p-5 relative flex flex-col items-start top-0 justify-between shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md hover:-translate-y-1 hover:before:opacity-100;
+  @apply overflow-hidden p-5 relative flex flex-col items-start top-0 justify-between shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md hover:before:opacity-100;
 
   &:before {
     @apply content-[''] absolute z-0 top-0 left-0 w-full h-full bg-gradient-to-br from-lt-primary-gradient-from to-lt-primary-gradient-to dark:from-dt-secondary-gradient-from dark:to-dt-secondary-gradient-to opacity-0 transition-all ease-linear duration-200 rounded-md;

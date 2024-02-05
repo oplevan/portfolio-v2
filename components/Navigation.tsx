@@ -47,8 +47,6 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
             key={item.name}
             href={item.href}
             className='p-4 text-md tracking-wider leading-6 text-text-light dark:text-text-dark hover:text-secondary dark:hover:text-primary uppercase'
-            data-aos='fade-down'
-            data-aos-delay={(index + 1) * 100}
             onClick={(e) => navLinkClickHandler(e, item.href)}
           >
             {item.name}

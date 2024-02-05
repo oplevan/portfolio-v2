@@ -10,10 +10,8 @@ import jobs from '@/public/data/jobs';
 export default function Example() {
   return (
     <section id='experience' className='lg:max-w-4xl'>
-      <div className='section-title' data-aos='fade-up'>
-        Experience
-      </div>
-      <div className='w-full flex flex-col gap-5' data-aos='fade-up'>
+      <div className='section-title'>Experience</div>
+      <div className='w-full flex flex-col gap-5'>
         {jobs.map(({ id, title, company, location, type, startDate, endDate, description }, index) => (
           <Disclosure key={id}>
             {({ open }) => (

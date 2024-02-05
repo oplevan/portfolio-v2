@@ -41,9 +41,6 @@ function SideElement({ side, children }: SideElementProps) {
       className={`fixed hidden md:block bottom-0 z-30 after:content=[""after:] after:block after:bg-slate-800 after:dark:bg-slate-400 after:mx-auto after:mt-5 after:h-[60px] after:lg:h-[90px] after:w-[1px] ${
         side === 'left' ? 'left-10' : 'right-10'
       }`}
-      data-aos={`fade-${side === 'left' ? 'right' : 'left'}`}
-      data-aos-delay='1600'
-      data-aos-duration='1200'
     >
       <div className='flex flex-col gap-5'>{children}</div>
     </div>

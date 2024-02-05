@@ -21,7 +21,7 @@ type Props = {
 
 export default function Card({ name, slug, links, previewImage, introDescription, techStack, animationDelay = 0 }: Props) {
   return (
-    <div className='project-card' data-aos='fade-up' data-aos-delay={animationDelay}>
+    <div className='project-card'>
       <div className='z-10'>
         <div className='card-top'>
           <div className='project-icon'>
