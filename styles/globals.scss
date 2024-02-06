@@ -184,3 +184,12 @@ header {
     }
   }
 }
+
+.accordion-content {
+  ul {
+    @apply ml-1;
+    li {
+      @apply pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-secondary dark:before:text-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px];
+    }
+  }
+}

@@ -5,15 +5,24 @@ import AnimatedScrollDownArrow from '@/components/AnimatedScrollDownArrow/Animat
 import ContactForm from '@/components/ContactForm/ContactForm';
 import Button from '@/components/Button/Button';
 import Card from '@/components/Project/Card/Card';
-import Experience from '@/components/experience';
+import PageWrapper from '@/components/page-wrapper';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
+import { MdLocationPin } from 'react-icons/md';
+import { TbExternalLink } from 'react-icons/tb';
+import { IoIosCalendar } from 'react-icons/io';
+import { HiBriefcase } from 'react-icons/hi';
 
 import { getProfileInfo } from '@/sanity/queries/getProfile';
 import { getProjects } from '@/sanity/queries/getProjects';
-import PageWrapper from '@/components/page-wrapper';
+import { getExperience } from '@/sanity/queries/getExperience';
+
+import { formatDate } from '@/lib/utils';
 
 export default async function Home() {
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = await getProfileInfo();
   const featuredProjects = await getProjects('featured');
+  const experience = await getExperience();
 
   return (
     <PageWrapper>
@@ -63,7 +72,52 @@ export default async function Home() {
           </Button>
         </div>
       </section>
-      <Experience />
+      <section id='experience' className='lg:max-w-4xl'>
+        <div className='section-title'>Experience</div>
+        <div className='w-full flex flex-col gap-5'>
+          <Accordion type='multiple' className='space-y-4'>
+            {experience.map(({ _id, jobTitle, employmentType, location, employmentStartDate, employmentEndDate, companyName, companyWebsite, description }) => (
+              <AccordionItem key={_id} value={`${_id}`}>
+                <AccordionTrigger>
+                  <div>
+                    <span>{jobTitle}</span> @ <span>{companyName}</span>
+                  </div>
+                  <div className='font-medium text-xs italic text-slate-400 flex items-end min-w-[160px]'>
+                    <IoIosCalendar className='h-5 w-5 mr-2 text-slate-500/80' />
+                    {formatDate(employmentStartDate)} - {formatDate(employmentEndDate)}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className='flex flex-col lg:flex-row lg:items-center mb-5 dark:text-slate-400'>
+                    <div className='flex items-start flex-col sm:flex-row sm:items-center gap-4'>
+                      <div className='flex leading-tight items-end capitalize'>
+                        <HiBriefcase className='h-5 w-5 mr-1 text-slate-500/80' />
+                        {employmentType}
+                      </div>
+                      <div className='flex leading-tight items-end'>
+                        <MdLocationPin className='h-5 w-5 mr-1 text-slate-500/80' />
+                        {location}
+                      </div>
+                      {companyWebsite && (
+                        <a
+                          href={companyWebsite}
+                          target='_blank'
+                          rel='noreferrer noopener'
+                          className='flex leading-tight items-center transition ease-linear hover:text-secondary dark:hover:text-primary hover:underline'
+                        >
+                          <TbExternalLink className='h-5 w-5 mr-1' />
+                          {companyWebsite.slice(8)}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <PortableText value={description} />
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
       <section id='contact'>
         <div className='heading-3'>Get In Touch</div>
         <p>
