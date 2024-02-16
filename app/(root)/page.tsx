@@ -17,7 +17,7 @@ import { getProfileInfo } from '@/sanity/queries/getProfile';
 import { getProjects } from '@/sanity/queries/getProjects';
 import { getExperience } from '@/sanity/queries/getExperience';
 
-import { formatDate } from '@/lib/utils';
+import { calculateDuration, formatDate } from '@/lib/utils';
 
 export default async function Home() {
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = await getProfileInfo();
@@ -72,19 +72,19 @@ export default async function Home() {
           </Button>
         </div>
       </section>
-      <section id='experience' className='lg:max-w-4xl'>
+      <section id='experience' className='lg:max-w-4xl min-h-[80vh] flex flex-col justify-center'>
         <div className='section-title'>Experience</div>
         <div className='w-full flex flex-col gap-5'>
-          <Accordion type='multiple' className='space-y-4'>
+          <Accordion type='single' className='space-y-4' defaultValue={`${experience[0]._id}`}>
             {experience.map(({ _id, jobTitle, employmentType, location, employmentStartDate, employmentEndDate, companyName, companyWebsite, description }) => (
               <AccordionItem key={_id} value={`${_id}`}>
                 <AccordionTrigger>
                   <div>
                     <span>{jobTitle}</span> @ <span>{companyName}</span>
                   </div>
-                  <div className='font-medium text-xs italic text-slate-400 flex items-end min-w-[160px]'>
+                  <div className='font-medium text-xs italic text-slate-400 flex items-end'>
                     <IoIosCalendar className='h-5 w-5 mr-2 text-slate-500/80' />
-                    {formatDate(employmentStartDate)} - {formatDate(employmentEndDate)}
+                    {formatDate(employmentStartDate)} - {formatDate(employmentEndDate)} · {calculateDuration(employmentStartDate, employmentEndDate)}
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -117,19 +117,6 @@ export default async function Home() {
             ))}
           </Accordion>
         </div>
-      </section>
-      <section id='contact'>
-        <div className='heading-3'>Get In Touch</div>
-        <p>
-          Want to get in touch or talk about a project? <br /> Feel free to contact me via email at{' '}
-          <a href='mailto:oleg.plevan@gmail.com' className='fancy'>
-            oleg.plevan@gmail.com
-            <span />
-            <span />
-          </a>
-          <br /> or drop a line in the form below and I&apos;ll get back to you as soon as possible.
-        </p>
-        <ContactForm />
       </section>
     </PageWrapper>
   );

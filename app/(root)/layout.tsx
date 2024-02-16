@@ -3,15 +3,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer } from 'react-toastify';
 
-import ThemeProvider from '@/components/ThemeProvider';
-import Navigation from '@/components/Navigation';
-import SideElements from '@/components/SideElements';
-import Header from '@/components/Header';
-import SiteLogo from '@/components/SiteLogo';
+import ThemeProvider from '@/components/theme-provider';
+import Navigation from '@/components/navigation';
+import SideElements from '@/components/side-elements';
+import Header from '@/components/header';
+import SiteLogo from '@/components/site-logo';
 
-import ResumeButton from '@/components/ResumeButton';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
-import PageWrapper from '@/components/page-wrapper';
+import ResumeButton from '@/components/resume-button';
+import ThemeSwitcher from '@/components/theme-switcher';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -29,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ResumeButton />
             </div>
           </Header>
-          <PageWrapper>{children}</PageWrapper>
+          {children}
           <footer className='text-center pb-10 px-16'>
             <small>
               Copyright &copy; 2023 Oleg Plevan. <span className='whitespace-nowrap'>All rights reserved.</span>

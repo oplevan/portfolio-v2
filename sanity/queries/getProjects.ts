@@ -28,38 +28,6 @@ export async function getProject(slug: string): Promise<ProjectDetailed> {
   );
 }
 
-export async function getAllProjects() {
-  return client.fetch(
-    groq`*[_type == "project"]{
-      _id,
-			name,
-			'slug': slug.current,
-			techStack[]->{
-				name, 
-			},
-			links,
-			'previewImage': images.preview.asset->url,
-			'introDescription': description.intro,
-    }`
-  );
-}
-
-export async function getFeaturedProjects() {
-  return client.fetch(
-    groq`*[_type == "project" && featured == true]{
-      _id,
-			name,
-			'slug': slug.current,
-			techStack[]->{
-				name, 
-			},
-			links,
-			'previewImage': images.preview.asset->url,
-			'introDescription': description.intro,
-    }`
-  );
-}
-
 export async function getProjects(featured?: 'featured'): Promise<ProjectBrief[]> {
   let query;
   const queryProps = `

@@ -24,7 +24,7 @@ type Props = {
 
 const cardVariants: Variants = {
   offscreen: {
-    y: 300,
+    y: 100,
   },
   onscreen: {
     y: 0,

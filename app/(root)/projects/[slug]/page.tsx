@@ -3,7 +3,6 @@ import './project-details.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/Button/Button';
-import ContactForm from '@/components/ContactForm/ContactForm';
 import PhotoGallery from '@/components/PhotoGallery/PhotoGallery';
 
 import { TbExternalLink } from 'react-icons/tb';
@@ -13,6 +12,7 @@ import { IoArrowBackSharp } from 'react-icons/io5';
 
 import { getProject } from '@/sanity/queries/getProjects';
 import { PortableText } from '@portabletext/react';
+import PageWrapper from '@/components/page-wrapper';
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const project = await getProject(params.slug);
@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main>
+    <PageWrapper className='mb-10 lg:mb-18'>
       <div className='h-24 md:h-[15vh]'></div>
       <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]'>
         <Button as='link' href='/projects' variant='icon-round' icon={<IoArrowBackSharp className='w-5 h-5' />} />
@@ -100,19 +100,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <hr className='my-10' />
         {/* <PhotoGallery images={project.images.gallery} /> */}
       </section>
-      <div className='text-center mt-20'>
-        <div className='heading-3'>Get In Touch</div>
-        <p>
-          Want to get in touch or talk about a project? <br /> Feel free to contact me via email at{' '}
-          <a href='mailto:oleg.plevan@gmail.com' className='fancy'>
-            oleg.plevan@gmail.com
-            <span />
-            <span />
-          </a>
-          <br /> or drop a line in the form below and I&apos;ll get back to you as soon as I can.
-        </p>
-        <ContactForm />
-      </div>
-    </main>
+    </PageWrapper>
   );
 }

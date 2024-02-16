@@ -70,4 +70,11 @@ export default defineType({
       ],
     },
   ],
+  orderings: [
+    {
+      title: 'Employment End Date, Latest',
+      name: 'employmentEndDateDesc',
+      by: [{ field: 'employmentEndDate', direction: 'desc' }],
+    },
+  ],
 });

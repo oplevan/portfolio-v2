@@ -17,7 +17,7 @@
 }
 body {
   -webkit-font-smoothing: antialiased;
-  @apply overflow-x-hidden m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-text-light dark:text-text-dark bg-body-light dark:bg-body-dark;
+  @apply m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased text-text-light dark:text-text-dark bg-body-light dark:bg-body-dark;
 }
 /*
 =======================
@@ -68,10 +68,6 @@ main {
           }
         }
       }
-    }
-
-    &#contact {
-      @apply text-center min-h-[80vh] flex flex-col justify-center;
     }
   }
 }
@@ -192,4 +188,8 @@ header {
       @apply pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-secondary dark:before:text-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px];
     }
   }
+}
+
+a.active {
+  @apply text-secondary dark:text-primary;
 }

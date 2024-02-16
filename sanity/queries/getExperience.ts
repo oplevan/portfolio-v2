@@ -4,7 +4,7 @@ import { Experience } from '../types/Experience';
 
 export async function getExperience(): Promise<Experience[]> {
   return client.fetch(
-    groq`*[_type == "experience"]{
+    groq`*[_type == "experience"] | order(employmentStartDate desc){
       _id,
 			jobTitle,
 			employmentType,
