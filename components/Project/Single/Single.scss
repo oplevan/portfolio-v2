@@ -43,7 +43,7 @@
     @apply flex-1 text-center md:text-right relative z-10 md:mr-12 md:-ml-12;
 
     .description {
-      @apply overflow-hidden bg-white dark:bg-dark-secondary-2 rounded-md p-6 leading-tight;
+      @apply overflow-hidden bg-white rounded-md p-6 leading-tight;
     }
 
     .tech-list {
@@ -52,13 +52,16 @@
       div {
         @apply flex items-center;
         span {
-          @apply text-secondary dark:text-primary mr-1;
+          @apply text-primary mr-1;
         }
       }
     }
 
     .project-links {
       @apply flex items-center justify-between mt-3;
+      & > div {
+        @apply flex items-center justify-between mt-3 gap-4 [&>a]:p-2 [&>a]:-m-2 [&>a]:transition [&>a]:duration-200 [&>a:hover]:-translate-y-1 dark:[&>a:hover]:text-primary;
+      }
     }
   }
 

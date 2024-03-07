@@ -13,7 +13,7 @@
     }
 
     .intro-image {
-      @apply basis-6/12 aspect-[6/4] rounded-lg shadow-primary-wt dark:shadow-primary-dt flex items-center justify-center relative;
+      @apply basis-6/12 aspect-[6/4] rounded-lg shadow-primary  flex items-center justify-center relative;
       background: linear-gradient(#e2e8ec, #fff);
 
       @media (max-width: 768px) {
@@ -36,13 +36,13 @@
       div {
         @apply flex items-center;
         span {
-          @apply text-secondary dark:text-primary mr-1;
+          @apply text-primary mr-1;
         }
       }
     }
 
     .buttons {
-      @apply flex flex-col items-center sm:flex-row gap-4 mt-5 lg:mt-8;
+      @apply flex flex-col items-center sm:flex-row gap-4 mt-5 lg:mt-8 [&>a]:p-2 [&>a]:-m-2 [&>a]:transition [&>a]:duration-200 [&>a:hover]:-translate-y-1 dark:[&>a:hover]:text-primary;
     }
   }
 

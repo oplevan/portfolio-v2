@@ -12,10 +12,7 @@ const AccordionItem = React.forwardRef<React.ElementRef<typeof AccordionPrimitiv
   ({ className, ...props }, ref) => (
     <AccordionPrimitive.Item
       ref={ref}
-      className={cn(
-        'shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md',
-        className
-      )}
+      className={cn('shadow-primary  bg-gradient-to-br from-primary-gradient-from to-primary-gradient-to rounded-md', className)}
       {...props}
     />
   )
@@ -30,13 +27,13 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        'relative flex flex-col lg:flex-row flex-1 lg:items-center justify-between gap-2 pl-4 pr-12 py-3 text-sm font-bold transition-all [&[data-state=open]>svg]:rotate-180 data-[state=open]:text-secondary dark:data-[state=open]:text-primary',
+        'relative flex flex-col lg:flex-row flex-1 lg:items-center justify-between gap-2 pl-4 pr-12 py-3 text-sm font-bold transition-all [&[data-state=open]>svg]:rotate-180 data-[state=open]:text-primary',
         className
       )}
       {...props}
     >
       {children}
-      <ChevronUpIcon className='h-6 w-6 text-secondary dark:text-primary shrink-0 transition-transform duration-200 absolute top-1/2 right-3 -translate-y-1/2' />
+      <ChevronUpIcon className='h-6 w-6 text-primary shrink-0 transition-transform duration-200 absolute top-1/2 right-3 -translate-y-1/2' />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -48,7 +45,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className='overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down border-t-[1px] border-lt-separator dark:border-dt-separator accordion-content'
+    className='overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down border-t-[1px] border-separator accordion-content'
     {...props}
   >
     <div className={cn('p-4', className)}>{children}</div>

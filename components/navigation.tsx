@@ -48,16 +48,11 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           <Link
             key={link.label}
             href={link.href}
-            className={cn(
-              'text-md tracking-wider leading-6  hover:text-secondary dark:hover:text-primary uppercase relative',
-              link.href === pathname ? 'text-secondary dark:text-primary' : 'text-text-light dark:text-text-dark'
-            )}
+            className={cn('text-md tracking-wider leading-6 hover:text-primary uppercase relative', link.href === pathname ? 'text-primary' : '')}
             onClick={(e) => navLinkClickHandler(e, link.href)}
             spy-section={link.label.toLowerCase().split(' ').join('-')}
           >
-            {link.href === pathname && (
-              <motion.span layoutId='underline' className='absolute left-0 bottom-0 block h-[1px] w-full bg-secondary dark:bg-primary' />
-            )}
+            {link.href === pathname && <motion.span layoutId='underline' className='absolute left-0 bottom-0 block h-[1px] w-full bg-primary' />}
             {link.label}
           </Link>
         ))}
@@ -71,10 +66,10 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
         leave='transition ease-out duration-800'
         leaveFrom='opacity-100 translate-x-0'
         leaveTo='opacity-0 translate-x-1/2'
-        className='lg:hidden fixed top-0 right-0 w-9/12 h-screen z-10 dark:shadow-mobile-nav'
+        className='lg:hidden fixed top-0 right-0 w-9/12 h-screen z-10 shadow-drawer'
         show={mobileMenuOpen}
       >
-        <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-body-light dark:bg-body-dark flex flex-col justify-center items-center gap-3 font-semibold'>
+        <div className='absolute inset-y-0 z-30 w-full overflow-y-auto bg-background flex flex-col justify-center items-center gap-3 font-semibold'>
           {navLinks?.map((link, i) => (
             <Fragment key={link.label}>
               {i !== 0 && <hr className='w-[35px] border-slate-600' />}

@@ -1,9 +1,9 @@
-import '@/styles/globals.scss';
+import '@/app/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer } from 'react-toastify';
 
-import ThemeProvider from '@/components/theme-provider';
+import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import SideElements from '@/components/side-elements';
 import Header from '@/components/header';
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en' suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
           <Header>
             <SiteLogo />
             <Navigation>

@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ecf0f3;
+    --foreground: #3d3f42;
+
+    --primary: #3300ff;
+    --primary-foreground: #f8fafc;
+
+    --primary-gradient-from: #e2e8ec;
+    --primary-gradient-to: #ffffff;
+    --secondary-gradient-from: #ffffff;
+    --secondary-gradient-to: #e2e8ec;
+
+    --primary-shadow: 5px 5px 15px #b0b7c2, -5px -5px 15px #fcfcfc;
+    --inner-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset;
+    --drawer-shadow: -10px 0px 19px #b0b7c2;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: #ff0003;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: #e2e8ec;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --separator: #dce1e4;
+
+    --radius: 0.5rem;
+
+    --hamburger-width: 30px;
+    --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+    --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
+    --ham-after: bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ham-after-active: bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      @apply bg-slate-300;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      @apply bg-slate-400 rounded-[3px];
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      @apply bg-slate-500;
+    }
+  }
+
+  .dark {
+    --background: #202327;
+    --foreground: #c4cfde;
+
+    --primary: #66ffdb;
+    --primary-foreground: #0f172a;
+
+    --primary-gradient-from: #181a1d;
+    --primary-gradient-to: #292f35;
+    --secondary-gradient-from: #2b3035;
+    --secondary-gradient-to: #0c0d0f;
+
+    --primary-shadow: 10px 10px 19px #111214, -10px -10px 19px #262a2e;
+    --inner-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset;
+    --drawer-shadow: -10px 0px 19px #111214;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: #ff0003;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: #292f35;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --separator: #131516;
+
+    ::-webkit-scrollbar-track {
+      @apply bg-[#292f35];
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      @apply bg-[#2b3035];
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      @apply bg-slate-600;
+    }
+  }
+}
+
+* {
+  outline: 0;
+  // scroll-behavior: smooth !important;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  @apply m-0 min-h-full w-full font-sans ease-in-out duration-100 antialiased bg-background text-foreground;
+}
+/*
+=======================
+        Fancy
+=======================
+*/
+p a {
+  @apply inline-block relative text-primary hover:before:opacity-100 hover:before:w-1/2 hover:after:opacity-100 hover:after:w-1/2 ease-in-out duration-200;
+
+  &:before {
+    @apply content-[''] absolute w-0 h-[1px] bottom-[1px] right-1/2 ease-in-out duration-200 bg-primary;
+  }
+  &:after {
+    @apply content-[''] absolute w-0 h-[1px] bottom-[1px] left-1/2 ease-in-out duration-200 bg-primary;
+  }
+
+  span {
+    @apply border-b border-slate-800 dark:border-slate-400;
+  }
+}
+/*
+=======================
+      Fancy End
+=======================
+*/
+main {
+  & > section {
+    @apply container mx-auto xl:max-w-6xl py-5 px-0 lg:py-16 md:px-16 z-30 relative;
+
+    @media (min-width: 390px) and (max-width: 639px) {
+      max-width: 350px;
+    }
+
+    &#intro {
+      @apply flex flex-col items-start justify-center min-h-screen;
+    }
+
+    &#about {
+      ul {
+        @apply p-0 my-3 list-none grid gap-2 grid-cols-2 md:grid-cols-3;
+
+        li {
+          @apply relative pl-5 font-mono text-[14px];
+
+          &:before {
+            content: '▹';
+            @apply absolute left-0 text-primary text-sm;
+          }
+        }
+      }
+    }
+  }
+}
+
+// :is(.dark .dark\:border-neutral-600) {
+//   border-color: #64748b !important;
+// }
+.group[data-te-input-focused] .group-data-\[te-input-focused\]\:border-t-transparent,
+.group[data-te-input-state-active] .group-data-\[te-input-state-active\]\:border-t-transparent,
+.group[data-te-input-focused] .group-data-\[te-input-focused\]\:border-primary,
+.group[data-te-input-state-active] .group-data-\[te-input-state-active\]\:border-primary {
+  border-color: transparent !important;
+}
+
+.gradient-box {
+  @apply shadow-primary bg-gradient-to-br from-primary-gradient-from to-primary-gradient-to rounded-lg;
+}
+
+hr {
+  @apply border-separator;
+}
+
+// .react-photo-gallery--gallery img {
+//   @apply transition ease-ease-in-out duration-300 rounded-md hover:-translate-y-2 relative z-0 hover:z-10 hover:shadow-md;
+// }
+// .react-images__positioner {
+//   backdrop-filter: blur(15px);
+// }
+// .react-images__view img {
+//   @apply inline rounded-md;
+// }
+
+header {
+  height: theme('nav-height.default');
+  filter: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  @apply font-mono fixed z-40 top-0 w-full ease-in-out duration-300 delay-100;
+
+  &.hidden {
+    @apply -translate-y-full block;
+  }
+
+  &.minimized {
+    height: theme('nav-height.minimized');
+    backdrop-filter: blur(15px);
+    @apply shadow-primary bg-background;
+  }
+
+  @media (max-width: 767px) {
+    height: theme('nav-height.mobile');
+
+    &.minimized {
+      height: theme('nav-height.mobile');
+    }
+  }
+  .hamburger {
+    width: var(--hamburger-width);
+    height: 2px;
+    border-radius: 4px;
+    transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s;
+    transform: rotate(0deg);
+    position: relative;
+    @apply bg-primary;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: auto;
+      right: 0px;
+      width: 44px;
+      height: 2px;
+      border-radius: 4px;
+      @apply bg-primary;
+    }
+
+    &:before {
+      width: 120%;
+      top: -10px;
+      opacity: 1;
+      transition: var(--ham-before);
+    }
+
+    &:after {
+      width: 80%;
+      bottom: -10px;
+      transform: rotate(0deg);
+      transition: var(--ham-after);
+    }
+
+    &.open {
+      transition: transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+      transform: rotate(225deg);
+
+      &:before {
+        width: 100%;
+        opacity: 0;
+        top: 0;
+        transition: var(--ham-before-active);
+      }
+
+      &:after {
+        width: 100%;
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: var(--ham-after-active);
+      }
+    }
+  }
+}
+
+.accordion-content {
+  ul {
+    @apply ml-1;
+    li {
+      @apply pl-5 relative mb-2.5 last:mb-0 before:content-["▹"] before:text-secondary dark:before:text-primary before:absolute before:-left-[1px] before:text-base before:-top-[3px];
+    }
+  }
+}
+
+a.active {
+  @apply text-primary;
+}
+
+// Typography
+.section-title {
+  font-size: clamp(24px, 5vw, 38px);
+  @apply font-semibold flex items-end w-full mt-2 mb-14 relative leading-none max-w-xl;
+
+  &:after {
+    content: '';
+    @apply bg-slate-400 dark:bg-foreground ml-5 h-[1px] flex-1 mb-[6px];
+  }
+}
+.heading-1 {
+  font-size: clamp(45px, 8vw, 80px);
+  @apply font-sans font-bold leading-tight text-foreground;
+}
+.heading-2 {
+  font-size: clamp(18px, 5vw, 50px);
+  @apply font-sans font-bold leading-tight;
+}
+.heading-3 {
+  @apply font-bold text-5xl mb-4 text-foreground;
+}
+.heading-4 {
+  font-size: clamp(25px, 2vw, 45px);
+  @apply font-sans font-bold leading-tight text-foreground;
+}
+h4,
+h5,
+h6 {
+  @apply font-sans font-bold mb-2 text-foreground;
+}
+h5 {
+  @apply text-2xl;
+}
+h6 {
+  @apply text-lg;
+}

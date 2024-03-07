@@ -2,7 +2,7 @@ import './project-details.scss';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import Button from '@/components/Button/Button';
+import { Button } from '@/components/ui/button';
 import PhotoGallery from '@/components/PhotoGallery/PhotoGallery';
 
 import { TbExternalLink } from 'react-icons/tb';
@@ -36,7 +36,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <PageWrapper className='mb-10 lg:mb-18'>
       <div className='h-24 md:h-[15vh]'></div>
       <div className='hidden md:block fixed left-[38px] top-32 lg:top-36 lg:left-[78px]'>
-        <Button as='link' href='/projects' variant='icon-round' icon={<IoArrowBackSharp className='w-5 h-5' />} />
+        <Button asChild size='icon' className='rounded-full before:rounded-full'>
+          <Link href='/projects'>
+            <IoArrowBackSharp />
+          </Link>
+        </Button>
       </div>
       <section className='project-wrap gradient-box'>
         <div className='intro'>
@@ -67,16 +71,32 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
             <div className='buttons'>
               {project.links?.web && (
-                <Button as='link' variant='primary' href={project.links.web} icon={<TbExternalLink className='w-5 h-5 mb-[3px]' />} externalLink />
+                <Button variant='ghost' size='icon' asChild>
+                  <Link href={project.links.web} target='_blank'>
+                    <TbExternalLink />
+                  </Link>
+                </Button>
               )}
               {project.links?.github && (
-                <Button as='link' variant='primary' href={project.links.github} icon={<FiGithub className='w-5 h-5 mb-[3px]' />} externalLink />
+                <Button variant='ghost' size='icon' asChild>
+                  <Link href={project.links.github} target='_blank'>
+                    <FiGithub />
+                  </Link>
+                </Button>
               )}
               {project.links?.appStore && (
-                <Button as='link' variant='primary' href={project.links.appStore} icon={<PiAppStoreLogoBold className='w-5 h-5 mb-[3px]' />} externalLink />
+                <Button variant='ghost' size='icon' asChild>
+                  <Link href={project.links.appStore} target='_blank'>
+                    <PiAppStoreLogoBold />
+                  </Link>
+                </Button>
               )}
               {project.links?.googlePlay && (
-                <Button as='link' variant='primary' href={project.links.googlePlay} icon={<PiGooglePlayLogoBold className='w-5 h-5 mb-[3px]' />} externalLink />
+                <Button variant='ghost' size='icon' asChild>
+                  <Link href={project.links.googlePlay} target='_blank'>
+                    <PiGooglePlayLogoBold />
+                  </Link>
+                </Button>
               )}
             </div>
           </div>

@@ -1,19 +1,19 @@
 .project-card {
-  @apply overflow-hidden p-5 relative flex flex-col items-start top-0 justify-between shadow-primary-wt dark:shadow-primary-dt bg-gradient-to-br from-lt-secondary-gradient-from to-white dark:from-dt-primary-gradient-from dark:to-dt-primary-gradient-to rounded-md hover:before:opacity-100;
+  @apply overflow-hidden p-5 relative flex flex-col items-start top-0 justify-between shadow-primary bg-gradient-to-br from-primary-gradient-from to-primary-gradient-to rounded-md hover:before:opacity-100;
 
   &:before {
-    @apply content-[''] absolute z-0 top-0 left-0 w-full h-full bg-gradient-to-br from-lt-primary-gradient-from to-lt-primary-gradient-to dark:from-dt-secondary-gradient-from dark:to-dt-secondary-gradient-to opacity-0 transition-all ease-linear duration-200 rounded-md;
+    @apply content-[''] absolute z-0 top-0 left-0 w-full h-full bg-gradient-to-br from-secondary-gradient-from to-secondary-gradient-to opacity-0 transition-all ease-linear duration-200 rounded-md;
   }
 
   .card-top {
     @apply w-full flex justify-between items-center mb-4;
 
     .project-icon {
-      @apply text-3xl text-secondary dark:text-primary;
+      @apply text-3xl text-primary;
     }
 
     .project-links {
-      @apply flex gap-4;
+      @apply flex gap-4 [&>a]:p-2 [&>a]:-m-2 [&>a]:transition [&>a]:duration-200 [&>a:hover]:-translate-y-1 dark:[&>a:hover]:text-primary;
     }
   }
 
@@ -27,7 +27,7 @@
   }
 
   .name {
-    @apply dark:text-light-secondary-2 font-bold text-xl mb-3 transition-all ease-in-out duration-300;
+    @apply font-bold text-xl mb-3 transition-all ease-in-out duration-300;
   }
 
   .intro-description {
@@ -40,27 +40,17 @@
     div {
       @apply flex items-center;
       span {
-        @apply text-secondary dark:text-primary mr-1;
+        @apply text-primary mr-1;
       }
     }
   }
 
   &:hover {
-    * {
-      @apply text-white dark:text-inherit;
-    }
-    .name {
-      @apply dark:text-primary;
-    }
     .preview-image {
       filter: grayscale(0%);
       img {
-        transform: scale(1.1);
+        transform: scale(1.07);
       }
-    }
-
-    .tech-stack div span {
-      @apply text-white dark:text-primary;
     }
   }
 }

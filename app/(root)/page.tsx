@@ -3,7 +3,7 @@ import { PortableText } from '@portabletext/react';
 
 import AnimatedScrollDownArrow from '@/components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
 import ContactForm from '@/components/ContactForm/ContactForm';
-import Button from '@/components/Button/Button';
+import { Button } from '@/components/ui/button';
 import Card from '@/components/Project/Card/Card';
 import PageWrapper from '@/components/page-wrapper';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -18,6 +18,7 @@ import { getProjects } from '@/sanity/queries/getProjects';
 import { getExperience } from '@/sanity/queries/getExperience';
 
 import { calculateDuration, formatDate } from '@/lib/utils';
+import Link from 'next/link';
 
 export default async function Home() {
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = await getProfileInfo();
@@ -54,21 +55,14 @@ export default async function Home() {
         <div className='section-title'>Featured projects</div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {featuredProjects.map(({ _id, slug, name, techStack, links, previewImage, introDescription }, index) => (
-            <Card
-              key={_id}
-              name={name}
-              slug={slug}
-              techStack={techStack}
-              links={links}
-              previewImage={previewImage}
-              introDescription={introDescription}
-              animationDelay={index % 3 === 0 ? 100 : index % 3 === 1 ? 200 : 300}
-            />
+            <Card key={_id} name={name} slug={slug} techStack={techStack} links={links} previewImage={previewImage} introDescription={introDescription} />
           ))}
         </div>
         <div className='mt-10 flex justify-center'>
-          <Button as='link' href='/projects' variant='primary' size='md'>
-            View all projects
+          <Button asChild>
+            <Link href='/projects'>
+              <span>View all projects</span>
+            </Link>
           </Button>
         </div>
       </section>

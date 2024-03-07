@@ -7,7 +7,7 @@ import { TbExternalLink } from 'react-icons/tb';
 import { FiGithub } from 'react-icons/fi';
 import { PiGooglePlayLogoBold, PiAppStoreLogoBold } from 'react-icons/pi';
 
-import Button from '@/components/Button/Button';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   name: string;
@@ -16,10 +16,9 @@ type Props = {
   links?: { web?: string; github?: string; appStore?: string; googlePlay?: string };
   previewImage?: string;
   introDescription?: string | React.ReactNode;
-  animationDelay?: number;
 };
 
-export default function Card({ name, slug, links, previewImage, introDescription, techStack, animationDelay = 0 }: Props) {
+export default function Card({ name, slug, links, previewImage, introDescription, techStack }: Props) {
   return (
     <div className='project-card'>
       <div className='z-10'>
@@ -28,13 +27,33 @@ export default function Card({ name, slug, links, previewImage, introDescription
             <AiOutlineFolder />
           </div>
           <div className='project-links'>
-            {links?.web && <Button as='link' size='lg' variant='icon' icon={<TbExternalLink />} href={links.web} className='!p-2 !-m-2' externalLink />}
-            {links?.github && <Button as='link' size='lg' variant='icon' icon={<FiGithub />} href={links.github} className='!p-2 !-m-2' externalLink />}
+            {links?.web && (
+              <Button variant='ghost' size='icon' asChild>
+                <Link href={links.web} target='_blank'>
+                  <TbExternalLink />
+                </Link>
+              </Button>
+            )}
+            {links?.github && (
+              <Button variant='ghost' size='icon' asChild>
+                <Link href={links.github} target='_blank'>
+                  <FiGithub />
+                </Link>
+              </Button>
+            )}
             {links?.appStore && (
-              <Button as='link' size='lg' variant='icon' icon={<PiAppStoreLogoBold />} href={links.appStore} className='!p-2 !-m-2' externalLink />
+              <Button variant='ghost' size='icon' asChild>
+                <Link href={links.appStore} target='_blank'>
+                  <PiAppStoreLogoBold />
+                </Link>
+              </Button>
             )}
             {links?.googlePlay && (
-              <Button as='link' size='lg' variant='icon' icon={<PiGooglePlayLogoBold />} href={links.googlePlay} className='!p-2 !-m-2' externalLink />
+              <Button variant='ghost' size='icon' asChild>
+                <Link href={links.googlePlay} target='_blank'>
+                  <PiGooglePlayLogoBold />
+                </Link>
+              </Button>
             )}
           </div>
         </div>
