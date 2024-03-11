@@ -1,11 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 
 import AnimatedScrollDownArrow from '@/components/AnimatedScrollDownArrow/AnimatedScrollDownArrow';
-import ContactForm from '@/components/ContactForm/ContactForm';
-import { Button } from '@/components/ui/button';
-import Card from '@/components/Project/Card/Card';
+import ProjectCard from '@/components/project-card';
 import PageWrapper from '@/components/page-wrapper';
+import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 import { MdLocationPin } from 'react-icons/md';
@@ -18,7 +18,6 @@ import { getProjects } from '@/sanity/queries/getProjects';
 import { getExperience } from '@/sanity/queries/getExperience';
 
 import { calculateDuration, formatDate } from '@/lib/utils';
-import Link from 'next/link';
 
 export default async function Home() {
   const { introLine, fullName, headline, shortBio, fullBio, profilePicture } = await getProfileInfo();
@@ -55,7 +54,16 @@ export default async function Home() {
         <div className='section-title'>Featured projects</div>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {featuredProjects.map(({ _id, slug, name, techStack, links, previewImage, introDescription }, index) => (
-            <Card key={_id} name={name} slug={slug} techStack={techStack} links={links} previewImage={previewImage} introDescription={introDescription} />
+            <ProjectCard
+              key={_id}
+              name={name}
+              slug={slug}
+              techStack={techStack}
+              links={links}
+              previewImage={previewImage}
+              introDescription={introDescription}
+              animationDelay={index % 3 === 0 ? 0.3 : index % 3 === 1 ? 0.2 : 0.1}
+            />
           ))}
         </div>
         <div className='mt-10 flex justify-center'>

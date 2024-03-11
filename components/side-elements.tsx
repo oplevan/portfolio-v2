@@ -42,7 +42,7 @@ function SideElement({ side, children }: SideElementProps) {
   return (
     <div
       className={`fixed hidden md:block bottom-0 z-30 after:content=[""after:] after:block after:bg-slate-800 after:dark:bg-slate-400 after:mx-auto after:mt-5 after:h-[60px] after:lg:h-[90px] after:w-[1px] ${
-        side === 'left' ? 'left-8' : 'right-8'
+        side === 'left' ? 'left-2 lg:left-8' : 'right-2 lg:right-8'
       }`}
     >
       <div className='flex flex-col gap-5'>{children}</div>

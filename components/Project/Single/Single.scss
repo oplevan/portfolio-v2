@@ -43,7 +43,7 @@
     @apply flex-1 text-center md:text-right relative z-10 md:mr-12 md:-ml-12;
 
     .description {
-      @apply overflow-hidden bg-white rounded-md p-6 leading-tight;
+      @apply overflow-hidden bg-white rounded-md p-6 leading-tight text-left;
     }
 
     .tech-list {

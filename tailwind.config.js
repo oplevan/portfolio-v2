@@ -26,6 +26,7 @@ module.exports = {
 
         primary: {
           DEFAULT: 'var(--primary)',
+          muted: 'var(--primary-muted)',
           foreground: 'var(--primary-foreground)',
           'gradient-from': 'var(--primary-gradient-from)',
           'gradient-to': 'var(--primary-gradient-to)',
