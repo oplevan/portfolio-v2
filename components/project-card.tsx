@@ -80,7 +80,7 @@ export default function ProjectCard({ name, slug, links, previewImage, introDesc
             </div>
           </div>
           <Link href={links?.web ? links.web : '/projects'} className='flex-1'>
-            <div className='block relative mb-3 overflow-hidden -mx-6 aspect-[16/8] transition ease-in-out duration-500 filter grayscale group-hover:grayscale-0'>
+            <div className='block relative mb-3 overflow-hidden -mx-6 aspect-[16/8] transition ease-in-out duration-500'>
               <Image
                 src={previewImage ? previewImage : '/assets/images/placeholder.svg'}
                 width={360}

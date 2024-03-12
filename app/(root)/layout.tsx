@@ -1,7 +1,8 @@
 import '@/app/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ToastContainer } from 'react-toastify';
+import { Metadata } from 'next';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
@@ -11,6 +12,11 @@ import SiteLogo from '@/components/site-logo';
 
 import ResumeButton from '@/components/resume-button';
 import ThemeSwitcher from '@/components/theme-switcher';
+
+export const metadata: Metadata = {
+  title: 'Oleg Plevan | Software Developer Portfolio website',
+  description: "I'm a dedicated software developer with a strong skill set honed through years of hands-on experience.",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -37,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SideElements />
           <ToastContainer />
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
