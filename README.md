@@ -7,7 +7,9 @@ The second iteration of my personal portfolio website [oplevan.com](https://www.
 2. Log into your account, create a new project and set up a dataset.
 3. In project root folder create a `.env.local` file and configure your environment variables:
 
-`NEXT_PUBLIC_SANITY_DATASET=<your dataset name>` `NEXT_PUBLIC_SANITY_PROJECT_ID=<your sanity project ID>`
+`NEXT_PUBLIC_SANITY_DATASET=<your dataset name>`
+
+`NEXT_PUBLIC_SANITY_PROJECT_ID=<your sanity project ID>`
 
 4. Install dependencies
 

@@ -1,5 +1,11 @@
 import ContactForm from '@/components/ContactForm/ContactForm';
 import PageWrapper from '@/components/page-wrapper';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact me | Oleg Plevan - Software Developer',
+  description: "I'm a dedicated software developer with a strong skill set honed through years of hands-on experience.",
+};
 
 export default function Contact() {
   return (
