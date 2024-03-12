@@ -95,7 +95,7 @@ export default function ProjectCard({ name, slug, links, previewImage, introDesc
         </div>
         <div className='flex flex-wrap text-[13px] font-mono gap-2 leading-none mt-3 z-10'>
           {techStack.map((item) => (
-            <div key={item} className='text-[11px] text-primary bg-primary-muted py-1.5 px-2.5 rounded-full'>
+            <div key={item.name} className='text-[11px] text-primary bg-primary-muted py-1.5 px-2.5 rounded-full'>
               {item.name}
             </div>
           ))}

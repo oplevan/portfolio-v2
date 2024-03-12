@@ -1,5 +1,4 @@
 import React from 'react';
-import SingleProject from '@/components/Project/Single/Single';
 import { getProjects } from '@/sanity/queries/getProjects';
 import ProjectCard from '@/components/project-card';
 import { Metadata } from 'next';
