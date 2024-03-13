@@ -9,7 +9,6 @@ import { motion } from 'framer-motion';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  // { label: 'Experience', href: '/#experience' },
   { label: 'Projects', href: '/projects' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -25,22 +24,6 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
     document.querySelector<HTMLElement>('body')!.style.overflow = !mobileMenuOpen ? 'hidden' : '';
   }
 
-  function navLinkClickHandler(e: SyntheticEvent, href: string) {
-    e.preventDefault();
-
-    const hash = href.split('#')[1];
-    const path = href.split('#')[0];
-
-    if (hash && pathname === path) {
-      const targetScrollToElement = document.getElementById(hash)?.offsetTop;
-      targetScrollToElement && window.scrollTo({ top: targetScrollToElement - 10, behavior: 'smooth' });
-    } else {
-      router.push(href);
-    }
-
-    window.innerWidth < 1024 && toggleMenu();
-  }
-
   return (
     <nav className='flex h-full items-center justify-between'>
       <div className='hidden lg:flex gap-x-10'>
@@ -49,11 +32,11 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
             key={link.label}
             href={link.href}
             className={cn('text-md tracking-wider leading-6 hover:text-primary uppercase relative', link.href === pathname ? 'text-primary' : '')}
-            onClick={(e) => navLinkClickHandler(e, link.href)}
-            spy-section={link.label.toLowerCase().split(' ').join('-')}
           >
-            {link.href === pathname && <motion.span layoutId='underline' className='absolute left-0 bottom-0 block h-[1px] w-full bg-primary' />}
             {link.label}
+            {link.href === pathname && (
+              <motion.span style={{ originY: '0px' }} layoutId='active-route-underline' className='absolute left-0 bottom-0 block h-[1px] w-full bg-primary' />
+            )}
           </Link>
         ))}
       </div>
@@ -73,7 +56,12 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           {navLinks?.map((link, i) => (
             <Fragment key={link.label}>
               {i !== 0 && <hr className='w-[35px] border-slate-600' />}
-              <Link key={link.label} href={link.href} className='block rounded-lg py-2 leading-7' onClick={(e) => navLinkClickHandler(e, link.href)}>
+              <Link
+                key={link.label}
+                href={link.href}
+                className={cn('block rounded-lg py-2 leading-7', link.href === pathname ? 'text-primary' : '')}
+                onClick={toggleMenu}
+              >
                 {link.label}
               </Link>
             </Fragment>
