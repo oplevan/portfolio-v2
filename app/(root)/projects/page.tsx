@@ -31,3 +31,5 @@ export default async function ProjectList() {
     </main>
   );
 }
+
+export const revalidate = 60;

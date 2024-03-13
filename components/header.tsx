@@ -23,7 +23,7 @@ export default function Header({ children }: { children: React.ReactNode }) {
 
   return (
     <header className={cn(!visible ? 'hidden' : '', isMinimized ? 'minimized' : '')}>
-      <div className='flex w-full h-full items-center justify-between px-6 lg:px-16'>{children}</div>
+      <div className='flex w-full h-full items-center justify-between px-6 lg:px-16 lg:justify-center'>{children}</div>
     </header>
   );
 }
