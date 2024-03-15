@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ThemeSwitcher />
               <ResumeButton />
             </Navigation>
-            <div className='hidden lg:flex justify-end items-center gap-10'>
+            <div className='hidden lg:flex justify-end items-center gap-10 lg:absolute lg:right-16'>
               <ThemeSwitcher />
               <ResumeButton />
             </div>

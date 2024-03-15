@@ -23,11 +23,11 @@ type ProjectCardProps = {
 export default function ProjectCard({ name, slug, links, previewImage, introDescription, techStack, animationDelay }: ProjectCardProps) {
   const cardVariants: Variants = {
     offscreen: {
-      x: 100,
+      y: 100,
       opacity: 0,
     },
     onscreen: {
-      x: 0,
+      y: 0,
       opacity: 1,
       transition: {
         type: 'spring',

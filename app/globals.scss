@@ -218,7 +218,7 @@ header {
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  @apply font-mono fixed z-40 top-0 w-full ease-in-out duration-300 delay-100;
+  @apply font-mono fixed z-40 top-0 w-full ease-in-out duration-300 delay-100 bg-background;
 
   &.hidden {
     @apply -translate-y-full block;
@@ -227,7 +227,7 @@ header {
   &.minimized {
     height: theme('nav-height.minimized');
     backdrop-filter: blur(15px);
-    @apply shadow-primary bg-background;
+    @apply shadow-primary;
   }
 
   @media (max-width: 767px) {

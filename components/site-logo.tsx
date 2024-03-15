@@ -5,7 +5,7 @@ import { getSiteLogo } from '@/sanity/queries/getSiteLogo';
 export default async function SiteLogo() {
   const logo = await getSiteLogo();
   return (
-    <div className='site-logo flex justify-center ease-in-out duration-300 delay-100 hover:scale-110 w-[70px] h-[70%]'>
+    <div className='flex justify-center ease-in-out duration-300 delay-100 hover:scale-110 h-[70%] lg:absolute lg:left-16'>
       <Link href='/' className='gradient-box !rounded-full aspect-square border-2 border-border shadow-primary'>
         <Image
           src={logo.src}
